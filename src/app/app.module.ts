@@ -7,6 +7,10 @@ import { SidebarComponent } from './components/blocks/sidebar/sidebar.component'
 import { TopbarComponent } from './components/blocks/topbar/topbar.component';
 import { FooterComponent } from './components/blocks/footer/footer.component';
 import { LinkTaiLieuComponent } from './components/blocks/link-tai-lieu/link-tai-lieu.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import { RegisterComponent } from './components/pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,16 @@ import { LinkTaiLieuComponent } from './components/blocks/link-tai-lieu/link-tai
     SidebarComponent,
     TopbarComponent,
     FooterComponent,
-    LinkTaiLieuComponent
+    LinkTaiLieuComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
