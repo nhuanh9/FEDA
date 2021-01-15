@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/';
+    this.returnUrl = '/users/home';
     this.adminUrl = '/admin'
   }
 

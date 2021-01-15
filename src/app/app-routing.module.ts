@@ -15,8 +15,9 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: '',
-    component: LayoutComponent
+    path: 'users',
+    component:LayoutComponent,
+    loadChildren: () => import('./module/layout.module').then(module => module.LayoutModule)
   }
 ];
 
