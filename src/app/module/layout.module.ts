@@ -9,6 +9,7 @@ import {LinkTaiLieuComponent} from "../components/blocks/link-tai-lieu/link-tai-
 import {HomeComponent} from "../components/home/home.component";
 import {NewPasswordComponent} from "../components/pages/new-password/new-password.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {NewPostComponent} from "../components/pages/new-post/new-post.component";
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'new-password',
     component: NewPasswordComponent
+  },
+  {
+    path: 'new-post',
+    component: NewPostComponent
   }
 ];
 
@@ -28,7 +33,8 @@ const routes: Routes = [
     FooterComponent,
     LinkTaiLieuComponent,
     HomeComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    NewPostComponent
   ],
   exports: [
     TopbarComponent,

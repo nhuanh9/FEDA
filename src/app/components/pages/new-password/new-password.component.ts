@@ -55,11 +55,9 @@ export class NewPasswordComponent implements OnInit {
       username:'',
       password: this.newPasswordForm.value.password,
       confirmPassword: this.newPasswordForm.value.confirmPassword,
-      firstName: '',
-      lastName: '',
+      name: '',
       email: '',
       phoneNumber: '',
-      gender: ''
     };
     return user;
   }

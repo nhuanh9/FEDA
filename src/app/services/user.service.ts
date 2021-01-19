@@ -39,7 +39,7 @@ export class UserService {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
 
-  getUserProfile(id: string): Observable<User> {
+  getUserProfile(id: any): Observable<User> {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
 
