@@ -14,6 +14,10 @@ export class PostService {
   constructor(private http: HttpClient) {
   }
 
+  getTop4(): Observable<Post[]> {
+    return this.http.get<Post[]>(API_URL+'/top-4');
+  }
+
   getAll(): Observable<Post[]> {
     return this.http.get<Post[]>(API_URL);
   }

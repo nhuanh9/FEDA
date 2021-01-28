@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
+
+<div class="row ml-2">
+  <div class="col-6" *ngFor="let post of posts">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3" style="color: black !important;">
+        <h6 class="m-0 font-weight-bold">{{post.content}}</h6>
+        <h4 class="small">
+          <i>{{post.createAt | date : 'dd/MM/yyyy'}}</i>
+          -
+          <a href="">{{post.user.username}}</a>
+
+          <a class="float-right" style="color: blue">{{post.category.name}}</a>
+        </h4>
+      </div>
+      <div class="card-body">
+        <div >
+
+          <div class=" mb-4">
+            Danh sách câu trả lời
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

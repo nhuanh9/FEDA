@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.postService.getAll().subscribe(data => {
+    this.postService.getTop4().subscribe(data => {
       console.log(data)
       this.posts = data;
     })

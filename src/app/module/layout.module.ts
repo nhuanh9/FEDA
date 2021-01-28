@@ -10,6 +10,7 @@ import {HomeComponent} from "../components/home/home.component";
 import {NewPasswordComponent} from "../components/pages/new-password/new-password.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NewPostComponent} from "../components/pages/new-post/new-post.component";
+import {ListPostComponent} from "../components/pages/list-post/list-post.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'new-post',
     component: NewPostComponent
+  },
+  {
+    path: 'list-post',
+    component: ListPostComponent
   }
 ];
 
@@ -34,7 +39,8 @@ const routes: Routes = [
     LinkTaiLieuComponent,
     HomeComponent,
     NewPasswordComponent,
-    NewPostComponent
+    NewPostComponent,
+    ListPostComponent
   ],
   exports: [
     TopbarComponent,

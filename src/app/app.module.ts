@@ -10,6 +10,7 @@ import {RegisterComponent} from './components/pages/register/register.component'
 import {LayoutComponent} from './components/layout/layout.component';
 import {LayoutModule} from "./module/layout.module";
 import { NewPostComponent } from './components/pages/new-post/new-post.component';
+import { ListPostComponent } from './components/pages/list-post/list-post.component';
 
 @NgModule({
   declarations: [
