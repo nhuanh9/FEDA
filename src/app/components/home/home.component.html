@@ -136,7 +136,7 @@
         <!-- Card Header - Dropdown -->
         <div
           class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Top đóng góp</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Danh sách các môn, lĩnh vực</h6>
           <div class="dropdown no-arrow">
             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -154,20 +154,22 @@
         </div>
         <!-- Card Body -->
         <div class="card-body">
-          <div class="chart-pie pt-4 pb-2">
-            <canvas id="myPieChart"></canvas>
+          <div class="row">
+            <div class="col-6" *ngFor="let category of categories">
+              <a href="/users/link-docs/{{category.id}}"><i class="fa fa-heartbeat" aria-hidden="true" style="  font-size: 12px"></i> {{category.name}}</a>
+            </div>
           </div>
-          <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Bài đăng
-                                        </span>
-            <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Câu trả lời
-                                        </span>
-            <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Lượt tương tác
-                                        </span>
-          </div>
+<!--          <div class="mt-4 text-center small">-->
+<!--                                        <span class="mr-2">-->
+<!--                                            <i class="fas fa-circle text-primary"></i> Bài đăng-->
+<!--                                        </span>-->
+<!--            <span class="mr-2">-->
+<!--                                            <i class="fas fa-circle text-success"></i> Câu trả lời-->
+<!--                                        </span>-->
+<!--            <span class="mr-2">-->
+<!--                                            <i class="fas fa-circle text-info"></i> Lượt tương tác-->
+<!--                                        </span>-->
+<!--          </div>-->
         </div>
       </div>
     </div>

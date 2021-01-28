@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="../../../../assets/vendor/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../../../../assets/css/sb-admin-2.min.css">
+
+<div class="card shadow m-3">
+  <!-- Card Header - Dropdown -->
+  <div
+    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Tài liệu {{linkDocs[0].category.name}}</h6>
+    <div class="dropdown no-arrow">
+      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+           aria-labelledby="dropdownMenuLink">
+        <div class="dropdown-header">Dropdown Header:</div>
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+  </div>
+  <!-- Card Body -->
+  <div class="card-body">
+    <div class="chart-area">
+      <table class="table table-hover" style="color: black !important;">
+        <thead>
+        <tr>
+          <th scope="col">Đường dẫn</th>
+          <th scope="col">Ngày đăng</th>
+          <th scope="col">Tác giả</th>
+          <th scope="col">Lượt thích</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let linkDoc of linkDocs">
+          <td scope="row"><a href="{{linkDoc.link}}">{{linkDoc.link}}</a></td>
+          <td scope="row">{{linkDoc.createAt| date: "dd/MM/yyyy"}}</td>
+          <td scope="row">{{linkDoc.user.name}}</td>
+          <th scope="row">{{linkDoc.likes}}</th>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

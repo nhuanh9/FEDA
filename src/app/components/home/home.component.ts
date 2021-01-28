@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from "../../models/post";
 import {PostService} from "../../services/post.service";
+import {Category} from "../../models/category";
+import {CategoryService} from "../../services/category.service";
 
 @Component({
   selector: 'app-home',
@@ -10,14 +12,19 @@ import {PostService} from "../../services/post.service";
 export class HomeComponent implements OnInit {
   posts: Post[];
   count = 0;
-
-  constructor(private postService: PostService) {
+  categories: Category[];
+  constructor(private postService: PostService,
+              private categoryService: CategoryService) {
   }
 
   ngOnInit() {
     this.postService.getTop4().subscribe(data => {
       console.log(data)
       this.posts = data;
+    })
+    this.categoryService.getAll().subscribe(data => {
+      console.log(data);
+      this.categories = data;
     })
   }
 

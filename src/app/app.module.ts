@@ -11,6 +11,7 @@ import {LayoutComponent} from './components/layout/layout.component';
 import {LayoutModule} from "./module/layout.module";
 import { NewPostComponent } from './components/pages/new-post/new-post.component';
 import { ListPostComponent } from './components/pages/list-post/list-post.component';
+import { ListLinkDocComponent } from './components/pages/list-link-doc/list-link-doc.component';
 
 @NgModule({
   declarations: [

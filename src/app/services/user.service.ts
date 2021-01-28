@@ -44,6 +44,7 @@ export class UserService {
   }
 
   updatePassword(username: string, user: User): Observable<User> {
+    console.log(API_URL + `/users/${username}/new-password-username`);
     return this.http.put<User>(API_URL + `/users/${username}/new-password-username`, user);
   }
 
