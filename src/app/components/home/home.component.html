@@ -127,11 +127,11 @@
   <div class="row">
 
     <!-- Area Chart -->
-    <div class="col-xl-8 col-lg-7">
+    <div class="col-xl-5 col-lg-5">
       <app-link-tai-lieu></app-link-tai-lieu>
     </div>
     <!-- Pie Chart -->
-    <div class="col-xl-4 col-lg-5">
+    <div class="col-xl-7 col-lg-7">
       <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
         <div
@@ -155,7 +155,7 @@
         <!-- Card Body -->
         <div class="card-body">
           <div class="row">
-            <div class="col-6" *ngFor="let category of categories">
+            <div class="col-6 mb-2" *ngFor="let category of categories">
               <a href="/users/link-docs/{{category.id}}"><i class="fa fa-heartbeat" aria-hidden="true" style="  font-size: 12px"></i> {{category.name}}</a>
             </div>
           </div>

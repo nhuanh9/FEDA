@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {NewPostComponent} from "../components/pages/new-post/new-post.component";
 import {ListPostComponent} from "../components/pages/list-post/list-post.component";
 import {ListLinkDocComponent} from "../components/pages/list-link-doc/list-link-doc.component";
+import {AddLinkDocComponent} from "../components/pages/add-link-doc/add-link-doc.component";
 
 const routes: Routes = [
   {
@@ -33,6 +34,9 @@ const routes: Routes = [
   {
     path: 'link-docs/:id',
     component: ListLinkDocComponent
+  }, {
+    path: 'new-link-document',
+    component: AddLinkDocComponent
   }
 ];
 
@@ -46,7 +50,8 @@ const routes: Routes = [
     NewPasswordComponent,
     NewPostComponent,
     ListPostComponent,
-    ListLinkDocComponent
+    ListLinkDocComponent,
+    AddLinkDocComponent
   ],
   exports: [
     TopbarComponent,
