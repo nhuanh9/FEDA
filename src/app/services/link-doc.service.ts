@@ -20,7 +20,7 @@ export class LinkDocService {
 
   getAllByCategoryId(id:string): Observable<LinkDoc[]> {
     // console.log(API_URL+`/${id}`)
-    return this.http.get<LinkDoc[]>(API_URL+`/${id}`);
+    return this.http.get<LinkDoc[]>(API_URL+`/categories/${id}`);
   }
 
   create(post: Post): Observable<any> {
