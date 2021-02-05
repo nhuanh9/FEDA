@@ -9,6 +9,9 @@ import {Post} from "../../../models/post";
 import {PostService} from "../../../services/post.service";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {UserToken} from "../../../models/user-token";
+import {AngularFireStorage} from "@angular/fire/storage";
+import {finalize} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-new-post',
@@ -17,7 +20,9 @@ import {UserToken} from "../../../models/user-token";
 })
 export class NewPostComponent implements OnInit {
   categories: Category[];
+  downloadURL: Observable<string>;
   currentUser: UserToken;
+  fb;
   createPostForm: FormGroup = new FormGroup({
     content: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     category: new FormControl('', [Validators.required]),
@@ -27,7 +32,8 @@ export class NewPostComponent implements OnInit {
               private router: Router,
               private categoryService: CategoryService,
               private postService: PostService,
-              private authenticationService: AuthenticationService
+              private authenticationService: AuthenticationService,
+              private storage: AngularFireStorage
   ) {
 
   }
@@ -76,13 +82,40 @@ export class NewPostComponent implements OnInit {
     });
   }
 
-  private setNewPost() {
+  private
+
+  setNewPost() {
     let post: Post = {
-      link: this.createPostForm.get('content').value,
+      content: this.createPostForm.get('content').value,
       category: this.setCategoryForFormData()
     }
     console.log(post)
     return post;
   }
 
+  onFileSelected(event) {
+    var n = Date.now();
+    const file = event.target.files[0];
+    const filePath = `RoomsImages/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`RoomsImages/${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.fb = url;
+            }
+            console.log(this.fb);
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+        }
+      });
+  }
 }

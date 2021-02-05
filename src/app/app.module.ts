@@ -13,6 +13,9 @@ import { NewPostComponent } from './components/pages/new-post/new-post.component
 import { ListPostComponent } from './components/pages/list-post/list-post.component';
 import { ListLinkDocComponent } from './components/pages/list-link-doc/list-link-doc.component';
 import { AddLinkDocComponent } from './components/pages/add-link-doc/add-link-doc.component';
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {AngularFireStorageModule} from "@angular/fire/storage";
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { AddLinkDocComponent } from './components/pages/add-link-doc/add-link-do
     ReactiveFormsModule,
     HttpClientModule,
     LayoutModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
   ],
   providers: [],
   bootstrap: [AppComponent]

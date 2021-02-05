@@ -28,6 +28,15 @@
                 <input type="text" class="form-control form-control-user" id="exampleInputEmail"
                        placeholder="Nội dung bài viết" formControlName="content">
               </div>
+              <div class="form-group col-12">
+                <input type="file"
+                       id="file"
+                       #userPhoto
+                       (change)="onFileSelected($event)"
+                       name="image"
+                       autocomplete="off"
+                />
+              </div>
               <input type="submit" class="btn btn-primary btn-user btn-block" value="Đăng ký">
             </form>
           </div>
