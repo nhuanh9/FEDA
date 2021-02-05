@@ -11,7 +11,7 @@
             <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">Tạo mới bài đăng</h1>
             </div>
-            <form class="user" [formGroup]="createPostForm" (ngSubmit)="createPost()">
+            <form class="user" [formGroup]="createPostForm" (ngSubmit)="createImage()">
               <div class="form-group row">
                 <div class="col-sm-1 mb-3 mb-sm-0 pt-2">
                   <span>Thể loại </span>
@@ -28,14 +28,19 @@
                 <input type="text" class="form-control form-control-user" id="exampleInputEmail"
                        placeholder="Nội dung bài viết" formControlName="content">
               </div>
-              <div class="form-group col-12">
-                <input type="file"
-                       id="file"
-                       #userPhoto
-                       (change)="onFileSelected($event)"
-                       name="image"
-                       autocomplete="off"
-                />
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Upload</span>
+                </div>
+                <div class="custom-file">
+                  <input type="file" id="file"
+                         #userPhoto
+                         multiple
+                         (change)="showPreview($event)"
+                         name="image"
+                         autocomplete="off" class="custom-file-input" id="inputGroupFile01">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
               </div>
               <input type="submit" class="btn btn-primary btn-user btn-block" value="Đăng ký">
             </form>

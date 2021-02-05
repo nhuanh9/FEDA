@@ -12,6 +12,8 @@ import {UserToken} from "../../../models/user-token";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {finalize} from "rxjs/operators";
 import {Observable} from "rxjs";
+import {Image} from "../../../models/image";
+import {ImageService} from "../../../services/image.service";
 
 @Component({
   selector: 'app-new-post',
@@ -23,6 +25,7 @@ export class NewPostComponent implements OnInit {
   downloadURL: Observable<string>;
   currentUser: UserToken;
   fb;
+  selectedImages: any[] = [];
   createPostForm: FormGroup = new FormGroup({
     content: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     category: new FormControl('', [Validators.required]),
@@ -32,6 +35,7 @@ export class NewPostComponent implements OnInit {
               private router: Router,
               private categoryService: CategoryService,
               private postService: PostService,
+              private imageService: ImageService,
               private authenticationService: AuthenticationService,
               private storage: AngularFireStorage
   ) {
@@ -71,18 +75,16 @@ export class NewPostComponent implements OnInit {
       this.currentUser = x;
       this.userService.getUserProfile(x.id).subscribe(value => {
         post.user = value;
-        this.postService.create(post).subscribe(() => {
-          alert("Thêm mới bài viết thành công!");
-          this.returnHome();
-        }, error => {
-          console.log("Tạo post lỗi!");
-          console.log(error);
-        })
+        // this.postService.create(post).subscribe(() => {
+        //   console.log("Thêm mới bài viết thành công!");
+        // }, error => {
+        //   console.log("Tạo post lỗi!");
+        //   console.log(error);
+        // })
+        return this.postService.create(post).toPromise();
       })
     });
   }
-
-  private
 
   setNewPost() {
     let post: Post = {
@@ -93,29 +95,55 @@ export class NewPostComponent implements OnInit {
     return post;
   }
 
-  onFileSelected(event) {
-    var n = Date.now();
-    const file = event.target.files[0];
-    const filePath = `RoomsImages/${n}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`RoomsImages/${n}`, file);
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe(url => {
-            if (url) {
-              this.fb = url;
+
+  createImage() {
+
+    let post: Post = this.setNewPost();
+    this.authenticationService.currentUser.subscribe(x => {
+      this.currentUser = x;
+      this.userService.getUserProfile(x.id).subscribe(value => {
+        post.user = value;
+        return this.postService.create(post).subscribe(data => {
+          if (this.selectedImages.length !== 0) {
+            for (let i = 0; i < this.selectedImages.length; i++) {
+              let selectedImage = this.selectedImages[i];
+              var n = Date.now();
+              const filePath = `RoomsImages/${n}`;
+              const fileRef = this.storage.ref(filePath);
+              this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+                finalize(() => {
+                  fileRef.getDownloadURL().subscribe(url => {
+                    const image: Image = {
+                      linkImg: url,
+                      postId: data.id
+                    };
+                    console.log(image);
+                    console.log(url);
+                    if (i == 0) {
+                    }
+                    this.imageService.create(image).subscribe(() => {
+                      console.log('SUCCESSFULLY CREATE')
+                    });
+                  });
+                })
+              ).subscribe();
             }
-            console.log(this.fb);
-          });
-        })
-      )
-      .subscribe(url => {
-        if (url) {
-          console.log(url);
-        }
-      });
+          }
+        });
+      })
+    });
+
+  }
+
+  showPreview(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImages = event.target.files;
+      console.log(this.selectedImages);
+    } else {
+      this.selectedImages = [];
+    }
+    // this.createImage();
   }
 }
