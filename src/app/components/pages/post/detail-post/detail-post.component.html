@@ -29,25 +29,18 @@
 
     <!-- Illustrations -->
     <div class="card shadow mb-4 mr-4">
-      <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Danh sách phản hồi </h6>
-      </div>
       <div class="card-body">
-        <div class="text-center">
-          <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-               src="https://scontent.fhan5-7.fna.fbcdn.net/v/t1.0-9/135365840_440524424024592_841891782036468209_n.jpg?_nc_cat=100&ccb=2&_nc_sid=09cbfe&_nc_ohc=6B6zUhPRC1gAX--TcNo&_nc_ht=scontent.fhan5-7.fna&oh=34bdeaa851ccf57cff8377ea00b3b801&oe=602792F5"
-               alt="">
+        <div *ngFor="let cmt of post.listComment">
+          <a href="">{{cmt.user.username}}</a> : <span>{{cmt.content}}</span>
+          <hr>
         </div>
-        <div class="row text-center">
-          <div class="col-12">
-            <p>Đào Như Anh</p>
-            <p>CNTT4-K58 UTC</p>
-            <p>anh.dao@codegym.vn</p>
-            <p>Giảng viên tại Codegym</p>
-          </div>
-
-        </div>
-
       </div>
+      <form [formGroup]="formGroup" (ngSubmit)="addComment(post.id)" class="form-group m-3 row">
+        <div class="d-flex flex-row align-items-start">
+          <input type="textarea" class="form-control ml-1 shadow-none textarea" formControlName="content"></div>
+        <button class="btn btn-primary btn-sm shadow-none ml-2" type="submit">Comment</button>
+        <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
+      </form>
     </div>
+  </div>
 </div>

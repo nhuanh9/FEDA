@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Post} from "../models/post";
 import {LinkDoc} from "../models/link-doc";
+import {CommentForm} from "../models/comment";
 
 const API_URL = environment.apiUrl + '/posts';
 
@@ -34,5 +35,9 @@ export class PostService {
 
   get(id: string): Observable<Post> {
     return this.http.get<Post>(API_URL + `/${id}`);
+  }
+
+  addComment(id, comment): Observable<CommentForm> {
+    return this.http.post<CommentForm>(API_URL + `/${id}/comments`, comment);
   }
 }

@@ -148,6 +148,6 @@ export class NewPostComponent implements OnInit {
     } else {
       this.selectedImages = [];
     }
-    // this.createImage();
+
   }
 }
