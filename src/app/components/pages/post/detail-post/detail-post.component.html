@@ -6,7 +6,8 @@
     <!-- Illustrations -->
     <div class="card shadow mb-4 ml-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">{{post.content}} </h6>
+        <span class="m-0 font-weight-bold text-primary">{{post.content}} </span>
+        <span class="float-right small">{{post.category.name}}</span>
         <div class="text-center">
           <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;"
                src="{{img.linkImg}}"
@@ -15,13 +16,9 @@
       </div>
       <div class="card-body">
         <h4 class="small">
-          <i>{{post.createAt | date : 'dd/MM/yyyy'}}</i>
-          -
-          <a>{{post.user.username}}</a>
-
-          <a class="float-right" style="color: blue">{{post.category.name}}</a>
+          <a class="" style="color: blue">{{post.user.username}}</a>
+          <i class="float-right small">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
         </h4>
-
       </div>
     </div>
   </div>
@@ -32,6 +29,7 @@
       <div class="card-body">
         <div *ngFor="let cmt of post.listComment">
           <a href="">{{cmt.user.username}}</a> : <span>{{cmt.content}}</span>
+          <i class="float-right small">{{cmt.createAt | date : 'dd/MM/yyyy'}}</i>
           <hr>
         </div>
       </div>
