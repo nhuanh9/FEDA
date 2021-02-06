@@ -6,27 +6,30 @@
     <!-- Illustrations -->
     <div class="card shadow mb-4 ml-4">
       <div class="card-header py-3">
-        <span class="m-0 font-weight-bold text-primary">{{post.content}} </span>
+        <h4 class="small">
+          <a class="" style="color: blue">{{post.user.username}}</a>
+          <i class="float-right small">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
+        </h4>
+        <span class="m-0 font-weight-bold">{{post.content}} </span>
         <span class="float-right small">{{post.category.name}}</span>
+
+      </div>
+      <div class="card-body">
         <div class="text-center">
           <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;"
                src="{{img.linkImg}}"
                alt="">
         </div>
       </div>
-      <div class="card-body">
-        <h4 class="small">
-          <a class="" style="color: blue">{{post.user.username}}</a>
-          <i class="float-right small">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
-        </h4>
-      </div>
     </div>
   </div>
   <div class="col-lg-6">
-
     <!-- Illustrations -->
     <div class="card shadow mb-4 mr-4">
       <div class="card-body">
+
+        <div class="text-center mb-4" style="color: blue; font-weight: bold; font-size: 20px">Danh sách câu trả lời
+        </div>
         <div *ngFor="let cmt of post.listComment">
           <a href="">{{cmt.user.username}}</a> : <span>{{cmt.content}}</span>
           <i class="float-right small">{{cmt.createAt | date : 'dd/MM/yyyy'}}</i>
