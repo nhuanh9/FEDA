@@ -10,7 +10,7 @@ import {PostService} from "../../../../services/post.service";
 import {AuthenticationService} from "../../../../services/authentication.service";
 import {UserToken} from "../../../../models/user-token";
 import {AngularFireStorage} from "@angular/fire/storage";
-import {finalize} from "rxjs/operators";
+import {delay, finalize} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {Image} from "../../../../models/image";
 import {ImageService} from "../../../../services/image.service";
@@ -55,7 +55,7 @@ export class NewPostComponent implements OnInit {
   }
 
   returnHome() {
-    this.router.navigate(['/users/home']);
+
   }
 
   setCategoryForFormData() {
@@ -128,7 +128,10 @@ export class NewPostComponent implements OnInit {
                 })
               ).subscribe();
             }
-            this.returnHome();
+            setTimeout(() => {
+              this.router.navigate(['/users/posts/', data.id]);
+            }, 4000)
+
           }
         });
       })
