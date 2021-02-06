@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {Category} from "../../../models/category";
-import {UserToken} from "../../../models/user-token";
+import {Category} from "../../../../models/category";
+import {UserToken} from "../../../../models/user-token";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../../services/user.service";
+import {UserService} from "../../../../services/user.service";
 import {Router} from "@angular/router";
-import {CategoryService} from "../../../services/category.service";
-import {PostService} from "../../../services/post.service";
-import {AuthenticationService} from "../../../services/authentication.service";
-import {Post} from "../../../models/post";
-import {LinkDoc} from "../../../models/link-doc";
-import {LinkDocService} from "../../../services/link-doc.service";
+import {CategoryService} from "../../../../services/category.service";
+import {PostService} from "../../../../services/post.service";
+import {AuthenticationService} from "../../../../services/authentication.service";
+import {Post} from "../../../../models/post";
+import {LinkDoc} from "../../../../models/link-doc";
+import {LinkDocService} from "../../../../services/link-doc.service";
 
 @Component({
   selector: 'app-add-link-doc',

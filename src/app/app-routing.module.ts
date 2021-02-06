@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {LoginComponent} from "./components/pages/login/login.component";
-import {RegisterComponent} from "./components/pages/register/register.component";
+import {LoginComponent} from "./components/pages/user/login/login.component";
+import {RegisterComponent} from "./components/pages/user/register/register.component";
 import {LayoutComponent} from "./components/layout/layout.component";
 
 

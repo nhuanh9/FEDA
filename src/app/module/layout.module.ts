@@ -7,12 +7,13 @@ import {TopbarComponent} from "../components/blocks/topbar/topbar.component";
 import {FooterComponent} from "../components/blocks/footer/footer.component";
 import {LinkTaiLieuComponent} from "../components/blocks/link-tai-lieu/link-tai-lieu.component";
 import {HomeComponent} from "../components/home/home.component";
-import {NewPasswordComponent} from "../components/pages/new-password/new-password.component";
+import {NewPasswordComponent} from "../components/pages/user/new-password/new-password.component";
 import {ReactiveFormsModule} from "@angular/forms";
-import {NewPostComponent} from "../components/pages/new-post/new-post.component";
-import {ListPostComponent} from "../components/pages/list-post/list-post.component";
-import {ListLinkDocComponent} from "../components/pages/list-link-doc/list-link-doc.component";
-import {AddLinkDocComponent} from "../components/pages/add-link-doc/add-link-doc.component";
+import {NewPostComponent} from "../components/pages/post/new-post/new-post.component";
+import {ListPostComponent} from "../components/pages/post/list-post/list-post.component";
+import {ListLinkDocComponent} from "../components/pages/link-doc/list-link-doc/list-link-doc.component";
+import {AddLinkDocComponent} from "../components/pages/link-doc/add-link-doc/add-link-doc.component";
+import {DetailPostComponent} from "../components/pages/post/detail-post/detail-post.component";
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'link-docs/:id',
     component: ListLinkDocComponent
+  },
+  {
+    path: 'posts/:id',
+    component: DetailPostComponent
   }, {
     path: 'new-link-document',
     component: AddLinkDocComponent
@@ -51,7 +56,8 @@ const routes: Routes = [
     NewPostComponent,
     ListPostComponent,
     ListLinkDocComponent,
-    AddLinkDocComponent
+    AddLinkDocComponent,
+    DetailPostComponent
   ],
   exports: [
     TopbarComponent,

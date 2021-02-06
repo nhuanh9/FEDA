@@ -3,19 +3,20 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {LoginComponent} from './components/pages/login/login.component';
+import {LoginComponent} from './components/pages/user/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {RegisterComponent} from './components/pages/register/register.component';
+import {RegisterComponent} from './components/pages/user/register/register.component';
 import {LayoutComponent} from './components/layout/layout.component';
 import {LayoutModule} from "./module/layout.module";
-import { NewPostComponent } from './components/pages/new-post/new-post.component';
-import { ListPostComponent } from './components/pages/list-post/list-post.component';
-import { ListLinkDocComponent } from './components/pages/list-link-doc/list-link-doc.component';
-import { AddLinkDocComponent } from './components/pages/add-link-doc/add-link-doc.component';
+import { NewPostComponent } from './components/pages/post/new-post/new-post.component';
+import { ListPostComponent } from './components/pages/post/list-post/list-post.component';
+import { ListLinkDocComponent } from './components/pages/link-doc/list-link-doc/list-link-doc.component';
+import { AddLinkDocComponent } from './components/pages/link-doc/add-link-doc/add-link-doc.component';
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/storage";
+import { DetailPostComponent } from './components/pages/post/detail-post/detail-post.component';
 
 @NgModule({
   declarations: [

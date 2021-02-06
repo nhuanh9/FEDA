@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../../services/user.service";
+import {UserService} from "../../../../services/user.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {AuthenticationService} from "../../../services/authentication.service";
-import {User} from "../../../models/user";
+import {AuthenticationService} from "../../../../services/authentication.service";
+import {User} from "../../../../models/user";
 import {Subscription} from "rxjs";
-import {UserToken} from "../../../models/user-token";
+import {UserToken} from "../../../../models/user-token";
 
 @Component({
   selector: 'app-new-password',

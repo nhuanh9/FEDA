@@ -1,19 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../../services/user.service";
+import {UserService} from "../../../../services/user.service";
 import {Router} from "@angular/router";
-import {User} from "../../../models/user";
-import {Category} from "../../../models/category";
-import {CategoryService} from "../../../services/category.service";
-import {Post} from "../../../models/post";
-import {PostService} from "../../../services/post.service";
-import {AuthenticationService} from "../../../services/authentication.service";
-import {UserToken} from "../../../models/user-token";
+import {User} from "../../../../models/user";
+import {Category} from "../../../../models/category";
+import {CategoryService} from "../../../../services/category.service";
+import {Post} from "../../../../models/post";
+import {PostService} from "../../../../services/post.service";
+import {AuthenticationService} from "../../../../services/authentication.service";
+import {UserToken} from "../../../../models/user-token";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {finalize} from "rxjs/operators";
 import {Observable} from "rxjs";
-import {Image} from "../../../models/image";
-import {ImageService} from "../../../services/image.service";
+import {Image} from "../../../../models/image";
+import {ImageService} from "../../../../services/image.service";
 
 @Component({
   selector: 'app-new-post',

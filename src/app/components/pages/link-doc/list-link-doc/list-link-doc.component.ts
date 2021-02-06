@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {LinkDoc} from "../../../models/link-doc";
-import {LinkDocService} from "../../../services/link-doc.service";
+import {LinkDoc} from "../../../../models/link-doc";
+import {LinkDocService} from "../../../../services/link-doc.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 
 @Component({

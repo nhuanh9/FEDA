@@ -16,7 +16,7 @@ export class PostService {
   }
 
   getTop4(): Observable<Post[]> {
-    return this.http.get<Post[]>(API_URL+'/top-4');
+    return this.http.get<Post[]>(API_URL + '/top-4');
   }
 
   getAll(): Observable<Post[]> {
@@ -27,8 +27,12 @@ export class PostService {
     return this.http.post<any>(API_URL, post);
   }
 
-  getAllByCategoryId(id:string): Observable<Post[]> {
+  getAllByCategoryId(id: string): Observable<Post[]> {
     // console.log(API_URL+`/${id}`)
-    return this.http.get<Post[]>(API_URL+`/categories/${id}`);
+    return this.http.get<Post[]>(API_URL + `/categories/${id}`);
+  }
+
+  get(id: string): Observable<Post> {
+    return this.http.get<Post>(API_URL + `/${id}`);
   }
 }

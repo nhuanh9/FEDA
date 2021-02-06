@@ -23,4 +23,8 @@ export class ImageService {
   create(image: Image): Observable<any> {
     return this.http.post<any>(API_URL, image);
   }
+
+  getAllByPostId(id: number): Observable<Image[]> {
+    return this.http.get<Image[]>(API_URL + `/${id}`);
+  }
 }
