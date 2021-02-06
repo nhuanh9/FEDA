@@ -1,1 +1,28 @@
-<p>detail-post works!</p>
+<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
+<div class="row">
+  <div class="col-lg-6 ml-4">
+
+    <!-- Illustrations -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{post.content}} </h6>
+        <div class="text-center">
+          <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;"
+               src="{{img.linkImg}}"
+               alt="">
+        </div>
+      </div>
+      <div class="card-body">
+        <h4 class="small">
+          <i>{{post.createAt | date : 'dd/MM/yyyy'}}</i>
+          -
+          <a>{{post.user.username}}</a>
+
+          <a class="float-right" style="color: blue">{{post.category.name}}</a>
+        </h4>
+
+      </div>
+    </div>
+  </div>
+</div>
