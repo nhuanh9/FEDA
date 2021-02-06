@@ -128,6 +128,7 @@ export class NewPostComponent implements OnInit {
                 })
               ).subscribe();
             }
+            this.returnHome();
           }
         });
       })
