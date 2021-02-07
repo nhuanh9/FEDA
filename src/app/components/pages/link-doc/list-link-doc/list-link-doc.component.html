@@ -1,11 +1,24 @@
 <link rel="stylesheet" href="../../../../../assets/vendor/fontawesome-free/css/all.min.css">
 <link rel="stylesheet" href="../../../../../assets/css/sb-admin-2.min.css">
-
+<h1 style="
+        text-align: center;
+        color: black;
+        font-size: 60px;
+        text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc,
+                     0 3px 0 #ccc, 0 4px 0 #ccc,
+                     0 5px 0 #ccc, 0 6px 0 #ccc,
+                     0 7px 0 #ccc, 0 8px 0 #ccc,
+                     0 9px 0 #ccc, 0 10px 0 #ccc,
+                     0 11px 0 #ccc, 0 12px 0 #ccc,
+                     0 20px 30px rgba(0, 0, 0, 0.5); ">
+  {{linkDocs[0].category.name}}
+</h1>
 <div class="card shadow m-3">
   <!-- Card Header - Dropdown -->
+
   <div
     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-    <h6 class="m-0 font-weight-bold text-primary">Tài liệu {{linkDocs[0].category.name}}</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Tài liệu</h6>
     <div class="dropdown no-arrow">
       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,8 +49,8 @@
         <tbody>
         <tr *ngFor="let linkDoc of linkDocs">
           <td scope="row"><a href="{{linkDoc.link}}">{{linkDoc.link}}</a></td>
-          <td scope="row">{{linkDoc.createAt| date: "dd/MM/yyyy"}}</td>
-          <td scope="row">{{linkDoc.user.name}}</td>
+          <td scope="row"><i style="color: #a7a2a2"> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
+          <td scope="row"><a href="" style="color: #719fb0">{{linkDoc.user.username}}</a></td>
           <th scope="row">{{linkDoc.likes}}</th>
         </tr>
         </tbody>
@@ -45,3 +58,4 @@
     </div>
   </div>
 </div>
+<app-list-post></app-list-post>
