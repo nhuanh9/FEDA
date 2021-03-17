@@ -58,4 +58,31 @@
     </div>
   </div>
 </div>
-<app-list-post></app-list-post>
+<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
+
+<div class="row ml-2 mr-2">
+  <div class="col-6" *ngFor="let post of posts">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3" style="color: black !important;">
+        <a href="/users/posts/{{post.id}}"><h6 class="m-0 font-weight-bold">{{post.content}}</h6></a>
+        <h4 class="small">
+          <i style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
+          -
+          <a style="color: #719fb0">{{post.user.username}}</a>
+
+          <a class="float-right" href="/users/link-docs/{{post.category.id}}"
+             style="color: #f08a5d;">{{post.category.name}}</a>
+        </h4>
+      </div>
+      <div class="card-body">
+        <div>
+
+          <div class=" mb-4">
+            Có {{post.listComment.length}} câu trả lời.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

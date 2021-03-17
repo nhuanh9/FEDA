@@ -3,7 +3,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../../services/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../../../models/user";
-import {Category} from "../../../../models/category";
 import {CategoryService} from "../../../../services/category.service";
 import {Post} from "../../../../models/post";
 import {PostService} from "../../../../services/post.service";
@@ -14,6 +13,7 @@ import {delay, finalize} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {Image} from "../../../../models/image";
 import {ImageService} from "../../../../services/image.service";
+import {Category} from "../../../../models/category";
 
 @Component({
   selector: 'app-new-post',
@@ -97,7 +97,6 @@ export class NewPostComponent implements OnInit {
 
 
   createImage() {
-
     let post: Post = this.setNewPost();
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;

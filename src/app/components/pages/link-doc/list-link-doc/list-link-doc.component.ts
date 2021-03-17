@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {LinkDoc} from "../../../../models/link-doc";
 import {LinkDocService} from "../../../../services/link-doc.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
+import {PostService} from "../../../../services/post.service";
+import {Post} from "../../../../models/post";
 
 @Component({
   selector: 'app-list-link-doc',
@@ -10,9 +12,10 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 })
 export class ListLinkDocComponent implements OnInit {
   linkDocs: LinkDoc[];
-
+  posts: Post[];
   constructor(private linkDocService: LinkDocService,
-              private activateRoute: ActivatedRoute,) {
+              private activateRoute: ActivatedRoute,
+              private postService: PostService) {
   }
 
   ngOnInit() {
@@ -25,7 +28,10 @@ export class ListLinkDocComponent implements OnInit {
       }, error => {
         console.log(error);
       })
+      this.postService.getAllByCategoryId(id).subscribe(value => {
+        this.posts = value;
+        console.log(this.posts);
+      })
     });
   }
-
 }

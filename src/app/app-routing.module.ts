@@ -18,6 +18,11 @@ const routes: Routes = [
     path: 'users',
     component:LayoutComponent,
     loadChildren: () => import('./module/layout.module').then(module => module.LayoutModule)
+  },
+  {
+    path: '',
+    component:LayoutComponent,
+    loadChildren: () => import('./module/layout.module').then(module => module.LayoutModule)
   }
 ];
 
