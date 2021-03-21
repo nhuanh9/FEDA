@@ -14,12 +14,14 @@ import {ListPostComponent} from "../components/pages/post/list-post/list-post.co
 import {ListLinkDocComponent} from "../components/pages/link-doc/list-link-doc/list-link-doc.component";
 import {AddLinkDocComponent} from "../components/pages/link-doc/add-link-doc/add-link-doc.component";
 import {DetailPostComponent} from "../components/pages/post/detail-post/detail-post.component";
+import {ListOrderComponent} from "../components/pages/order-seminar/list-order/list-order.component";
+import {AddOrderComponent} from "../components/pages/order-seminar/add-order/add-order.component";
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
-  },{
+  }, {
     path: '',
     component: HomeComponent
   },
@@ -45,6 +47,12 @@ const routes: Routes = [
   }, {
     path: 'new-link-document',
     component: AddLinkDocComponent
+  }, {
+    path: 'new-order',
+    component: AddOrderComponent
+  }, {
+    path: 'list-order',
+    component: ListOrderComponent
   }
 ];
 
@@ -60,7 +68,9 @@ const routes: Routes = [
     ListPostComponent,
     ListLinkDocComponent,
     AddLinkDocComponent,
-    DetailPostComponent
+    DetailPostComponent,
+    ListOrderComponent,
+    AddOrderComponent,
   ],
   exports: [
     TopbarComponent,

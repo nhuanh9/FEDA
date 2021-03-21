@@ -4,6 +4,7 @@ import {LinkDocService} from "../../../../services/link-doc.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {PostService} from "../../../../services/post.service";
 import {Post} from "../../../../models/post";
+import {OrderSeminarService} from "../../../../services/order-seminar.service";
 
 @Component({
   selector: 'app-list-link-doc',
@@ -13,9 +14,11 @@ import {Post} from "../../../../models/post";
 export class ListLinkDocComponent implements OnInit {
   linkDocs: LinkDoc[];
   posts: Post[];
+
   constructor(private linkDocService: LinkDocService,
               private activateRoute: ActivatedRoute,
-              private postService: PostService) {
+              private postService: PostService,
+              private orderSeminarService: OrderSeminarService) {
   }
 
   ngOnInit() {
@@ -32,6 +35,8 @@ export class ListLinkDocComponent implements OnInit {
         this.posts = value;
         console.log(this.posts);
       })
+
     });
   }
+
 }

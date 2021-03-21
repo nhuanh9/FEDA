@@ -17,13 +17,15 @@ import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import { DetailPostComponent } from './components/pages/post/detail-post/detail-post.component';
+import { ListOrderComponent } from './components/pages/order-seminar/list-order/list-order.component';
+import { AddOrderComponent } from './components/pages/order-seminar/add-order/add-order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
