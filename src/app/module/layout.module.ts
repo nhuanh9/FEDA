@@ -16,6 +16,7 @@ import {AddLinkDocComponent} from "../components/pages/link-doc/add-link-doc/add
 import {DetailPostComponent} from "../components/pages/post/detail-post/detail-post.component";
 import {ListOrderComponent} from "../components/pages/order-seminar/list-order/list-order.component";
 import {AddOrderComponent} from "../components/pages/order-seminar/add-order/add-order.component";
+import {UpdateProfileComponent} from "../components/pages/user/update-profile/update-profile.component";
 
 const routes: Routes = [
   {
@@ -53,6 +54,9 @@ const routes: Routes = [
   }, {
     path: 'list-order',
     component: ListOrderComponent
+  }, {
+    path: 'profile',
+    component: UpdateProfileComponent,
   }
 ];
 
@@ -71,6 +75,7 @@ const routes: Routes = [
     DetailPostComponent,
     ListOrderComponent,
     AddOrderComponent,
+    UpdateProfileComponent,
   ],
   exports: [
     TopbarComponent,

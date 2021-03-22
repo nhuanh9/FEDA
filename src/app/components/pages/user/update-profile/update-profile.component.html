@@ -1,0 +1,50 @@
+<!--<app-carousel></app-carousel>-->
+<link rel="stylesheet" href="../../../../../assets/vendor/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../../../../../assets/css/sb-admin-2.min.css">
+<div class="row container-fluid mt-5 ml-1" style="background: #f8f9fc">
+  <div class="col-2 test"></div>
+  <div class="card text-center register col-lg-8 " style="background: white !important;">
+    <div class=" text-center mt-2">
+      <h2>Thông tin cá nhân</h2>
+    </div>
+    <div class="card-body">
+      <!-- Login-->
+
+      <div class="row mb-3 text-center"><img class="col-12" src="{{user.imageUrls}}" alt=""></div>
+      <form [formGroup]="updateForm" (ngSubmit)="update()">
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Upload</span>
+          </div>
+          <div class="custom-file">
+            <input type="file" class="form-control" (change)="saveImg($event)" id="inputGroupFile01">
+            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+          </div>
+        </div>
+        <div class="text-left">
+          <label>Họ và Tên</label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="name" id="exampleInputPassword1"
+                 placeholder="Họ và tên">
+        </div>
+        <div class="text-left">
+          <label>Email</label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="email"
+                 placeholder="Email">
+        </div>
+        <div class="text-left">
+          <label>Số điện thoại</label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="phoneNumber"
+                 placeholder="Số điện thoại">
+        </div>
+        <button type="submit" class="btn btn-success nutPhai mr-2">Thay đổi thông tin</button>
+      </form>
+    </div>
+  </div>
+</div>

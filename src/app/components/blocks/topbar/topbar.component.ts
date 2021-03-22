@@ -19,13 +19,7 @@ export class TopbarComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private userService: UserService,
   ) {
-    this.authenticationService.currentUser.subscribe(x => {
-      this.currentUser = x;
-      this.userService.getUserProfile(x.id).subscribe(value => {
-        this.user = value;
-        console.log(this.user);
-      });
-    });
+
   }
 
   logout() {
@@ -34,5 +28,12 @@ export class TopbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authenticationService.currentUser.subscribe(x => {
+      this.currentUser = x;
+      this.userService.getUserProfile(x.id).subscribe(value => {
+        this.user = value;
+        console.log(this.user);
+      });
+    });
   }
 }
