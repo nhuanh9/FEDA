@@ -2,24 +2,33 @@
 <link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
 
 <div class="row ml-2 mr-2">
-  <div class="col-6" *ngFor="let post of posts">
+  <div class="col-6" *ngFor="let post of listCurrentUserLikePost">
     <div class="card shadow mb-4">
       <div class="card-header py-3" style="color: black !important;">
-        <a href="/users/posts/{{post.id}}"><h6 class="m-0 font-weight-bold">{{post.content}}</h6></a>
+        <a href="/users/posts/{{post.post.id}}"><h6 class="m-0 font-weight-bold">{{post.post.content}}</h6></a>
         <h4 class="small">
-          <i style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
+          <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
           -
-          <a style="color: #719fb0">{{post.user.username}}</a>
+          <a style="color: #719fb0">{{post.post.user.username}}</a>
 
-          <a class="float-right" href="/users/link-docs/{{post.category.id}}"
-             style="color: #f08a5d;">{{post.category.name}}</a>
+          <a class="float-right" href="/users/link-docs/{{post.post.category.id}}"
+             style="color: #f08a5d;">{{post.post.category.name}}</a>
         </h4>
       </div>
       <div class="card-body">
         <div>
 
-          <div class=" mb-4">
-            Có {{post.listComment.length}} câu trả lời.
+          <div class="mb-2 float-left">
+            Có {{post.post.listComment.length}} câu trả lời.
+          </div>
+          <div class="mb-2 float-right">
+            <a *ngIf="!post.is_liked" (click)="likePost(post.post.id)" class="fa fa-thumbs-o-up"><img
+              src="https://icons.iconarchive.com/icons/icons8/ios7/24/Gaming-Hearts-icon.png" alt=""></a>
+            <a *ngIf="post.is_liked" (click)="unlikePost(post.post.id)" class="fa fa-thumbs-o-down"><img
+              src="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/24/Heart-Doodle-icon.png"
+              alt=""></a>
+            <span class="ml-1" (click)="getAllLikesByPostId(post.post.id)">{{post.post.likes}}
+              Likes</span>
           </div>
         </div>
       </div>

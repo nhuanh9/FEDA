@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {Post} from "../models/post";
 import {LinkDoc} from "../models/link-doc";
 import {CommentForm} from "../models/comment";
+import {LikePost} from "../models/like-post";
 
 const API_URL = environment.apiUrl + '/posts';
 
@@ -39,5 +40,9 @@ export class PostService {
 
   addComment(id, comment): Observable<CommentForm> {
     return this.http.post<CommentForm>(API_URL + `/${id}/comments`, comment);
+  }
+
+  getAllLikeById(id): Observable<LikePost[]> {
+    return this.http.get<LikePost[]>(API_URL + '/' + id + '/post-likes');
   }
 }
