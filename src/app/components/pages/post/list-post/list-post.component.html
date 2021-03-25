@@ -29,6 +29,52 @@
               alt=""></a>
             <span class="ml-1" (click)="getAllLikesByPostId(post.post.id)">{{post.post.likes}}
               Likes</span>
+
+            <!--            start modal edit-->
+<!--            <div *ngIf="post.post.user.id == user.id">-->
+<!--              <button type="button" class="btn btn-light" data-toggle="modal"-->
+<!--                      (click)="showUpdatePost(post.post.id)">edit-->
+<!--              </button>-->
+
+
+<!--              &lt;!&ndash; Modal &ndash;&gt;-->
+<!--              <div class="modal fade" id="myModal{{post.post.id}}" role="dialog">-->
+<!--                <div class="modal-dialog modal-lg">-->
+<!--                  <div class="modal-content">-->
+<!--                    <div class="modal-header">-->
+<!--                      <h4 class="modal-title">Edit Post</h4>-->
+<!--                      <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+
+<!--                    </div>-->
+<!--                    <div class="modal-body">-->
+<!--                      <textarea class="form-control ml-1 shadow-none textarea"-->
+<!--                                [value]="post.post.content" style="height: 70px"></textarea>-->
+<!--                      <div class="row">-->
+
+<!--                        <div class="col col-3 mt-2 text-left">-->
+
+<!--                        </div>-->
+<!--                        <div class="col col-4 mt-2 text-right">-->
+<!--                          <div class="form-group">-->
+<!--                          </div>-->
+
+<!--                        </div>-->
+<!--                        <div class="col col-8 mt-2 text-center">-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                      <div>-->
+<!--                        <button type="button" class="btn btn-default" (click)="updatePost(post.post.id)">Update-->
+<!--                        </button>-->
+<!--                      </div>-->
+<!--                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+            <!--            end modal edit-->
           </div>
         </div>
       </div>

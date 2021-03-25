@@ -126,5 +126,19 @@ export class ListPostComponent implements OnInit {
 
   }
 
+  showUpdatePost = (id) => {
+    // alert('#myModal' + id)
+    $('#myModal' + id).modal('show');
+  }
+
+  updatePostAndImg(idPost, idImg) {
+
+    $('#myModal' + this.post.id).modal('hide');
+
+  }
+
+  updatePost(id) {
+    $('#myModal' + id).modal('hide');
+  }
 
 }
