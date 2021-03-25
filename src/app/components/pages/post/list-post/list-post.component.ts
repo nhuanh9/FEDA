@@ -21,4 +21,7 @@ export class ListPostComponent implements OnInit {
       this.posts = data;
     })
   }
+
+
+
 }
