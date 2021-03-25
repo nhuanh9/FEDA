@@ -39,7 +39,7 @@ export class ListPostComponent implements OnInit {
   contentPost: string;
   arrayPicture = '';
   sub: Subscription;
-  listLikePost: LikePost[];
+  listLikePost: LikePost[] = [{}, {}];
   allLike: LikePost[];
 
   constructor(private http: HttpClient,
@@ -55,6 +55,7 @@ export class ListPostComponent implements OnInit {
 
   ngOnInit() {
     this.getAllPost();
+    this.listLikePost= [ {user: { name: 'a'}}, {user: { name: 'a'}}];
   }
 
   getAllPost() {
@@ -83,19 +84,6 @@ export class ListPostComponent implements OnInit {
     });
   }
 
-  getAllLikesByPostId(id) {
-    this.postService.getAllLikeById(id).subscribe(value => {
-      this.listLikePost = value;
-      let str = 'Người dùng đã thích bài viết: \n';
-      for (let j = 0; j < this.listLikePost.length; j++) {
-        if (this.listLikePost[j].liked)
-          str += this.listLikePost[j].user.username + '\n';
-      }
-      alert(str);
-    })
-  }
-
-
   likePost(id) {
     this.postService.get(id).subscribe(value => {
       let like: LikePost = {
@@ -123,6 +111,14 @@ export class ListPostComponent implements OnInit {
         console.log(error);
       })
     });
+
+  }
+
+  showListUsersLikePost(id) {
+    this.postService.getAllLikeById(id).subscribe(value => {
+      this.listLikePost = value;
+    })
+    $('#myModalUsersLike' + id).modal('show');
 
   }
 
