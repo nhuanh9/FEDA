@@ -136,9 +136,10 @@ export class UserPostsComponent implements OnInit {
   }
 
   updatePost(id) {
+    // alert($('#editContent' + id).val());
     let newpost = {
       id: id,
-      content: $('#editContent').val()
+      content: $('#editContent' + id).val()
     }
     this.userService.updatePost(this.user.id, newpost).subscribe(()=> {
       this.getAllPost();
