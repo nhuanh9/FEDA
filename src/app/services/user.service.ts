@@ -52,5 +52,12 @@ export class UserService {
     return this.http.put<User>(API_URL + `/users/${id}`, user);
   }
 
+  getUserPosts(id?: any): Observable<any> {
+    return this.http.get<any>(API_URL + '/users/' + id + '/posts');
+  }
+
+  updatePost(id?: any, post?: any): Observable<any> {
+    return this.http.put(API_URL + '/users/' + id + '/posts', post);
+  }
 
 }

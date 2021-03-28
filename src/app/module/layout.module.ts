@@ -17,6 +17,7 @@ import {DetailPostComponent} from "../components/pages/post/detail-post/detail-p
 import {ListOrderComponent} from "../components/pages/order-seminar/list-order/list-order.component";
 import {AddOrderComponent} from "../components/pages/order-seminar/add-order/add-order.component";
 import {UpdateProfileComponent} from "../components/pages/user/update-profile/update-profile.component";
+import {UserPostsComponent} from "../components/pages/user/user-posts/user-posts.component";
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
   }, {
     path: 'profile',
     component: UpdateProfileComponent,
+  },
+  {
+    path: 'my-posts',
+    component: UserPostsComponent,
   }
 ];
 
@@ -76,6 +81,7 @@ const routes: Routes = [
     ListOrderComponent,
     AddOrderComponent,
     UpdateProfileComponent,
+    UserPostsComponent,
   ],
   exports: [
     TopbarComponent,

@@ -1,23 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from "../../../../models/post";
-import {PostService} from "../../../../services/post.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CurrentUserLikePost} from "../../../../models/CurrentUserLikePost";
 import {User} from "../../../../models/user";
 import {Subscription} from "rxjs";
 import {LikePost} from "../../../../models/like-post";
 import {HttpClient} from "@angular/common/http";
-// import {AngularFireDatabase} from "@angular/fire/database";
 import {PostLikeService} from "../../../../services/post-like.service";
 import {UserService} from "../../../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {CurrentUserLikePost} from "../../../../models/CurrentUserLikePost";
+import {FormBuilder} from "@angular/forms";
+import {PostService} from "../../../../services/post.service";
 
 @Component({
-  selector: 'app-list-post',
-  templateUrl: './list-post.component.html',
-  styleUrls: ['./list-post.component.scss']
+  selector: 'app-user-posts',
+  templateUrl: './user-posts.component.html',
+  styleUrls: ['./user-posts.component.scss']
 })
-export class ListPostComponent implements OnInit {
+export class UserPostsComponent implements OnInit {
 
   // posts: Post[];
   // count = 0;
@@ -61,26 +60,29 @@ export class ListPostComponent implements OnInit {
   getAllPost() {
     this.listCurrentUserLikePost = [];
     this.user = JSON.parse(localStorage.getItem('currentUser'));
-    this.postService.getAll().subscribe((resJson) => {
+    this.userService.getUserPosts(this.user.id).subscribe((resJson) => {
       this.listPost = resJson;
+      console.log(resJson)
       this.listPost.reverse();
-      this.postLikeService.getAll().subscribe(value => {
-        this.allLike = value;
-        console.log(value)
-        for (let i = 0; i < this.listPost.length; i++) {
-          let currPost: CurrentUserLikePost = {
-            user: this.user,
-            post: this.listPost[i],
-          }
-          for (let j = 0; j < this.allLike.length; j++) {
-            if (this.allLike[j].user.id == this.user.id
-              && this.allLike[j].postEntity.id == this.listPost[i].id
-              && this.allLike[j].liked)
-              currPost.is_liked = true;
-          }
-          this.listCurrentUserLikePost.push(currPost);
-        }
-      });
+      // this.postLikeService.getAll().subscribe(value => {
+      //   this.allLike = value;
+      //   console.log(value)
+      //   for (let i = 0; i < this.listPost.length; i++) {
+      //     let currPost: CurrentUserLikePost = {
+      //       user: this.user,
+      //       post: this.listPost[i],
+      //     }
+      //     for (let j = 0; j < this.allLike.length; j++) {
+      //       if (this.allLike[j].user.id == this.user.id
+      //         && this.allLike[j].postEntity.id == this.listPost[i].id
+      //         && this.allLike[j].liked)
+      //         currPost.is_liked = true;
+      //     }
+      //     this.listCurrentUserLikePost.push(currPost);
+      //   }
+      // });
+    }, error => {
+      // alert('h')
     });
   }
 
@@ -134,6 +136,14 @@ export class ListPostComponent implements OnInit {
   }
 
   updatePost(id) {
+    let newpost = {
+      id: id,
+      content: $('#editContent').val()
+    }
+    this.userService.updatePost(this.user.id, newpost).subscribe(()=> {
+      this.getAllPost();
+    }, error => {
+    })
     $('#myModal' + id).modal('hide');
   }
 
