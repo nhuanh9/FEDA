@@ -2,41 +2,45 @@
 <link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
 
 <div class="row ml-2 mr-2">
-    <div class="col-6" *ngFor="let post of listPost">
-      <div class="card shadow mb-4">
-        <div class="card-header py-3" style="color: black !important;">
-          <a href="/users/posts/{{post.id}}"><span class="m-0 font-weight-bold">{{post.content}}</span></a>
+  <div class="col-6" *ngFor="let post of listPost">
+<!--    <div class="card shadow mb-4" *ngIf="post.status !=0;">-->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3" style="color: black !important;">
+        <a href="/users/posts/{{post.id}}"><span class="m-0 font-weight-bold">{{post.content}}</span></a>
 
-          <img src="https://icons.iconarchive.com/icons/iconsmind/outline/16/Pen-3-icon.png" alt="" style="cursor: pointer" (click)="showUpdatePost(post.id)">
-          <h4 class="small">
-            <i style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
-            -
-            <a style="color: #719fb0">{{post.user.username}}</a>
+        <img src="https://icons.iconarchive.com/icons/iconsmind/outline/16/Pen-3-icon.png" alt="" class="m-1"
+             style="cursor: pointer" (click)="showUpdatePost(post.id)">
+        <img src="https://icons.iconarchive.com/icons/icons8/ios7/16/Industry-Trash-2-icon.png" alt="" class="m-1"
+             style="cursor: pointer" (click)="showUpdatePost(post.id)">
+        <h4 class="small">
+          <i style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
+          -
+          <a style="color: #719fb0">{{post.user.username}}</a>
 
-            <a class="float-right" href="/users/link-docs/{{post.category.id}}"
-               style="color: #f08a5d;">{{post.category.name}}</a>
+          <a class="float-right" href="/users/link-docs/{{post.category.id}}"
+             style="color: #f08a5d;">{{post.category.name}}</a>
 
-          </h4>
+        </h4>
 
-        </div>
-        <div class="card-body">
-          <div>
+      </div>
+      <div class="card-body">
+        <div>
 
-            <div class="mb-2 float-left">
-              Có {{post.listComment.length}} câu trả lời.
-            </div>
-            <div class="mb-2 float-right">
+          <div class="mb-2 float-left">
+            Có {{post.listComment.length}} câu trả lời.
+          </div>
+          <div class="mb-2 float-right">
               <span class="ml-1" (click)="showListUsersLikePost(post.id)" style="cursor: help">{{post.likes}}
                 Likes</span>
-              <div class="modal fade" id="myModalUsersLike{{post.id}}" role="dialog" style="margin-top: 300px; ">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content" style="-webkit-box-shadow: 0px 0px 12px 5px rgba(0,0,0,0.25);">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Danh sách người đã thích</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal fade" id="myModalUsersLike{{post.id}}" role="dialog" style="margin-top: 300px; ">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="-webkit-box-shadow: 0px 0px 12px 5px rgba(0,0,0,0.25);">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Danh sách người đã thích</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                    </div>
-                    <div class="modal-body">
+                  </div>
+                  <div class="modal-body">
                       <span *ngIf="post.likes > 0">
                         {{listLikePost[0].user.name}}
                         <span *ngIf="post.likes >=2">, {{listLikePost[1].user.name}}<span
@@ -46,58 +50,58 @@
                         đã thích bài viết.
                       </span>
 
-                      <div *ngIf="post.likes == 0">Chưa ai thích bài viết này.</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--            start modal edit-->
-  <!--            <button type="button" class="btn btn-light" data-toggle="modal"-->
-  <!--                    (click)="showUpdatePost(post.id)">edit-->
-  <!--            </button>-->
-
-
-
-              <!-- Modal -->
-              <div class="modal fade" id="myModal{{post.id}}" role="dialog">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Edit Post</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                    </div>
-                    <div class="modal-body">
-                                    <textarea class="form-control ml-1 shadow-none textarea"
-                                              [value]="post.content" style="height: 70px" id="editContent{{post.id}}"></textarea>
-                      <div class="row">
-
-                        <div class="col col-3 mt-2 text-left">
-
-                        </div>
-                        <div class="col col-4 mt-2 text-right">
-                          <div class="form-group">
-                          </div>
-
-                        </div>
-                        <div class="col col-8 mt-2 text-center">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <div>
-                        <button type="button" class="btn btn-default" (click)="updatePost(post.id)">Update
-                        </button>
-                      </div>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
+                    <div *ngIf="post.likes == 0">Chưa ai thích bài viết này.</div>
                   </div>
                 </div>
               </div>
             </div>
-            <!--            end modal edit-->
+            <!--            start modal edit-->
+            <!--            <button type="button" class="btn btn-light" data-toggle="modal"-->
+            <!--                    (click)="showUpdatePost(post.id)">edit-->
+            <!--            </button>-->
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal{{post.id}}" role="dialog">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Edit Post</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                  </div>
+                  <div class="modal-body">
+                                    <textarea class="form-control ml-1 shadow-none textarea"
+                                              [value]="post.content" style="height: 70px"
+                                              id="editContent{{post.id}}"></textarea>
+                    <div class="row">
+
+                      <div class="col col-3 mt-2 text-left">
+
+                      </div>
+                      <div class="col col-4 mt-2 text-right">
+                        <div class="form-group">
+                        </div>
+
+                      </div>
+                      <div class="col col-8 mt-2 text-center">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div>
+                      <button type="button" class="btn btn-default" (click)="updatePost(post.id)">Sửa
+                      </button>
+                    </div>
+                    <button type="button" class="btn btn-default" (click)="deletePost(post.id)">Xoá</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          <!--            end modal edit-->
         </div>
       </div>
+    </div>
   </div>
 </div>

@@ -60,4 +60,7 @@ export class UserService {
     return this.http.put(API_URL + '/users/' + id + '/posts', post);
   }
 
+  deletePost(idUser?: any, idPost?: any): Observable<any> {
+    return this.http.get(API_URL + '/users/' + idUser + '/posts/' + idPost);
+  }
 }

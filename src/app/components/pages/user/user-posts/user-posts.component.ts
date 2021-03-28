@@ -18,28 +18,12 @@ import {PostService} from "../../../../services/post.service";
 })
 export class UserPostsComponent implements OnInit {
 
-  // posts: Post[];
-  // count = 0;
-  //
-  // constructor(private postService: PostService) {
-  // }
-  //
-  // ngOnInit() {
-  //   this.postService.getAll().subscribe(data => {
-  //     console.log(data)
-  //     this.posts = data;
-  //   })
-  // }
   listPost: Post[];
   listCurrentUserLikePost: CurrentUserLikePost[];
   post: Post;
   user: User;
-  statusPost: string;
-  contentPost: string;
-  arrayPicture = '';
   sub: Subscription;
   listLikePost: LikePost[] = [{}, {}];
-  allLike: LikePost[];
 
   constructor(private http: HttpClient,
               // private db: AngularFireDatabase,
@@ -64,25 +48,8 @@ export class UserPostsComponent implements OnInit {
       this.listPost = resJson;
       console.log(resJson)
       this.listPost.reverse();
-      // this.postLikeService.getAll().subscribe(value => {
-      //   this.allLike = value;
-      //   console.log(value)
-      //   for (let i = 0; i < this.listPost.length; i++) {
-      //     let currPost: CurrentUserLikePost = {
-      //       user: this.user,
-      //       post: this.listPost[i],
-      //     }
-      //     for (let j = 0; j < this.allLike.length; j++) {
-      //       if (this.allLike[j].user.id == this.user.id
-      //         && this.allLike[j].postEntity.id == this.listPost[i].id
-      //         && this.allLike[j].liked)
-      //         currPost.is_liked = true;
-      //     }
-      //     this.listCurrentUserLikePost.push(currPost);
-      //   }
-      // });
+
     }, error => {
-      // alert('h')
     });
   }
 
@@ -125,7 +92,6 @@ export class UserPostsComponent implements OnInit {
   }
 
   showUpdatePost = (id) => {
-    // alert('#myModal' + id)
     $('#myModal' + id).modal('show');
   }
 
@@ -136,16 +102,23 @@ export class UserPostsComponent implements OnInit {
   }
 
   updatePost(id) {
-    // alert($('#editContent' + id).val());
     let newpost = {
       id: id,
       content: $('#editContent' + id).val()
     }
-    this.userService.updatePost(this.user.id, newpost).subscribe(()=> {
+    this.userService.updatePost(this.user.id, newpost).subscribe(() => {
       this.getAllPost();
     }, error => {
     })
     $('#myModal' + id).modal('hide');
   }
 
+
+  deletePost(id) {
+    this.userService.deletePost(this.user.id, id).subscribe(() => {
+      this.getAllPost();
+    }, error => {
+    })
+    $('#myModal' + id).modal('hide');
+  }
 }

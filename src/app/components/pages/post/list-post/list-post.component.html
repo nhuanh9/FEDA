@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
 
 <div class="row ml-2 mr-2">
-  <div class="col-6" *ngFor="let post of listCurrentUserLikePost">
-    <div class="card shadow mb-4">
+  <div class="col-6" *ngFor="let post of listCurrentUserLikePost" >
+    <div class="card shadow mb-4" *ngIf="post.post.status != 0">
       <div class="card-header py-3" style="color: black !important;">
         <a href="/users/posts/{{post.post.id}}"><h6 class="m-0 font-weight-bold">{{post.post.content}}</h6></a>
         <h4 class="small">
