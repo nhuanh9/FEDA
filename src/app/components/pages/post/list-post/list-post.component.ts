@@ -18,32 +18,15 @@ import {CurrentUserLikePost} from "../../../../models/CurrentUserLikePost";
   styleUrls: ['./list-post.component.scss']
 })
 export class ListPostComponent implements OnInit {
-
-  // posts: Post[];
-  // count = 0;
-  //
-  // constructor(private postService: PostService) {
-  // }
-  //
-  // ngOnInit() {
-  //   this.postService.getAll().subscribe(data => {
-  //     console.log(data)
-  //     this.posts = data;
-  //   })
-  // }
   listPost: Post[];
   listCurrentUserLikePost: CurrentUserLikePost[];
   post: Post;
   user: User;
-  statusPost: string;
-  contentPost: string;
-  arrayPicture = '';
   sub: Subscription;
   listLikePost: LikePost[] = [{}, {}];
   allLike: LikePost[];
 
   constructor(private http: HttpClient,
-              // private db: AngularFireDatabase,
               private postLikeService: PostLikeService,
               private userService: UserService,
               private router: Router,

@@ -49,12 +49,12 @@ export class DetailPostComponent implements OnInit {
   }
 
   getPost() {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.activateRoute.paramMap.subscribe((paraMap: ParamMap) => {
       const id = paraMap.get('id');
       console.log(id);
       this.postService.get(id).subscribe(result => {
         this.post = result;
-        console.log(result);
         this.imageService.getAllByPostId(this.post.id).subscribe(result => {
           this.imgs = result;
           console.log(this.imgs);
