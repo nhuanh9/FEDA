@@ -15,6 +15,7 @@ import {CurrentUserLikePost} from "../../../../models/CurrentUserLikePost";
 import {CurrentUserLikeComment} from "../../../../models/CurrentUserLikeComment";
 import {CommentLikeService} from "../../../../services/comment-like.service";
 import {LikeComment} from "../../../../models/like-comment";
+import {LikePost} from "../../../../models/like-post";
 
 @Component({
   selector: 'app-detail-post',
@@ -51,11 +52,11 @@ export class DetailPostComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getPost();
+    this.getAllComment();
     this.prepareFormComment();
   }
 
-  getPost() {
+  getAllComment() {
     this.listCurrentUserLikeComment = [];
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.activateRoute.paramMap.subscribe((paraMap: ParamMap) => {
@@ -110,6 +111,34 @@ export class DetailPostComponent implements OnInit {
 
   }
 
+  likeCmt(value?: any) {
+    let like: LikeComment = {
+      user: this.user,
+      comment: value,
+    }
+    console.log(like);
+    this.commentLikeService.like(like).subscribe(() => {
+      this.getAllComment();
+    }, error => {
+      console.log(error);
+    })
+
+  }
+
+  unlikeCmt(value?: any) {
+    let like: LikeComment = {
+      user: this.user,
+      comment: value,
+    }
+
+    console.log(like);
+    this.commentLikeService.unlike(like).subscribe(() => {
+      this.getAllComment();
+    }, error => {
+      console.log(error);
+    })
+
+  }
 
 //
 // deleteComment(id, commentId) {

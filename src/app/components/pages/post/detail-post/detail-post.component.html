@@ -37,6 +37,12 @@
             <i class="row ml-3 small" style="color: #a7a2a2">{{cmt.comment.createAt | date : 'dd/MM/yyyy'}}</i>
           </div>
           <span class="col-lg-8">{{cmt.comment.content}}</span>
+          <a *ngIf="!cmt.is_liked" (click)="likeCmt(cmt.comment)" class="fa fa-thumbs-o-up" style="cursor: n-resize"><img
+            src="https://icons.iconarchive.com/icons/icons8/ios7/24/Gaming-Hearts-icon.png" alt=""></a>
+          <a *ngIf="cmt.is_liked" (click)="unlikeCmt(cmt.comment)" class="fa fa-thumbs-o-down"
+             style="cursor: s-resize"><img
+            src="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/24/Heart-Doodle-icon.png"
+            alt=""></a>
         </div>
       </div>
       <form [formGroup]="formGroup" (ngSubmit)="addComment(post.id)" class="form-group m-3 row">
