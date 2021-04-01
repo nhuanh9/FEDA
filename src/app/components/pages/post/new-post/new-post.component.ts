@@ -22,6 +22,7 @@ import {Category} from "../../../../models/category";
 })
 export class NewPostComponent implements OnInit {
   categories: Category[];
+  imgs: any[] = [];
   downloadURL: Observable<string>;
   currentUser: UserToken;
   fb;
@@ -98,55 +99,77 @@ export class NewPostComponent implements OnInit {
 
   createImage() {
     let post: Post = this.setNewPost();
-    this.authenticationService.currentUser.subscribe(x => {
-      this.currentUser = x;
-      this.userService.getUserProfile(x.id).subscribe(value => {
-        post.user = value;
-        return this.postService.create(post).subscribe(data => {
-          if (this.selectedImages.length !== 0) {
-            for (let i = 0; i < this.selectedImages.length; i++) {
-              let selectedImage = this.selectedImages[i];
-              var n = Date.now();
-              const filePath = `RoomsImages/${n}`;
-              const fileRef = this.storage.ref(filePath);
-              this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
-                finalize(() => {
-                  fileRef.getDownloadURL().subscribe(url => {
-                    const image: Image = {
-                      linkImg: url,
-                      postId: data.id
-                    };
-                    console.log(image);
-                    console.log(url);
-                    if (i == 0) {
-                    }
-                    this.imageService.create(image).subscribe(() => {
-                      console.log('SUCCESSFULLY CREATE')
-                    });
-                  });
-                })
-              ).subscribe();
-            }
-            setTimeout(() => {
-              this.router.navigate(['/users/posts/', data.id]);
-            }, 4000)
-
-          }
-        });
-      })
-    });
+    console.log(this.selectedImages)
+    // this.authenticationService.currentUser.subscribe(x => {
+    //   this.currentUser = x;
+    //   this.userService.getUserProfile(x.id).subscribe(value => {
+    //     post.user = value;
+    //     return this.postService.create(post).subscribe(data => {
+    //       if (this.selectedImages.length !== 0) {
+    //         for (let i = 0; i < this.selectedImages.length; i++) {
+    //           let selectedImage = this.selectedImages[i];
+    //           var n = Date.now();
+    //           const filePath = `RoomsImages/${n}`;
+    //           const fileRef = this.storage.ref(filePath);
+    //           this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+    //             finalize(() => {
+    //               fileRef.getDownloadURL().subscribe(url => {
+    //                 const image: Image = {
+    //                   linkImg: url,
+    //                   postId: data.id
+    //                 };
+    //                 console.log(image);
+    //                 if (i == 0) {
+    //                 }
+    //                 this.imageService.create(image).subscribe(() => {
+    //                   console.log('SUCCESSFULLY CREATE')
+    //                 });
+    //               });
+    //             })
+    //           ).subscribe();
+    //         }
+    //         setTimeout(() => {
+    //           this.router.navigate(['/users/posts/', data.id]);
+    //         }, 4000)
+    //
+    //       }
+    //     });
+    //   })
+    // });
 
   }
 
   showPreview(event: any) {
+    let newSelectedImages = [];
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
-      this.selectedImages = event.target.files;
-      console.log(this.selectedImages);
+      newSelectedImages = event.target.files;
+      for (let i=0; i<event.target.files.length; i++) {
+        this.selectedImages.push(event.target.files[i]);
+      }
     } else {
       this.selectedImages = [];
     }
+    console.log(this.selectedImages);
+    if (newSelectedImages.length !== 0) {
+      for (let i = 0; i < newSelectedImages.length; i++) {
+        let selectedImage = newSelectedImages[i];
+        var n = Date.now();
+        const filePath = `RoomsImages/${n}`;
+        const fileRef = this.storage.ref(filePath);
+        this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe(url => {
+              this.imgs.push(url);
+              console.log(url);
+              if (i == 0) {
+              }
 
+            });
+          })
+        ).subscribe();
+      }
+    }
   }
 }

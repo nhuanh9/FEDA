@@ -26,9 +26,9 @@
 <div id="res">Kết quả</div>
 <form id="myForm">
   <input type="text" id="name" name="name">
-  <input type="radio" name="male" value="nam"> Nam
-  <input type="radio" name="male" value="nu"> Nu
-  <a onclick="myFunction()">Submit</a>
+  <input type="radio" name="male" value="nam" id="nam"> Nam
+  <input type="radio" name="male" value="nu" id="nu"> Nu
+  <button type="button" onclick="myFunction()" id="nut">Submit</button>
 </form>
 <script>
   function myFunction() {
@@ -38,8 +38,10 @@
       var item = elements.item(i);
       obj[item.name] = item.value;
     }
-    v
-    document.getElementById('res').innerHTML = obj;
+    document.getElementById('name').disabled = true;
+    document.getElementById('nam').disabled = true;
+    document.getElementById('nu').disabled = true;
+    document.getElementById('nut').disabled = true;
   }
 
 </script>

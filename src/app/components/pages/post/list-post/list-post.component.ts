@@ -3,7 +3,7 @@ import {Post} from "../../../../models/post";
 import {PostService} from "../../../../services/post.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../../../models/user";
-import {Subscription} from "rxjs";
+import {from, Subscription} from "rxjs";
 import {LikePost} from "../../../../models/like-post";
 import {HttpClient} from "@angular/common/http";
 // import {AngularFireDatabase} from "@angular/fire/database";
@@ -53,7 +53,7 @@ export class ListPostComponent implements OnInit {
         for (let i = 0; i < this.listPost.length; i++) {
           let currPost: CurrentUserLikePost = {
             user: this.user,
-               post: this.listPost[i],
+            post: this.listPost[i],
           }
           for (let j = 0; j < this.allLike.length; j++) {
             if (this.allLike[j].user.id == this.user.id
@@ -101,22 +101,25 @@ export class ListPostComponent implements OnInit {
     this.postService.getAllLikeById(id).subscribe(value => {
       this.listLikePost = value;
     })
+    // @ts-ignore
     $('#myModalUsersLike' + id).modal('show');
 
   }
 
   showUpdatePost = (id) => {
-    // alert('#myModal' + id)
+    // @ts-ignore
     $('#myModal' + id).modal('show');
   }
 
   updatePostAndImg(idPost, idImg) {
 
+    // @ts-ignore
     $('#myModal' + this.post.id).modal('hide');
 
   }
 
   updatePost(id) {
+    // @ts-ignore
     $('#myModal' + id).modal('hide');
   }
 

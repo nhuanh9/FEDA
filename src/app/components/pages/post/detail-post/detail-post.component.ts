@@ -91,7 +91,6 @@ export class DetailPostComponent implements OnInit {
   }
 
   addComment(id) {
-    alert("hello")
     this.user = JSON.parse(localStorage.getItem('currentUser'));
 
     this.userService.getUserProfile(this.user.id).subscribe(value => {
@@ -102,8 +101,7 @@ export class DetailPostComponent implements OnInit {
       };
       this.postService.addComment(id, this.comment).subscribe(
         () => {
-          alert("Thêm thành công!")
-          this.getPost();
+          this.getAllComment();
           this.prepareFormComment();
         }
       )
@@ -139,6 +137,8 @@ export class DetailPostComponent implements OnInit {
     })
 
   }
+
+
 
 //
 // deleteComment(id, commentId) {

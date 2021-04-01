@@ -43,6 +43,8 @@
              style="cursor: s-resize"><img
             src="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/24/Heart-Doodle-icon.png"
             alt=""></a>
+          <span class="ml-1" style="cursor: help">{{cmt.comment.likes}}
+            Likes</span>
         </div>
       </div>
       <form [formGroup]="formGroup" (ngSubmit)="addComment(post.id)" class="form-group m-3 row">

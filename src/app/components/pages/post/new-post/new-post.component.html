@@ -41,11 +41,12 @@
                          autocomplete="off" class="custom-file-input" id="inputGroupFile01">
                   <label class="custom-file-label" for="inputGroupFile01">Choose</label>
                 </div>
-                <div class="text-center">
-                  <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;"
-                       src="{{img.linkImg}}"
-                       alt="">
-                </div>
+
+              </div>
+              <div class="text-center">
+                <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;"
+                     src="{{img}}"
+                     alt="">
               </div>
               <input type="submit" class="btn btn-primary btn-user btn-block" value="Đăng ký">
             </form>
@@ -56,6 +57,10 @@
   </div>
 
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<input type="file" multiple id="gallery-photo-add">
+<div class="gallery"></div>
 <script src="../assets/vendor/jquery/jquery.min.js"></script>
 <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
