@@ -53,7 +53,7 @@ export class ListPostComponent implements OnInit {
         for (let i = 0; i < this.listPost.length; i++) {
           let currPost: CurrentUserLikePost = {
             user: this.user,
-            post: this.listPost[i],
+               post: this.listPost[i],
           }
           for (let j = 0; j < this.allLike.length; j++) {
             if (this.allLike[j].user.id == this.user.id

@@ -29,14 +29,14 @@
 
         <div class="text-center mb-4" style=" font-size: 20px">Danh sách câu trả lời
         </div>
-        <div *ngFor="let cmt of post.listComment"
+        <div *ngFor="let cmt of listCurrentUserLikeComment"
              style="border-radius: 2px;border: 1px solid skyblue" class="row m-1 p-1">
           <div class="col-lg-2">
             <a class="row ml-3" href="">{{cmt.user.username}}</a>
 
-            <i class="row ml-3 small" style="color: #a7a2a2">{{cmt.createAt | date : 'dd/MM/yyyy'}}</i>
+            <i class="row ml-3 small" style="color: #a7a2a2">{{cmt.comment.createAt | date : 'dd/MM/yyyy'}}</i>
           </div>
-          <span class="col-lg-8">{{cmt.content}}</span>
+          <span class="col-lg-8">{{cmt.comment.content}}</span>
         </div>
       </div>
       <form [formGroup]="formGroup" (ngSubmit)="addComment(post.id)" class="form-group m-3 row">

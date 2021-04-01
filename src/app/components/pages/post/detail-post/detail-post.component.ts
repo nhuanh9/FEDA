@@ -11,6 +11,10 @@ import {UserService} from "../../../../services/user.service";
 import {AuthenticationService} from "../../../../services/authentication.service";
 import {CommentForm} from "../../../../models/comment";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {CurrentUserLikePost} from "../../../../models/CurrentUserLikePost";
+import {CurrentUserLikeComment} from "../../../../models/CurrentUserLikeComment";
+import {CommentLikeService} from "../../../../services/comment-like.service";
+import {LikeComment} from "../../../../models/like-comment";
 
 @Component({
   selector: 'app-detail-post',
@@ -25,12 +29,15 @@ export class DetailPostComponent implements OnInit {
   comment: CommentForm;
   comments: CommentForm[];
   formGroup: FormGroup;
+  allLike: LikeComment[];
+  listCurrentUserLikeComment: CurrentUserLikeComment[];
 
   constructor(private postService: PostService,
               private imageService: ImageService,
               private activateRoute: ActivatedRoute,
               private userService: UserService,
               private fb: FormBuilder,
+              private commentLikeService: CommentLikeService,
               private authenticationService: AuthenticationService) {
   }
 
@@ -49,12 +56,31 @@ export class DetailPostComponent implements OnInit {
   }
 
   getPost() {
+    this.listCurrentUserLikeComment = [];
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.activateRoute.paramMap.subscribe((paraMap: ParamMap) => {
       const id = paraMap.get('id');
-      console.log(id);
+      // console.log(id);
       this.postService.get(id).subscribe(result => {
         this.post = result;
+        this.commentLikeService.getAll().subscribe(res => {
+          this.allLike = res;
+          for (let i = 0; i < this.post.listComment.length; i++) {
+            let currLike: CurrentUserLikeComment = {
+              user: this.user,
+              comment: this.post.listComment[i],
+            }
+            for (let j = 0; j < this.allLike.length; j++) {
+              if (this.allLike[j].user.id == this.user.id
+                && this.allLike[j].comment.id == this.post.listComment[i].id
+                && this.allLike[j].liked)
+                currLike.is_liked = true;
+            }
+            this.listCurrentUserLikeComment.push(currLike);
+          }
+          console.log("C")
+          console.log(this.listCurrentUserLikeComment);
+        })
         this.imageService.getAllByPostId(this.post.id).subscribe(result => {
           this.imgs = result;
           console.log(this.imgs);

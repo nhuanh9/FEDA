@@ -1,9 +1,8 @@
-// import {User} from "./user";
-// import {Post} from "./post";
-// import {Comments} from "./comments";
-//
-// export interface CurrentUserLikeComment {
-//   user?: User;
-//   comment?: Comments;
-//   is_liked?: boolean;
-// }
+import {User} from "./user";
+import {CommentForm} from "./comment";
+
+export interface CurrentUserLikeComment {
+  user?: User;
+  comment?: CommentForm;
+  is_liked?: boolean;
+}
