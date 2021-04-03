@@ -52,6 +52,13 @@ export class DetailPostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.post = {
+      id: 0,
+      createAt: '',
+      user: {},
+      category: {}
+    }
+    this.listCurrentUserLikeComment = [{comment: {}, user: {}}];
     this.getAllComment();
     this.prepareFormComment();
   }
@@ -79,12 +86,10 @@ export class DetailPostComponent implements OnInit {
             }
             this.listCurrentUserLikeComment.push(currLike);
           }
-          console.log("C")
-          console.log(this.listCurrentUserLikeComment);
         })
         this.imageService.getAllByPostId(this.post.id).subscribe(result => {
           this.imgs = result;
-          console.log(this.imgs);
+          // console.log(this.imgs);
         })
       })
     });
@@ -137,7 +142,6 @@ export class DetailPostComponent implements OnInit {
     })
 
   }
-
 
 
 //

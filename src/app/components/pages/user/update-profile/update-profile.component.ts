@@ -33,6 +33,9 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = {
+
+    }
     this.prepareForm();
     this.getUser();
   }

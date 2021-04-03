@@ -22,6 +22,7 @@ export class ListLinkDocComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.linkDocs = [{category: '', user: {}}]
     this.activateRoute.paramMap.subscribe((paraMap: ParamMap) => {
       const id = paraMap.get('id');
       console.log(id);
