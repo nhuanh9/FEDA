@@ -9,9 +9,9 @@
         <a href="/users/posts/{{post.id}}"><span class="m-0 font-weight-bold">{{post.content}}</span></a>
 
         <img src="https://icons.iconarchive.com/icons/iconsmind/outline/16/Pen-3-icon.png" alt="" class="m-1"
-             style="cursor: pointer" (click)="showUpdatePost(post.id)">
+             style="cursor: pointer" (click)="showUpdatePost(content1, post.id)">
         <img src="https://icons.iconarchive.com/icons/icons8/ios7/16/Industry-Trash-2-icon.png" alt="" class="m-1"
-             style="cursor: pointer" (click)="showUpdatePost(post.id)">
+             style="cursor: pointer" (click)="showUpdatePost(content1, post.id)">
         <h4 class="small">
           <i style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
           -
@@ -80,42 +80,41 @@
 
 
             <!-- Modal -->
-            <div class="modal fade" id="myModal{{post.id}}" role="dialog">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Edit Post</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                  </div>
-                  <div class="modal-body">
+            <ng-template #content1 let-modal id="test1">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Edit Post</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
                                     <textarea class="form-control ml-1 shadow-none textarea"
                                               [value]="post.content" style="height: 70px"
                                               id="editContent{{post.id}}"></textarea>
-                    <div class="row">
+                  <div class="row">
 
-                      <div class="col col-3 mt-2 text-left">
+                    <div class="col col-3 mt-2 text-left">
 
-                      </div>
-                      <div class="col col-4 mt-2 text-right">
-                        <div class="form-group">
-                        </div>
-
-                      </div>
-                      <div class="col col-8 mt-2 text-center">
-                      </div>
                     </div>
-                  </div>
-                  <div class="modal-footer">
-                    <div>
-                      <button type="button" class="btn btn-default" (click)="updatePost(post.id)">Sửa
-                      </button>
+                    <div class="col col-4 mt-2 text-right">
+                      <div class="form-group">
+                      </div>
+
                     </div>
-                    <button type="button" class="btn btn-default" (click)="deletePost(post.id)">Xoá</button>
+                    <div class="col col-8 mt-2 text-center">
+                    </div>
                   </div>
                 </div>
+                <div class="modal-footer">
+                  <div>
+                    <button type="button" class="btn btn-default" (click)="updatePost(post.id)">Sửa
+                    </button>
+                  </div>
+                  <button type="button" class="btn btn-default" (click)="deletePost(post.id)">Xoá</button>
+                </div>
               </div>
-            </div>
+            </ng-template>
           </div>
           <!--            end modal edit-->
         </div>

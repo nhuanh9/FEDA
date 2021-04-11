@@ -13,6 +13,7 @@ import {PostService} from "../../../../services/post.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 // import * as $ from 'jquery';
 declare var $: any;
+
 @Component({
   selector: 'app-user-posts',
   templateUrl: './user-posts.component.html',
@@ -65,9 +66,8 @@ export class UserPostsComponent implements OnInit {
 
   }
 
-  showUpdatePost = (id) => {
-    // $('#myModal' + id).modal('show');
-    console.log($('#myModal' + id)[0].style);
+  showUpdatePost = (content, id) => {
+    this.modalService.open(content, {centered: true})
   }
 
 
