@@ -10,6 +10,7 @@ import {UserService} from "../../../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
 import {PostService} from "../../../../services/post.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 // import * as $ from 'jquery';
 declare var $: any;
 @Component({
@@ -34,6 +35,7 @@ export class UserPostsComponent implements OnInit {
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
               private postService: PostService,
+              private modalService: NgbModal,
   ) {
   }
 
@@ -54,40 +56,11 @@ export class UserPostsComponent implements OnInit {
     });
   }
 
-  likePost(id) {
-    this.postService.get(id).subscribe(value => {
-      let like: LikePost = {
-        user: this.user,
-        postEntity: value,
-      }
-      this.postLikeService.like(like).subscribe(() => {
-        this.getAllPost();
-      }, error => {
-        console.log(error);
-      })
-    });
-
-  }
-
-  unlikePost(id) {
-    this.postService.get(id).subscribe(value => {
-      let like: LikePost = {
-        user: this.user,
-        postEntity: value,
-      }
-      this.postLikeService.unlike(like).subscribe(() => {
-        this.getAllPost();
-      }, error => {
-        console.log(error);
-      })
-    });
-
-  }
-
-  showListUsersLikePost(id) {
+  showListUsersLikePost(content, id) {
     this.postService.getAllLikeById(id).subscribe(value => {
       this.listLikePost = value;
     })
+    this.modalService.open(content, {centered: true})
     // $('#myModalUsersLike' + id).modal('show');
 
   }
@@ -97,11 +70,6 @@ export class UserPostsComponent implements OnInit {
     console.log($('#myModal' + id)[0].style);
   }
 
-  updatePostAndImg(idPost, idImg) {
-
-    // $('#myModal' + this.post.id).modal('hide');
-
-  }
 
   updatePost(id) {
     let newpost = {

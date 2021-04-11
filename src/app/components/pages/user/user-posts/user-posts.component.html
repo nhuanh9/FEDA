@@ -3,7 +3,7 @@
 
 <div class="row ml-2 mr-2">
   <div class="col-6" *ngFor="let post of listPost">
-<!--    <div class="card shadow mb-4" *ngIf="post.status !=0;">-->
+    <!--    <div class="card shadow mb-4" *ngIf="post.status !=0;">-->
     <div class="card shadow mb-4">
       <div class="card-header py-3" style="color: black !important;">
         <a href="/users/posts/{{post.id}}"><span class="m-0 font-weight-bold">{{post.content}}</span></a>
@@ -30,7 +30,7 @@
             Có {{post.listComment.length}} câu trả lời.
           </div>
           <div class="mb-2 float-right">
-              <span class="ml-1" (click)="showListUsersLikePost(post.id)" style="cursor: help">{{post.likes}}
+              <span class="ml-1" (click)="showListUsersLikePost(content,post.id)" style="cursor: help">{{post.likes}}
                 Likes</span>
             <div class="modal fade" id="myModalUsersLike{{post.id}}" role="dialog" style="margin-top: 300px; ">
               <div class="modal-dialog modal-lg">
@@ -55,10 +55,28 @@
                 </div>
               </div>
             </div>
-            <!--            start modal edit-->
-            <!--            <button type="button" class="btn btn-light" data-toggle="modal"-->
-            <!--                    (click)="showUpdatePost(post.id)">edit-->
-            <!--            </button>-->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+                  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+                  crossorigin="anonymous">
+            <ng-template #content let-modal id="test">
+              <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <span *ngIf="post.likes > 0">
+                      {{listLikePost[0].user.name}}
+                  <span *ngIf="post.likes >=2">, {{listLikePost[1].user.name}} <span
+                    *ngIf="post.likes >2">và {{post.likes - 2}}
+                    người</span>
+                      </span>
+                      đã thích bài viết.
+                    </span>
+
+                <div *ngIf="post.likes == 0">Chưa ai thích bài viết này.</div>
+              </div>
+            </ng-template>
 
 
             <!-- Modal -->

@@ -103,7 +103,7 @@ export class ListPostComponent implements OnInit {
     this.postService.getAllLikeById(id).subscribe(value => {
       this.listLikePost = value;
     })
-    this.modalService.open(content);
+    this.modalService.open(content, {centered: true});
   }
 
 }
