@@ -10,7 +10,8 @@ import {UserService} from "../../../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
 import {PostService} from "../../../../services/post.service";
-
+// import * as $ from 'jquery';
+declare var $: any;
 @Component({
   selector: 'app-user-posts',
   templateUrl: './user-posts.component.html',
@@ -87,30 +88,31 @@ export class UserPostsComponent implements OnInit {
     this.postService.getAllLikeById(id).subscribe(value => {
       this.listLikePost = value;
     })
-    $('#myModalUsersLike' + id).modal('show');
+    // $('#myModalUsersLike' + id).modal('show');
 
   }
 
   showUpdatePost = (id) => {
-    $('#myModal' + id).modal('show');
+    // $('#myModal' + id).modal('show');
+    console.log($('#myModal' + id)[0].style);
   }
 
   updatePostAndImg(idPost, idImg) {
 
-    $('#myModal' + this.post.id).modal('hide');
+    // $('#myModal' + this.post.id).modal('hide');
 
   }
 
   updatePost(id) {
     let newpost = {
       id: id,
-      content: $('#editContent' + id).val()
+      // content: $('#editContent' + id).val()
     }
     this.userService.updatePost(this.user.id, newpost).subscribe(() => {
       this.getAllPost();
     }, error => {
     })
-    $('#myModal' + id).modal('hide');
+    // $('#myModal' + id).modal('hide');
   }
 
 
@@ -119,6 +121,6 @@ export class UserPostsComponent implements OnInit {
       this.getAllPost();
     }, error => {
     })
-    $('#myModal' + id).modal('hide');
+    // $('#myModal' + id).modal('hide');
   }
 }

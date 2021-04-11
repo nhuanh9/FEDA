@@ -27,75 +27,54 @@
             <a *ngIf="post.is_liked" (click)="unlikePost(post.post.id)" class="fa fa-thumbs-o-down" style="cursor: s-resize"><img
               src="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/24/Heart-Doodle-icon.png"
               alt=""></a>
-            <span class="ml-1" (click)="showListUsersLikePost(post.post.id)" style="cursor: help">{{post.post.likes}}
+            <span class="ml-1" (click)="showListUsersLikePost(content,post.post.id)" style="cursor: help">{{post.post.likes}}
               Likes</span>
-            <div class="modal fade" id="myModalUsersLike{{post.post.id}}" role="dialog" style="margin-top: 300px; ">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content" style="-webkit-box-shadow: 0px 0px 12px 5px rgba(0,0,0,0.25);">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Danh sách người đã thích</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+<!--            <div class="modal fade" id="myModalUsersLike{{post.post.id}}" role="dialog" style="margin-top: 300px; ">-->
+<!--              <div class="modal-dialog modal-lg">-->
+<!--                <div class="modal-content" style="-webkit-box-shadow: 0px 0px 12px 5px rgba(0,0,0,0.25);">-->
+<!--                  <div class="modal-header">-->
+<!--                    <h4 class="modal-title">Danh sách người đã thích</h4>-->
+<!--                    <button type="button" class="close" data-dismiss="modal">&times;</button>-->
 
-                  </div>
-                  <div class="modal-body">
-                    <span *ngIf="post.post.likes > 0">
+<!--                  </div>-->
+<!--                  <div class="modal-body">-->
+<!--                    <span *ngIf="post.post.likes > 0">-->
+<!--                      {{listLikePost[0].user.name}}-->
+<!--                      <span *ngIf="post.post.likes >=2">, {{listLikePost[1].user.name}}<span *ngIf="post.post.likes >2">và {{post.post.likes - 2}}-->
+<!--                        người</span>-->
+<!--                      </span>-->
+<!--                      đã thích bài viết.-->
+<!--                    </span>-->
+
+<!--                    <div *ngIf="post.post.likes == 0">Chưa ai thích bài viết này.</div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <ng-template #content let-modal id="test">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <span *ngIf="post.post.likes > 0">
                       {{listLikePost[0].user.name}}
-                      <span *ngIf="post.post.likes >=2">, {{listLikePost[1].user.name}}<span *ngIf="post.post.likes >2">và {{post.post.likes - 2}}
-                        người</span>
+                  <span *ngIf="post.post.likes >=2">, {{listLikePost[1].user.name}} <span *ngIf="post.post.likes >2">và {{post.post.likes - 2}}
+                    người</span>
                       </span>
                       đã thích bài viết.
                     </span>
 
-                    <div *ngIf="post.post.likes == 0">Chưa ai thích bài viết này.</div>
-                  </div>
-                </div>
+                <div *ngIf="post.post.likes == 0">Chưa ai thích bài viết này.</div>
               </div>
-            </div>
-            <!--            start modal edit-->
-            <!--            <div *ngIf="post.post.user.id == user.id">-->
-            <!--              <button type="button" class="btn btn-light" data-toggle="modal"-->
-            <!--                      (click)="showUpdatePost(post.post.id)">edit-->
-            <!--              </button>-->
-
-
-            <!--              &lt;!&ndash; Modal &ndash;&gt;-->
-            <!--              <div class="modal fade" id="myModal{{post.post.id}}" role="dialog">-->
-            <!--                <div class="modal-dialog modal-lg">-->
-            <!--                  <div class="modal-content">-->
-            <!--                    <div class="modal-header">-->
-            <!--                      <h4 class="modal-title">Edit Post</h4>-->
-            <!--                      <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-
-            <!--                    </div>-->
-            <!--                    <div class="modal-body">-->
-            <!--                      <textarea class="form-control ml-1 shadow-none textarea"-->
-            <!--                                [value]="post.post.content" style="height: 70px"></textarea>-->
-            <!--                      <div class="row">-->
-
-            <!--                        <div class="col col-3 mt-2 text-left">-->
-
-            <!--                        </div>-->
-            <!--                        <div class="col col-4 mt-2 text-right">-->
-            <!--                          <div class="form-group">-->
-            <!--                          </div>-->
-
-            <!--                        </div>-->
-            <!--                        <div class="col col-8 mt-2 text-center">-->
-            <!--                        </div>-->
-            <!--                      </div>-->
-            <!--                    </div>-->
-            <!--                    <div class="modal-footer">-->
-            <!--                      <div>-->
-            <!--                        <button type="button" class="btn btn-default" (click)="updatePost(post.post.id)">Update-->
-            <!--                        </button>-->
-            <!--                      </div>-->
-            <!--                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-            <!--                    </div>-->
-            <!--                  </div>-->
-            <!--                </div>-->
-            <!--              </div>-->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+              </div>
+            </ng-template>
           </div>
-          <!--            end modal edit-->
         </div>
       </div>
     </div>

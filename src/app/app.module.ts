@@ -21,6 +21,7 @@ import { ListOrderComponent } from './components/pages/order-seminar/list-order/
 import { AddOrderComponent } from './components/pages/order-seminar/add-order/add-order.component';
 import { UpdateProfileComponent } from './components/pages/user/update-profile/update-profile.component';
 import { UserPostsComponent } from './components/pages/user/user-posts/user-posts.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { UserPostsComponent } from './components/pages/user/user-posts/user-post
     ReactiveFormsModule,
     HttpClientModule,
     LayoutModule,
+    NgbModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
   ],

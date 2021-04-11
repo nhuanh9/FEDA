@@ -11,6 +11,7 @@ import {PostLikeService} from "../../../../services/post-like.service";
 import {UserService} from "../../../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CurrentUserLikePost} from "../../../../models/CurrentUserLikePost";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-list-post',
@@ -33,6 +34,7 @@ export class ListPostComponent implements OnInit {
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
               private postService: PostService,
+              private modalService: NgbModal,
   ) {
   }
 
@@ -97,30 +99,11 @@ export class ListPostComponent implements OnInit {
 
   }
 
-  showListUsersLikePost(id) {
+  showListUsersLikePost(content, id) {
     this.postService.getAllLikeById(id).subscribe(value => {
       this.listLikePost = value;
     })
-    // @ts-ignore
-    $('#myModalUsersLike' + id).modal('show');
-
-  }
-
-  showUpdatePost = (id) => {
-    // @ts-ignore
-    $('#myModal' + id).modal('show');
-  }
-
-  updatePostAndImg(idPost, idImg) {
-
-    // @ts-ignore
-    $('#myModal' + this.post.id).modal('hide');
-
-  }
-
-  updatePost(id) {
-    // @ts-ignore
-    $('#myModal' + id).modal('hide');
+    this.modalService.open(content);
   }
 
 }
