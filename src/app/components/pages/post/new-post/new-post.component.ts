@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../../services/user.service";
 import {Router} from "@angular/router";
@@ -11,9 +11,12 @@ import {UserToken} from "../../../../models/user-token";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {delay, finalize} from "rxjs/operators";
 import {Observable} from "rxjs";
-import {Image} from "../../../../models/image";
 import {ImageService} from "../../../../services/image.service";
 import {Category} from "../../../../models/category";
+import {NgxLoadingComponent, ngxLoadingAnimationTypes} from "ngx-loading";
+import {DomSanitizer} from "@angular/platform-browser";
+import {Image} from "../../../../models/image";
+
 
 @Component({
   selector: 'app-new-post',
@@ -21,9 +24,13 @@ import {Category} from "../../../../models/category";
   styleUrls: ['./new-post.component.scss']
 })
 export class NewPostComponent implements OnInit {
+  @ViewChild('ngxLoading', {static: false}) ngxLoadingComponent: NgxLoadingComponent;
+  @ViewChild('customLoadingTemplate', {static: false}) customLoadingTemplate: TemplateRef<any>;
+  public ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
+  public loading = false;
+  public loadingTemplate: TemplateRef<any>;
   categories: Category[];
   imgs: any[] = [];
-  downloadURL: Observable<string>;
   currentUser: UserToken;
   fb;
   selectedImages: any[] = [];
@@ -38,7 +45,8 @@ export class NewPostComponent implements OnInit {
               private postService: PostService,
               private imageService: ImageService,
               private authenticationService: AuthenticationService,
-              private storage: AngularFireStorage
+              private storage: AngularFireStorage,
+              private sanitizer: DomSanitizer
   ) {
 
   }
@@ -55,9 +63,6 @@ export class NewPostComponent implements OnInit {
     })
   }
 
-  returnHome() {
-
-  }
 
   setCategoryForFormData() {
     let category;
@@ -100,76 +105,77 @@ export class NewPostComponent implements OnInit {
   createImage() {
     let post: Post = this.setNewPost();
     console.log(this.selectedImages)
-    // this.authenticationService.currentUser.subscribe(x => {
-    //   this.currentUser = x;
-    //   this.userService.getUserProfile(x.id).subscribe(value => {
-    //     post.user = value;
-    //     return this.postService.create(post).subscribe(data => {
-    //       if (this.selectedImages.length !== 0) {
-    //         for (let i = 0; i < this.selectedImages.length; i++) {
-    //           let selectedImage = this.selectedImages[i];
-    //           var n = Date.now();
-    //           const filePath = `RoomsImages/${n}`;
-    //           const fileRef = this.storage.ref(filePath);
-    //           this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
-    //             finalize(() => {
-    //               fileRef.getDownloadURL().subscribe(url => {
-    //                 const image: Image = {
-    //                   linkImg: url,
-    //                   postId: data.id
-    //                 };
-    //                 console.log(image);
-    //                 if (i == 0) {
-    //                 }
-    //                 this.imageService.create(image).subscribe(() => {
-    //                   console.log('SUCCESSFULLY CREATE')
-    //                 });
-    //               });
-    //             })
-    //           ).subscribe();
-    //         }
-    //         setTimeout(() => {
-    //           this.router.navigate(['/users/posts/', data.id]);
-    //         }, 4000)
-    //
-    //       }
-    //     });
-    //   })
-    // });
+    this.authenticationService.currentUser.subscribe(x => {
+      this.currentUser = x;
+      this.userService.getUserProfile(x.id).subscribe(value => {
+        post.user = value;
+        return this.postService.create(post).subscribe(data => {
+          if (this.selectedImages.length !== 0) {
+            for (let i = 0; i < this.selectedImages.length; i++) {
+              let selectedImage = this.selectedImages[i];
+              var n = Date.now();
+              const filePath = `RoomsImages/${n}`;
+              const fileRef = this.storage.ref(filePath);
+              this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+                finalize(() => {
+                  fileRef.getDownloadURL().subscribe(url => {
+                    const image: Image = {
+                      linkImg: url,
+                      postId: data.id
+                    };
+                    console.log(image);
+                    if (i == 0) {
+                    }
+                    this.imageService.create(image).subscribe(() => {
+                      console.log('SUCCESSFULLY CREATE')
+                    });
+                  });
+                })
+              ).subscribe();
+            }
+            setTimeout(() => {
+              this.router.navigate(['/users/posts/', data.id]);
+            }, 4000)
+
+          }
+        });
+      })
+    });
 
   }
 
-  showPreview(event: any) {
+  async showPreview(event: any) {
+    this.loading = true;
     let newSelectedImages = [];
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       newSelectedImages = event.target.files;
-      for (let i=0; i<event.target.files.length; i++) {
+      for (let i = 0; i < event.target.files.length; i++) {
         this.selectedImages.push(event.target.files[i]);
       }
     } else {
       this.selectedImages = [];
     }
-    console.log(this.selectedImages);
     if (newSelectedImages.length !== 0) {
       for (let i = 0; i < newSelectedImages.length; i++) {
         let selectedImage = newSelectedImages[i];
         var n = Date.now();
         const filePath = `RoomsImages/${n}`;
         const fileRef = this.storage.ref(filePath);
-        this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+        await this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe(url => {
               this.imgs.push(url);
-              console.log(url);
-              if (i == 0) {
+              if (this.imgs.length == newSelectedImages.length) {
+                this.loading = false;
               }
-
             });
           })
-        ).subscribe();
+        ).subscribe(() => {
+        });
       }
     }
+
   }
 }

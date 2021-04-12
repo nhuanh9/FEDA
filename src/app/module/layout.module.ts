@@ -18,6 +18,7 @@ import {ListOrderComponent} from "../components/pages/order-seminar/list-order/l
 import {AddOrderComponent} from "../components/pages/order-seminar/add-order/add-order.component";
 import {UpdateProfileComponent} from "../components/pages/user/update-profile/update-profile.component";
 import {UserPostsComponent} from "../components/pages/user/user-posts/user-posts.component";
+import {NgxLoadingModule} from "ngx-loading";
 
 const routes: Routes = [
   {
@@ -89,11 +90,12 @@ const routes: Routes = [
     SidebarComponent,
     FooterComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    ReactiveFormsModule,
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        ReactiveFormsModule,
+        NgxLoadingModule,
+    ]
 })
 export class LayoutModule {
 }
