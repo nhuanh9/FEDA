@@ -1,5 +1,10 @@
 <link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">
 <link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
+<p>
+  <ngb-alert [dismissible]="false" *ngIf="loading2" [type]="'success'">
+    <h4 style="text-align: center">Thêm mới bài viết thành công.</h4>
+  </ngb-alert>
+</p>
 <div class="container">
 
   <div class="card o-hidden border-0 shadow-lg my-5">
@@ -11,7 +16,7 @@
             <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">Tạo mới bài đăng</h1>
             </div>
-            <form class="user" [formGroup]="createPostForm" (ngSubmit)="createImage()">
+            <form class="user" [formGroup]="createPostForm" (ngSubmit)="savePost()">
               <div class="form-group row">
                 <div class="col-sm-1 mb-3 mb-sm-0 pt-2">
                   <span>Thể loại </span>
@@ -51,7 +56,7 @@
                   <div *ngIf="loading" class="col-12 mt-5 mb-5">
                     <div class="loading">
                       <ngx-loading [show]="loading"
-                                   [config]="{animationType: ngxLoadingAnimationTypes.chasingDots, primaryColour: 'gray', backdropBorderRadius: '3px',backdropBackgroundColour: 'rgba(0,0,0,0)' }"
+                                   [config]="{animationType: ngxLoadingAnimationTypes.chasingDots, primaryColour: 'gray',secondaryColour:'black', backdropBorderRadius: '3px',backdropBackgroundColour: 'rgba(0,0,0,0)' }"
                                    [template]="loadingTemplate"></ngx-loading>
 
                     </div>
@@ -68,6 +73,17 @@
   </div>
 
 </div>
+<div class="row">
+  <div class="col-12">
+    <div class="loading">
+      <ngx-loading [show]="loading1"
+                   [config]="{animationType: ngxLoadingAnimationTypes.circleSwish, primaryColour: 'gray',  backdropBorderRadius: '3px',backdropBackgroundColour: 'rgba(0,0,0,0.3)', fullScreenBackdrop: true}"
+                   [template]="loadingTemplate" style="padding-left: 300px;"></ngx-loading>
+
+    </div>
+  </div>
+</div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../assets/vendor/jquery/jquery.min.js"></script>

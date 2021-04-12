@@ -28,6 +28,8 @@ export class NewPostComponent implements OnInit {
   @ViewChild('customLoadingTemplate', {static: false}) customLoadingTemplate: TemplateRef<any>;
   public ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
   public loading = false;
+  public loading1 = false;
+  public loading2 = false;
   public loadingTemplate: TemplateRef<any>;
   categories: Category[];
   imgs: any[] = [];
@@ -75,23 +77,6 @@ export class NewPostComponent implements OnInit {
     return category
   }
 
-  createPost() {
-    let post: Post = this.setNewPost();
-    this.authenticationService.currentUser.subscribe(x => {
-      this.currentUser = x;
-      this.userService.getUserProfile(x.id).subscribe(value => {
-        post.user = value;
-        // this.postService.create(post).subscribe(() => {
-        //   console.log("Thêm mới bài viết thành công!");
-        // }, error => {
-        //   console.log("Tạo post lỗi!");
-        //   console.log(error);
-        // })
-        return this.postService.create(post).toPromise();
-      })
-    });
-  }
-
   setNewPost() {
     let post: Post = {
       content: this.createPostForm.get('content').value,
@@ -102,9 +87,10 @@ export class NewPostComponent implements OnInit {
   }
 
 
-  createImage() {
+  savePost() {
+    this.loading1 = true;
     let post: Post = this.setNewPost();
-    console.log(this.selectedImages)
+    console.log(this.selectedImages);
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
       this.userService.getUserProfile(x.id).subscribe(value => {
@@ -123,9 +109,7 @@ export class NewPostComponent implements OnInit {
                       linkImg: url,
                       postId: data.id
                     };
-                    console.log(image);
-                    if (i == 0) {
-                    }
+                    console.log(url);
                     this.imageService.create(image).subscribe(() => {
                       console.log('SUCCESSFULLY CREATE')
                     });
@@ -134,17 +118,19 @@ export class NewPostComponent implements OnInit {
               ).subscribe();
             }
             setTimeout(() => {
+              this.loading1 = false;
+              this.loading2 = true;
+            }, 3500);
+            setTimeout(() => {
               this.router.navigate(['/users/posts/', data.id]);
-            }, 4000)
-
+            }, 4500)
           }
         });
       })
     });
-
   }
 
-  async showPreview(event: any) {
+  showPreview(event: any) {
     this.loading = true;
     let newSelectedImages = [];
     if (event.target.files && event.target.files[0]) {
@@ -163,7 +149,7 @@ export class NewPostComponent implements OnInit {
         var n = Date.now();
         const filePath = `RoomsImages/${n}`;
         const fileRef = this.storage.ref(filePath);
-        await this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+        this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe(url => {
               this.imgs.push(url);

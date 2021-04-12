@@ -19,6 +19,7 @@ import {AddOrderComponent} from "../components/pages/order-seminar/add-order/add
 import {UpdateProfileComponent} from "../components/pages/user/update-profile/update-profile.component";
 import {UserPostsComponent} from "../components/pages/user/user-posts/user-posts.component";
 import {NgxLoadingModule} from "ngx-loading";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 const routes: Routes = [
   {
@@ -95,6 +96,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         ReactiveFormsModule,
         NgxLoadingModule,
+        NgbModule,
     ]
 })
 export class LayoutModule {
