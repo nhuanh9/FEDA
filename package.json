@@ -26,6 +26,7 @@
     "firebase": "^8.2.6",
     "jquery": "^3.6.0",
     "jquery-modal": "^0.9.2",
+    "jw-angular-pagination": "^1.2.0",
     "ngx-build-plus": "^9.0.4",
     "ngx-loading": "^8.0.0",
     "rxjs": "~6.4.0",

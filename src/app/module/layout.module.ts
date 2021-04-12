@@ -20,6 +20,7 @@ import {UpdateProfileComponent} from "../components/pages/user/update-profile/up
 import {UserPostsComponent} from "../components/pages/user/user-posts/user-posts.component";
 import {NgxLoadingModule} from "ngx-loading";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {JwPaginationComponent} from "jw-angular-pagination";
 
 const routes: Routes = [
   {
@@ -84,6 +85,7 @@ const routes: Routes = [
     AddOrderComponent,
     UpdateProfileComponent,
     UserPostsComponent,
+    JwPaginationComponent
   ],
   exports: [
     TopbarComponent,

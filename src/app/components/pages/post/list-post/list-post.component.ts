@@ -26,6 +26,8 @@ export class ListPostComponent implements OnInit {
   sub: Subscription;
   listLikePost: LikePost[] = [{}, {}];
   allLike: LikePost[];
+  items = [];
+  pageOfItems: Array<any>;
 
   constructor(private http: HttpClient,
               private postLikeService: PostLikeService,
@@ -40,7 +42,14 @@ export class ListPostComponent implements OnInit {
 
   ngOnInit() {
     this.getAllPost();
+
     this.listLikePost = [{user: {name: 'a'}}, {user: {name: 'a'}}];
+    this.items = Array(150).fill(0).map((x, i) => ({id: (i + 1), name: `Item ${i + 1}`}));
+  }
+
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
   }
 
   getAllPost() {
