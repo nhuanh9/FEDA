@@ -74,12 +74,13 @@ export class UserPostsComponent implements OnInit {
   updatePost(id) {
     let newpost = {
       id: id,
-      // content: $('#editContent' + id).val()
+      content: (<HTMLInputElement>document.getElementById('editContent')).value
     }
     this.userService.updatePost(this.user.id, newpost).subscribe(() => {
       this.getAllPost();
     }, error => {
     })
+    this.modalService.dismissAll();
     // $('#myModal' + id).modal('hide');
   }
 
