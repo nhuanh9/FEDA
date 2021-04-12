@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
 
 <div class="row ml-2 mr-2">
-  <div class="col-6" *ngFor="let post of listCurrentUserLikePost" >
+  <div class="col-6" *ngFor="let post of pageOfItems">
     <div class="card shadow mb-4" *ngIf="post.post.status != 0">
       <div class="card-header py-3" style="color: black !important;">
         <a href="/users/posts/{{post.post.id}}"><h6 class="m-0 font-weight-bold">{{post.post.content}}</h6></a>
@@ -22,14 +22,19 @@
             Có {{post.post.listComment.length}} câu trả lời.
           </div>
           <div class="mb-2 float-right">
-            <a *ngIf="!post.is_liked" (click)="likePost(post.post.id)" class="fa fa-thumbs-o-up" style="cursor: n-resize"><img
+            <a *ngIf="!post.is_liked" (click)="likePost(post.post.id)" class="fa fa-thumbs-o-up"
+               style="cursor: n-resize"><img
               src="https://icons.iconarchive.com/icons/icons8/ios7/24/Gaming-Hearts-icon.png" alt=""></a>
-            <a *ngIf="post.is_liked" (click)="unlikePost(post.post.id)" class="fa fa-thumbs-o-down" style="cursor: s-resize"><img
+            <a *ngIf="post.is_liked" (click)="unlikePost(post.post.id)" class="fa fa-thumbs-o-down"
+               style="cursor: s-resize"><img
               src="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/24/Heart-Doodle-icon.png"
               alt=""></a>
-            <span class="ml-1" (click)="showListUsersLikePost(content,post.post.id)" style="cursor: help">{{post.post.likes}}
+            <span class="ml-1" (click)="showListUsersLikePost(content,post.post.id)"
+                  style="cursor: help">{{post.post.likes}}
               Likes</span>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+                  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+                  crossorigin="anonymous">
             <ng-template #content let-modal id="test">
               <div class="modal-header">
                 <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -39,7 +44,8 @@
               <div class="modal-body">
                 <span *ngIf="post.post.likes > 0">
                       {{listLikePost[0].user.name}}
-                  <span *ngIf="post.post.likes >=2">, {{listLikePost[1].user.name}} <span *ngIf="post.post.likes >2">và {{post.post.likes - 2}}
+                  <span *ngIf="post.post.likes >=2">, {{listLikePost[1].user.name}} <span
+                    *ngIf="post.post.likes >2">và {{post.post.likes - 2}}
                     người</span>
                       </span>
                       đã thích bài viết.
@@ -53,14 +59,8 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="card text-center m-3">
-  <h3 class="card-header">Angular 8 Pagination Example</h3>
-  <div class="card-body">
-    <div *ngFor="let item of pageOfItems">{{item.name}}</div>
-  </div>
-  <div class="card-footer pb-0 pt-3">
+  <div class="col-12 align-content-center">
     <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
   </div>
 </div>
+

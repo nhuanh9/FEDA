@@ -12,7 +12,6 @@ import {UserService} from "../../../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CurrentUserLikePost} from "../../../../models/CurrentUserLikePost";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-
 @Component({
   selector: 'app-list-post',
   templateUrl: './list-post.component.html',
@@ -42,13 +41,12 @@ export class ListPostComponent implements OnInit {
 
   ngOnInit() {
     this.getAllPost();
-
     this.listLikePost = [{user: {name: 'a'}}, {user: {name: 'a'}}];
-    this.items = Array(150).fill(0).map((x, i) => ({id: (i + 1), name: `Item ${i + 1}`}));
+    this.items = [{post: {content: 'a', user: {username: ''}, category: {id: ''}, listComment: []}}];
   }
 
   onChangePage(pageOfItems: Array<any>) {
-    // update current page of items
+    console.log(pageOfItems);
     this.pageOfItems = pageOfItems;
   }
 
@@ -60,7 +58,6 @@ export class ListPostComponent implements OnInit {
       this.listPost.reverse();
       this.postLikeService.getAll().subscribe(value => {
         this.allLike = value;
-        console.log(value)
         for (let i = 0; i < this.listPost.length; i++) {
           let currPost: CurrentUserLikePost = {
             user: this.user,
@@ -74,6 +71,7 @@ export class ListPostComponent implements OnInit {
           }
           this.listCurrentUserLikePost.push(currPost);
         }
+        this.items = this.listCurrentUserLikePost;
       });
     });
   }
