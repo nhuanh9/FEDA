@@ -81,7 +81,6 @@ export class UserPostsComponent implements OnInit {
     }, error => {
     })
     this.modalService.dismissAll();
-    // $('#myModal' + id).modal('hide');
   }
 
 
@@ -90,6 +89,6 @@ export class UserPostsComponent implements OnInit {
       this.getAllPost();
     }, error => {
     })
-    // $('#myModal' + id).modal('hide');
+    this.modalService.dismissAll();
   }
 }

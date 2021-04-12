@@ -1,1 +1,7 @@
 <router-outlet></router-outlet>
+<div class="loading">
+  <ngx-loading [show]="loading" [config]="{animationType: ngxLoadingAnimationTypes.cubeGrid, primaryColour: primaryColour, backdropBorderRadius: '3px'}"
+               [template]="loadingTemplate"></ngx-loading>
+<!--  <button (click)="stopLoad()">ss</button>-->
+</div>
+

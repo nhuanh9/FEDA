@@ -22,6 +22,7 @@ import { AddOrderComponent } from './components/pages/order-seminar/add-order/ad
 import { UpdateProfileComponent } from './components/pages/user/update-profile/update-profile.component';
 import { UserPostsComponent } from './components/pages/user/user-posts/user-posts.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgxLoadingModule} from "ngx-loading";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     LayoutModule,
     NgbModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    NgxLoadingModule.forRoot({})
   ],
   providers: [],
   bootstrap: [AppComponent]
