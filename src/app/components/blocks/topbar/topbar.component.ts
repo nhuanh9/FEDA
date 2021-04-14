@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
+import {PostService} from "../../../services/post.service";
+import {Post} from "../../../models/post";
 
 @Component({
   selector: 'app-topbar',
@@ -13,11 +15,14 @@ import {User} from "../../../models/user";
 export class TopbarComponent implements OnInit {
   currentUser: UserToken;
   user: User;
+  term: string = '';
+  posts: Post[] = [{}];
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
     private userService: UserService,
+    private postService: PostService,
   ) {
 
   }
@@ -28,9 +33,7 @@ export class TopbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = {
-
-    }
+    this.user = {}
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
       this.userService.getUserProfile(x.id).subscribe(value => {
@@ -38,5 +41,9 @@ export class TopbarComponent implements OnInit {
         console.log(this.user);
       });
     });
+    this.postService.getAll().subscribe(res => {
+      this.posts = res;
+    })
   }
+
 }

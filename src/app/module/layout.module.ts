@@ -8,7 +8,7 @@ import {FooterComponent} from "../components/blocks/footer/footer.component";
 import {LinkTaiLieuComponent} from "../components/blocks/link-tai-lieu/link-tai-lieu.component";
 import {HomeComponent} from "../components/home/home.component";
 import {NewPasswordComponent} from "../components/pages/user/new-password/new-password.component";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NewPostComponent} from "../components/pages/post/new-post/new-post.component";
 import {ListPostComponent} from "../components/pages/post/list-post/list-post.component";
 import {ListLinkDocComponent} from "../components/pages/link-doc/list-link-doc/list-link-doc.component";
@@ -21,6 +21,7 @@ import {UserPostsComponent} from "../components/pages/user/user-posts/user-posts
 import {NgxLoadingModule} from "ngx-loading";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {JwPaginationComponent} from "jw-angular-pagination";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 const routes: Routes = [
   {
@@ -93,13 +94,15 @@ const routes: Routes = [
     SidebarComponent,
     FooterComponent,
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        ReactiveFormsModule,
-        NgxLoadingModule,
-        NgbModule,
-    ]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    NgxLoadingModule,
+    NgbModule,
+    Ng2SearchPipeModule,
+    FormsModule,
+  ]
 })
 export class LayoutModule {
 }

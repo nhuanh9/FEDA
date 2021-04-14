@@ -24,6 +24,7 @@ import {UserPostsComponent} from './components/pages/user/user-posts/user-posts.
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgxLoadingModule} from "ngx-loading";
 import {JwPaginationComponent} from "jw-angular-pagination";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import {JwPaginationComponent} from "jw-angular-pagination";
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     NgxLoadingModule.forRoot({}),
-
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

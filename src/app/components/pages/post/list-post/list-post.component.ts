@@ -27,7 +27,7 @@ export class ListPostComponent implements OnInit {
   allLike: LikePost[];
   items = [];
   pageOfItems: Array<any>;
-
+  term: string;
   constructor(private http: HttpClient,
               private postLikeService: PostLikeService,
               private userService: UserService,
