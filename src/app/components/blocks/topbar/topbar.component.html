@@ -236,8 +236,9 @@
 
         <tbody>
         <tr *ngFor="let item of posts | filter:term">
-          <td>{{item.content}}</td>
-          <td>{{item.category.name}}</td>
+          <td><a href="/users/posts/{{item.id}}"><h6 class="m-0 font-weight-bold">{{item.content}}</h6></a></td>
+          <td><a href="/users/link-docs/{{item.category.id}}" style="color: #f08a5d;"><i class="fa fa-heartbeat" aria-hidden="true"
+                                                                                                          style="  font-size: 12px; color: #f08a5d"></i> {{item.category.name}}</a></td>
         </tr>
         </tbody>
       </table>
