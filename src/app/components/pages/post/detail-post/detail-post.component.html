@@ -1,57 +1,123 @@
 <link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">
 <link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
 <div class="row">
-  <div class="col-lg-6 ">
+  <!--  <div class="col-lg-6 ">-->
+
+  <!--    &lt;!&ndash; Illustrations &ndash;&gt;-->
+  <!--    <div class="card shadow mb-4 ml-2 mr-2">-->
+  <!--      <div class="card-header py-3">-->
+  <!--        <h5 class="">-->
+  <!--          <a class="" style="color: #719fb0">{{post.user.username}}</a>-->
+  <!--          <i> - <span class="small" style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</span></i>-->
+  <!--          <a class="float-right" href="/users/link-docs/{{post.category.id}}"-->
+  <!--             style="color: #f08a5d;">{{post.category.name}}</a>-->
+  <!--        </h5>-->
+  <!--        <span>{{post.content}}</span>-->
+
+  <!--      </div>-->
+  <!--      <div class="text-center">-->
+  <!--        <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;"-->
+  <!--             src="{{img.linkImg}}"-->
+  <!--             alt="">-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--  <div class="col-lg-6">-->
+  <!--    &lt;!&ndash; Illustrations &ndash;&gt;-->
+  <!--    <div class="card shadow mb-4 mr-2 ml-2">-->
+  <!--      <div class="card-body">-->
+
+  <!--        <div class="text-center mb-4" style=" font-size: 20px">Danh sách câu trả lời-->
+  <!--        </div>-->
+  <!--        <div *ngFor="let cmt of listCurrentUserLikeComment"-->
+  <!--             style="border-radius: 2px;border: 1px solid skyblue" class="row m-1 p-1">-->
+  <!--          <div class="col-lg-2">-->
+  <!--            <a class="row ml-3" href="">{{cmt.user.username}}</a>-->
+
+  <!--            <i class="row ml-3 small" style="color: #a7a2a2">{{cmt.comment.createAt | date : 'dd/MM/yyyy'}}</i>-->
+  <!--          </div>-->
+  <!--          <span class="col-lg-8">{{cmt.comment.content}}</span>-->
+  <!--          <a *ngIf="!cmt.is_liked" (click)="likeCmt(cmt.comment)" class="fa fa-thumbs-o-up"-->
+  <!--             style="cursor: n-resize"><img-->
+  <!--            src="https://icons.iconarchive.com/icons/icons8/ios7/24/Gaming-Hearts-icon.png" alt=""></a>-->
+  <!--          <a *ngIf="cmt.is_liked" (click)="unlikeCmt(cmt.comment)" class="fa fa-thumbs-o-down"-->
+  <!--             style="cursor: s-resize"><img-->
+  <!--            src="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/24/Heart-Doodle-icon.png"-->
+  <!--            alt=""></a>-->
+  <!--          <span class="ml-1" style="cursor: help">{{cmt.comment.likes}}-->
+  <!--            Likes</span>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--      <form [formGroup]="formGroup" (ngSubmit)="addComment(post.id)" class="form-group m-3 row">-->
+  <!--        <input type="textarea" class="form-control ml-1 mb-2 shadow-none textarea" formControlName="content">-->
+  <!--        <button class="btn btn-primary btn-sm shadow-none ml-2" type="submit">Comment</button>-->
+  <!--        <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>-->
+  <!--      </form>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <div class="col-9">
 
     <!-- Illustrations -->
-    <div class="card shadow mb-4 ml-2 mr-2">
-      <div class="card-header py-3">
-        <h5 class="">
-          <a class="" style="color: #719fb0">{{post.user.username}}</a>
-          <i> - <span class="small" style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</span></i>
-          <a class="float-right" href="/users/link-docs/{{post.category.id}}"
-             style="color: #f08a5d;">{{post.category.name}}</a>
-        </h5>
-        <span>{{post.content}}</span>
+    <div class="card shadow mb-4 mr-2">
+      <div class="row">
+        <div class="col-7" >
+          <div class="text-center">
+            <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 90%"
+                 src="{{img.linkImg}}"
+                 alt="">
+          </div>
+        </div>
+        <div class="col-5 p-2"
+             style="background: url('https://ak.picdn.net/shutterstock/videos/1009810103/thumb/1.jpg'); border: 1px solid #d5aeae">
+          <div class="row" >
+            <div class="col-7">
+              <a class="" style="color: #719fb0">{{post.user.username}}</a>
+              <i> - <span class="small" style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</span></i>
+            </div>
+            <div class="col-5">
+              <a class="float-right small" href="/users/link-docs/{{post.category.id}}"
+                 style="color: #f08a5d;">{{post.category.name}}</a>
+            </div>
+          </div>
+          <div class="row">
+            <h4 class="pl-3">{{post.content}}</h4>
+          </div>
 
+          <hr>
+          <div class="row">
+            <p class="col-12">Danh sách bình luận</p>
+          </div>
+          <div *ngFor="let cmt of listCurrentUserLikeComment"
+               style="border-radius: 2px;border: 1px solid skyblue" class="row m-1 p-1">
+            <div class="col-6">
+              <a class="mr-1" href="">{{cmt.user.username}}</a>
+
+              <i class="ml-1 small" style="color: #a7a2a2">{{cmt.comment.createAt | date : 'dd/MM/yyyy'}}</i>
+            </div>
+            <h5 class="col-12">{{cmt.comment.content}}</h5>
+            <a *ngIf="!cmt.is_liked" (click)="likeCmt(cmt.comment)" class="fa fa-thumbs-o-up"
+               style="cursor: n-resize"><img
+              src="https://icons.iconarchive.com/icons/icons8/ios7/24/Gaming-Hearts-icon.png" alt=""></a>
+            <a *ngIf="cmt.is_liked" (click)="unlikeCmt(cmt.comment)" class="fa fa-thumbs-o-down"
+               style="cursor: s-resize"><img
+              src="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/24/Heart-Doodle-icon.png"
+              alt=""></a>
+            <span class="ml-1" style="cursor: help">{{cmt.comment.likes}}
+              Likes</span>
+          </div>
+          <form [formGroup]="formGroup" (ngSubmit)="addComment(post.id)" class="form-group m-3 row">
+            <input type="textarea" class="form-control ml-1 mb-2 shadow-none textarea" formControlName="content">
+            <button class="btn btn-primary btn-sm shadow-none ml-2" type="submit">Comment</button>
+            <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
+          </form>
+        </div>
       </div>
-      <div class="text-center">
-        <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;"
-             src="{{img.linkImg}}"
-             alt="">
-      </div>
+    </div>
+    <div class="row">
+      <app-top-posts></app-top-posts>
     </div>
   </div>
-  <div class="col-lg-6">
-    <!-- Illustrations -->
-    <div class="card shadow mb-4 mr-2 ml-2">
-      <div class="card-body">
-
-        <div class="text-center mb-4" style=" font-size: 20px">Danh sách câu trả lời
-        </div>
-        <div *ngFor="let cmt of listCurrentUserLikeComment"
-             style="border-radius: 2px;border: 1px solid skyblue" class="row m-1 p-1">
-          <div class="col-lg-2">
-            <a class="row ml-3" href="">{{cmt.user.username}}</a>
-
-            <i class="row ml-3 small" style="color: #a7a2a2">{{cmt.comment.createAt | date : 'dd/MM/yyyy'}}</i>
-          </div>
-          <span class="col-lg-8">{{cmt.comment.content}}</span>
-          <a *ngIf="!cmt.is_liked" (click)="likeCmt(cmt.comment)" class="fa fa-thumbs-o-up" style="cursor: n-resize"><img
-            src="https://icons.iconarchive.com/icons/icons8/ios7/24/Gaming-Hearts-icon.png" alt=""></a>
-          <a *ngIf="cmt.is_liked" (click)="unlikeCmt(cmt.comment)" class="fa fa-thumbs-o-down"
-             style="cursor: s-resize"><img
-            src="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/24/Heart-Doodle-icon.png"
-            alt=""></a>
-          <span class="ml-1" style="cursor: help">{{cmt.comment.likes}}
-            Likes</span>
-        </div>
-      </div>
-      <form [formGroup]="formGroup" (ngSubmit)="addComment(post.id)" class="form-group m-3 row">
-        <input type="textarea" class="form-control ml-1 mb-2 shadow-none textarea" formControlName="content">
-        <button class="btn btn-primary btn-sm shadow-none ml-2" type="submit">Comment</button>
-        <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
-      </form>
-    </div>
+  <div class="col-3">
+    <app-categories></app-categories>
   </div>
 </div>

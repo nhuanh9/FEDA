@@ -22,6 +22,8 @@ import {NgxLoadingModule} from "ngx-loading";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {JwPaginationComponent} from "jw-angular-pagination";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {CategoriesComponent} from "../components/blocks/categories/categories.component";
+import {TopPostsComponent} from "../components/blocks/top-posts/top-posts.component";
 
 const routes: Routes = [
   {
@@ -86,7 +88,9 @@ const routes: Routes = [
     AddOrderComponent,
     UpdateProfileComponent,
     UserPostsComponent,
-    JwPaginationComponent
+    JwPaginationComponent,
+    CategoriesComponent,
+    TopPostsComponent,
   ],
   exports: [
     TopbarComponent,

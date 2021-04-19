@@ -25,6 +25,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgxLoadingModule} from "ngx-loading";
 import {JwPaginationComponent} from "jw-angular-pagination";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { CategoriesComponent } from './components/blocks/categories/categories.component';
+import { TopPostsComponent } from './components/blocks/top-posts/top-posts.component';
 
 @NgModule({
   declarations: [

@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
+
+<div class="row ml-2 mr-2">
+  <div class="card shadow mb-4" style="background: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?size=626&ext=jpg')">
+    <div class="row">
+      <div class="col-12 pl-5 pt-2"><h3>Bài viết mới</h3></div>
+    </div>
+    <div class="row">
+      <div class="col-6" *ngFor="let post of listCurrentUserLikePost">
+        <div class="card-body">
+          <div class="card" style="" *ngIf="post.post.status != 0">
+            <div class="card-body">
+              <a href="/users/posts/{{post.post.id}}"><h5
+                class="m-0 font-weight-bold card-title">{{post.post.content}}</h5>
+              </a>
+              <p class="card-text">
+                <!--        <h4 class="small">-->
+                <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
+                -
+                <a style="color: #719fb0">{{post.post.user.username}}</a>
+
+                <a class="float-right" href="/users/link-docs/{{post.post.category.id}}"
+                   style="color: #f08a5d;">{{post.post.category.name}}</a>
+                <!--        </h4>-->
+              </p>
+              <div>
+
+                <div class="mb-2 float-left">
+                  Có {{post.post.listComment.length}} câu trả lời.
+                </div>
+                <div class="mb-2 float-right">
+                                              <span (click)="showListUsersLikePost(content,post.post.id)"
+                                                    style="cursor: help" class="mr-2">{{post.post.likes}}</span>
+                  <a *ngIf="!post.is_liked" (click)="likePost(post.post.id)" class="fa fa-thumbs-o-up"
+                     style="cursor: n-resize"><img
+                    src="https://icons.iconarchive.com/icons/icons8/ios7/24/Gaming-Hearts-icon.png" alt=""></a>
+                  <a *ngIf="post.is_liked" (click)="unlikePost(post.post.id)" class="fa fa-thumbs-o-down"
+                     style="cursor: s-resize"><img
+                    src="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/24/Heart-Doodle-icon.png"
+                    alt=""></a>
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+                        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+                        crossorigin="anonymous">
+                  <ng-template #content let-modal id="test">
+                    <div class="modal-header">
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                <span *ngIf="post.post.likes > 0">
+                      {{listLikePost[0].user.name}}
+                  <span *ngIf="post.post.likes >=2">, {{listLikePost[1].user.name}} <span
+                    *ngIf="post.post.likes >2">và {{post.post.likes - 2}}
+                    người</span>
+                      </span>
+                      đã thích bài viết.
+                    </span>
+
+                      <div *ngIf="post.post.likes == 0">Chưa ai thích bài viết này.</div>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
