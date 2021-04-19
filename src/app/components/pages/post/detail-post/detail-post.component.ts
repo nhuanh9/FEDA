@@ -43,9 +43,6 @@ export class DetailPostComponent implements OnInit {
   }
 
   prepareFormComment() {
-    // this.commentForm = this.fb.group({
-    //   content: ['', [Validators.required]]
-    // });
     this.formGroup = new FormGroup({
       content: new FormControl()
     });
@@ -88,8 +85,9 @@ export class DetailPostComponent implements OnInit {
           }
         })
         this.imageService.getAllByPostId(this.post.id).subscribe(result => {
-          this.imgs = result;
-          // console.log(this.imgs);
+          this.imgs = result.length==0 ? [{linkImg: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/LogoUTC.jpg'}] : result;
+
+          console.log(this.imgs);
         })
       })
     });

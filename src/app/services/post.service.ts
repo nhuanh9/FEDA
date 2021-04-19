@@ -30,8 +30,11 @@ export class PostService {
   }
 
   getAllByCategoryId(id: string): Observable<Post[]> {
-    // console.log(API_URL+`/${id}`)
     return this.http.get<Post[]>(API_URL + `/categories/${id}`);
+  }
+
+  getAllByDes(des: string): Observable<Post[]> {
+    return this.http.get<Post[]>(API_URL + `/find-by-des/${des}`);
   }
 
   get(id: string): Observable<Post> {

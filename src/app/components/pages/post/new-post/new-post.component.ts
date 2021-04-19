@@ -17,7 +17,6 @@ import {NgxLoadingComponent, ngxLoadingAnimationTypes} from "ngx-loading";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Image} from "../../../../models/image";
 
-
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',

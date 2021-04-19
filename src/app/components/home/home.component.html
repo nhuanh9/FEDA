@@ -6,19 +6,30 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">NAL</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-      class="fas fa-download fa-sm text-white-50"></i>Tải xuống tài liệu</a>
-  </div>
 
   <div class="row">
-    <div class="col-7">
-      <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold">Thông báo</h6>
-        </div>
+    <div class="col-8">
+      <app-list-post></app-list-post>
+    </div>
+    <div class="col-4">
+      <app-link-tai-lieu></app-link-tai-lieu>
+      <div class="card shadow mb-4" style="background: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?size=626&ext=jpg')">
+        <!-- Card Body -->
         <div class="card-body">
+
+          <h5 class="mb-2 font-weight-bold">Tài liệu học tập CNTT-UTC</h5>
+          <div class="row">
+            <div class="col-6 mb-2" *ngFor="let category of categories">
+              <a href="/users/link-docs/{{category.id}}" class="text-primary"><img src="https://media.giphy.com/media/WV9R2niZMMbcE5a9um/giphy.gif" alt="" style="width: 15%">{{category.name}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card shadow mb-4" style="background: url('https://media.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy.gif'); color: white">
+
+        <div class="card-body">
+          <h5 class="mb-2 font-weight-bold">Thông báo</h5>
           <div class="text-center">
           </div>
           <div class="row text-center">
@@ -31,70 +42,6 @@
 
           </div>
 
-        </div>
-      </div>
-    </div>
-    <div class="col-5">
-      <app-link-tai-lieu></app-link-tai-lieu>
-    </div>
-  </div>
-  <!-- Content Row -->
-
-
-  <!-- Content Row -->
-
-  <div class="row">
-
-    <!-- Area Chart -->
-    <div class="col-xl-5 col-lg-5">
-      <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold">Một số câu hỏi, bài đăng mới</h6>
-        </div>
-        <div class="card-body">
-          <div *ngFor="let post of posts">
-            <h4 class="small font-weight-bold">
-              <a href="#" style="color: #719fb0">{{post.user.username}}</a>
-              <a class="float-right" href="/users/link-docs/{{post.category.id}}" style="color: #f08a5d; cursor: pointer">{{post.category.name}}</a>
-            </h4>
-            <div class=" mb-4">
-              <a href="/users/posts/{{post.id}}" style="color: #000000">{{post.content}}</a>
-            </div>
-          </div>
-          <a href="users/list-post">Xem tất cả bài đăng</a>
-        </div>
-      </div>
-    </div>
-    <!-- Pie Chart -->
-    <div class="col-xl-7 col-lg-7">
-      <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div
-          class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold ">Danh sách các môn, lĩnh vực</h6>
-          <div class="dropdown no-arrow">
-            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                 aria-labelledby="dropdownMenuLink">
-              <div class="dropdown-header">Dropdown Header:</div>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-        </div>
-        <!-- Card Body -->
-        <div class="card-body">
-          <div class="row">
-            <div class="col-6 mb-2" *ngFor="let category of categories">
-              <a href="/users/link-docs/{{category.id}}" style="color: #f08a5d;"><i class="fa fa-heartbeat" aria-hidden="true"
-                                                            style="  font-size: 12px; color: #f08a5d"></i> {{category.name}}</a>
-            </div>
-          </div>
         </div>
       </div>
     </div>
