@@ -8,4 +8,5 @@ export interface Post {
   likes?: string;
   imgs?: any;
   listComment?: any;
+  description?: string;
 }

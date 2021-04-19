@@ -39,6 +39,7 @@ export class NewPostComponent implements OnInit {
   createPostForm: FormGroup = new FormGroup({
     content: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     category: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
   });
 
   constructor(private userService: UserService,
@@ -163,5 +164,13 @@ export class NewPostComponent implements OnInit {
       }
     }
 
+  }
+
+  openSelect(event){
+    if(event.target.value === 'Trong trường') {
+      document.getElementById('truong').style.display = '';
+    } else {
+      document.getElementById('truong').style.display = 'none';
+    }
   }
 }
