@@ -40,6 +40,7 @@ export class NewPostComponent implements OnInit {
     content: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     category: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
+    optional: new FormControl('', [Validators.required]),
   });
 
   constructor(private userService: UserService,
@@ -81,7 +82,8 @@ export class NewPostComponent implements OnInit {
   setNewPost() {
     let post: Post = {
       content: this.createPostForm.get('content').value,
-      category: this.setCategoryForFormData()
+      category: this.setCategoryForFormData(),
+      description: this.createPostForm.get('description').value + ' ' + this.createPostForm.get('optional').value
     }
     console.log(post)
     return post;
@@ -91,7 +93,6 @@ export class NewPostComponent implements OnInit {
   savePost() {
     this.loading1 = true;
     let post: Post = this.setNewPost();
-    console.log(this.selectedImages);
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
       this.userService.getUserProfile(x.id).subscribe(value => {
@@ -118,14 +119,14 @@ export class NewPostComponent implements OnInit {
                 })
               ).subscribe();
             }
-            setTimeout(() => {
-              this.loading1 = false;
-              this.loading2 = true;
-            }, 3500);
-            setTimeout(() => {
-              this.router.navigate(['/users/posts/', data.id]);
-            }, 4500)
           }
+          setTimeout(() => {
+            this.loading1 = false;
+            this.loading2 = true;
+          }, 3500);
+          setTimeout(() => {
+            this.router.navigate(['/users/posts/', data.id]);
+          }, 4500)
         });
       })
     });
@@ -166,8 +167,8 @@ export class NewPostComponent implements OnInit {
 
   }
 
-  openSelect(event){
-    if(event.target.value === 'Trong trường') {
+  openSelect(event) {
+    if (event.target.value === 'Trong trường') {
       document.getElementById('truong').style.display = '';
     } else {
       document.getElementById('truong').style.display = 'none';
