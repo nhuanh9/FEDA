@@ -13,8 +13,7 @@
                      0 20px 30px rgba(0, 0, 0, 0.5); ">
   {{category.name}}
 </h1>
-<div class="card shadow m-3"
-     style="background: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?size=626&ext=jpg')">
+<div class="card shadow m-3">
   <!-- Card Header - Dropdown -->
 
   <div class="row">
@@ -37,9 +36,9 @@
       </thead>
       <tbody>
       <tr *ngFor="let linkDoc of linkDocs">
-        <td scope="row"><a href="{{linkDoc.link}}">{{linkDoc.link}}</a></td>
-        <td scope="row"><i style="color: #a7a2a2"> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
-        <td scope="row"><a href="" style="color: #719fb0">{{linkDoc.user.username}}</a></td>
+        <td scope="row"><a href="{{linkDoc.link}}"  href=""><p class="linkdoc">{{linkDoc.link}}</p></a></td>
+        <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
+        <td scope="row"><a href="">{{linkDoc.user.username}}</a></td>
         <th scope="row">{{linkDoc.likes}}</th>
       </tr>
       </tbody>
