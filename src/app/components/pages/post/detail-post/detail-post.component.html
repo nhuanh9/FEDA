@@ -74,7 +74,7 @@
               <a class="" style="color: #719fb0">{{post.user.username}}</a>
               <i> - <span class="small" style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</span></i>
             </div>
-            <div class="col-5">
+            <div class="col-4">
               <a class="float-right small" href="/users/link-docs/{{post.category.id}}"
                  style="color: #f08a5d;">{{post.category.name}}</a>
             </div>
@@ -83,12 +83,12 @@
             <h4 class="pl-3">{{post.content}}</h4>
           </div>
 
-          <hr>
+          <hr width="97%">
           <div class="row">
             <p class="col-12">Danh sách bình luận</p>
           </div>
           <div *ngFor="let cmt of listCurrentUserLikeComment"
-               style="border-radius: 2px;border: 1px solid skyblue" class="row m-1 p-1">
+               style="border-radius: 2px;border: 1px solid skyblue" class="row m-1 p-2">
             <div class="col-6">
               <a class="mr-1" href="">{{cmt.user.username}}</a>
 
