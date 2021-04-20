@@ -11,80 +11,111 @@
                      0 9px 0 #ccc, 0 10px 0 #ccc,
                      0 11px 0 #ccc, 0 12px 0 #ccc,
                      0 20px 30px rgba(0, 0, 0, 0.5); ">
-  {{linkDocs[0].category.name}}
+  {{category.name}}
 </h1>
-<div class="card shadow m-3">
+<div class="card shadow m-3"
+     style="background: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?size=626&ext=jpg')">
   <!-- Card Header - Dropdown -->
 
-  <div
-    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-    <h6 class="m-0 font-weight-bold text-primary">Tài liệu</h6>
-    <div class="dropdown no-arrow">
-      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-           aria-labelledby="dropdownMenuLink">
-        <div class="dropdown-header">Dropdown Header:</div>
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
+  <div class="row">
+    <div class="col-12 pl-5 pt-2 mt-3"><h3>Đường dẫn tài liệu</h3></div>
+    <div class="col-12 pl-5 pt-2 mb-3" *ngIf="linkDocs.length == 0" style="font-style: italic">
+      Hiện chưa có link tài liệu nào liên quan, bạn hãy cùng đóng góp thêm nhé <3
     </div>
   </div>
   <!-- Card Body -->
-  <div class="card-body">
-    <div class="chart-area">
-      <table class="table table-hover" style="color: black !important;">
-        <thead>
-        <tr>
-          <th scope="col">Đường dẫn</th>
-          <th scope="col">Ngày đăng</th>
-          <th scope="col">Tác giả</th>
-          <th scope="col">Lượt thích</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let linkDoc of linkDocs">
-          <td scope="row"><a href="{{linkDoc.link}}">{{linkDoc.link}}</a></td>
-          <td scope="row"><i style="color: #a7a2a2"> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
-          <td scope="row"><a href="" style="color: #719fb0">{{linkDoc.user.username}}</a></td>
-          <th scope="row">{{linkDoc.likes}}</th>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+
+  <div class="card-body" *ngIf="linkDocs.length >0">
+    <table class="table table-hover" style="color: black !important;">
+      <thead>
+      <tr>
+        <th scope="col">Đường dẫn</th>
+        <th scope="col">Ngày đăng</th>
+        <th scope="col">Tác giả</th>
+        <th scope="col">Lượt thích</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let linkDoc of linkDocs">
+        <td scope="row"><a href="{{linkDoc.link}}">{{linkDoc.link}}</a></td>
+        <td scope="row"><i style="color: #a7a2a2"> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
+        <td scope="row"><a href="" style="color: #719fb0">{{linkDoc.user.username}}</a></td>
+        <th scope="row">{{linkDoc.likes}}</th>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">
 <link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
 
-<div class="row ml-2 mr-2">
-  <div class="col-6" *ngFor="let post of posts">
-    <div class="card shadow mb-4">
-      <div class="card-header py-3" style="color: black !important;">
-        <a href="/users/posts/{{post.id}}"><h6 class="m-0 font-weight-bold">{{post.content}}</h6></a>
-        <h4 class="small">
-          <i style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
-          -
-          <a style="color: #719fb0">{{post.user.username}}</a>
-
-          <a class="float-right" href="/users/link-docs/{{post.category.id}}"
-             style="color: #f08a5d;">{{post.category.name}}</a>
-        </h4>
-      </div>
+<div class="card shadow m-3"
+     style="background: url('https://media.giphy.com/media/YnlDGfCxyOIYTDp86I/giphy.gif')">
+  <div class="row">
+    <div class="col-12 pl-5 pt-2 mt-3"><h3 style="color: white">Bài viết</h3></div>
+    <div class="col-12 pl-5 pt-2 mb-3" *ngIf="listCurrentUserLikePost.length == 0"
+         style="color: white; font-style: italic">Hiện chưa có bài viết nào liên quan, bạn cùng đóng góp thêm nhé <3
+    </div>
+  </div>
+  <div class="row" *ngIf="listCurrentUserLikePost.length>0">
+    <div class="col-6" *ngFor="let post of listCurrentUserLikePost">
       <div class="card-body">
-        <div>
+        <div class="card" style="" *ngIf="post.post.status != 0">
+          <div class="card-body">
+            <a href="/users/posts/{{post.post.id}}"><h5
+              class="m-0 font-weight-bold card-title">{{post.post.content}}</h5>
+            </a>
+            <p class="card-text">
+              <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
+              -
+              <a style="color: #719fb0">{{post.post.user.username}}</a>
 
-          <div class=" mb-4">
-            Có {{post.listComment.length}} câu trả lời.
+              <a class="float-right" href="/users/link-docs/{{post.post.category.id}}"
+                 style="color: #f08a5d;">{{post.post.category.name}}</a>
+            </p>
+            <div>
+
+              <div class="mb-2 float-left">
+                Có {{post.post.listComment.length}} câu trả lời.
+              </div>
+              <div class="mb-2 float-right">
+                                              <span (click)="showListUsersLikePost(content,post.post.id)"
+                                                    style="cursor: help" class="mr-2">{{post.post.likes}}</span>
+                <a *ngIf="!post.is_liked" (click)="likePost(post.post.id)" class="fa fa-thumbs-o-up"
+                   style="cursor: n-resize"><img
+                  src="https://icons.iconarchive.com/icons/icons8/ios7/24/Gaming-Hearts-icon.png" alt=""></a>
+                <a *ngIf="post.is_liked" (click)="unlikePost(post.post.id)" class="fa fa-thumbs-o-down"
+                   style="cursor: s-resize"><img
+                  src="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/24/Heart-Doodle-icon.png"
+                  alt=""></a>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+                      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+                      crossorigin="anonymous">
+                <ng-template #content let-modal id="test">
+                  <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                <span *ngIf="post.post.likes > 0">
+                      {{listLikePost[0].user.name}}
+                  <span *ngIf="post.post.likes >=2">, {{listLikePost[1].user.name}} <span
+                    *ngIf="post.post.likes >2">và {{post.post.likes - 2}}
+                    người</span>
+                      </span>
+                      đã thích bài viết.
+                    </span>
+
+                    <div *ngIf="post.post.likes == 0">Chưa ai thích bài viết này.</div>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>
-
-
