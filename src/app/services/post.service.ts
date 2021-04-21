@@ -34,7 +34,7 @@ export class PostService {
   }
 
   getAllByDes(des: string): Observable<Post[]> {
-    return this.http.get<Post[]>(API_URL + `/find-by-des/${des}`);
+    return this.http.get<Post[]>(API_URL + `/des/${des}`);
   }
 
   get(id: string): Observable<Post> {

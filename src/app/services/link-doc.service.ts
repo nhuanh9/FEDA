@@ -26,4 +26,8 @@ export class LinkDocService {
   create(post: Post): Observable<any> {
     return this.http.post<any>(API_URL, post);
   }
+
+  getAllByDes(des: string): Observable<LinkDoc[]> {
+    return this.http.get<LinkDoc[]>(API_URL + `/des/${des}`);
+  }
 }

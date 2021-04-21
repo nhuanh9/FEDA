@@ -27,6 +27,7 @@ import {JwPaginationComponent} from "jw-angular-pagination";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import { CategoriesComponent } from './components/blocks/categories/categories.component';
 import { TopPostsComponent } from './components/blocks/top-posts/top-posts.component';
+import { DesComponent } from './components/pages/link-doc/des/des.component';
 
 @NgModule({
   declarations: [
