@@ -6,4 +6,5 @@ export interface LinkDoc {
   category?: any;
   user?: any;
   likes?: string;
+  description?: string;
 }

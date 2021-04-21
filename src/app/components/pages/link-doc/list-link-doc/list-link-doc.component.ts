@@ -30,6 +30,7 @@ export class ListLinkDocComponent implements OnInit {
   allLike: LikePost[];
   term: string;
   category: Category;
+  id: any;
 
   constructor(private linkDocService: LinkDocService,
               private activateRoute: ActivatedRoute,
@@ -42,10 +43,12 @@ export class ListLinkDocComponent implements OnInit {
   ngOnInit() {
     this.linkDocs = [{category: '', user: {}}]
     this.category = {name: ''}
+    this.id = '';
     this.listCurrentUserLikePost = [{post: {category: {name: ''}}}];
     this.activateRoute.paramMap.subscribe((paraMap: ParamMap) => {
       const id = paraMap.get('id');
-      this.categoryService.getById(id).subscribe(res=> {
+      this.id = id;
+      this.categoryService.getById(id).subscribe(res => {
         this.category = res;
       })
       this.linkDocService.getAllByCategoryId(id).subscribe(data => {
@@ -83,5 +86,36 @@ export class ListLinkDocComponent implements OnInit {
         }
       });
     });
+  }
+
+
+  likePost(id) {
+    this.postService.get(id).subscribe(value => {
+      let like: LikePost = {
+        user: this.user,
+        postEntity: value,
+      }
+      this.postLikeService.like(like).subscribe(() => {
+        this.getAllPost(this.id);
+      }, error => {
+        console.log(error);
+      })
+    });
+
+  }
+
+  unlikePost(id) {
+    this.postService.get(id).subscribe(value => {
+      let like: LikePost = {
+        user: this.user,
+        postEntity: value,
+      }
+      this.postLikeService.unlike(like).subscribe(() => {
+        this.getAllPost(this.id);
+      }, error => {
+        console.log(error);
+      })
+    });
+
   }
 }
