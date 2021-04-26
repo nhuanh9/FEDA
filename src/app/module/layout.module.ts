@@ -25,6 +25,7 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {CategoriesComponent} from "../components/blocks/categories/categories.component";
 import {TopPostsComponent} from "../components/blocks/top-posts/top-posts.component";
 import {DesComponent} from "../components/pages/link-doc/des/des.component";
+import {TopsComponent} from "../components/blocks/tops/tops.component";
 
 const routes: Routes = [
   {
@@ -99,12 +100,14 @@ const routes: Routes = [
     CategoriesComponent,
     TopPostsComponent,
     DesComponent,
+    TopsComponent,
   ],
   exports: [
     TopbarComponent,
     LinkTaiLieuComponent,
     SidebarComponent,
     FooterComponent,
+    TopsComponent,
   ],
   imports: [
     CommonModule,

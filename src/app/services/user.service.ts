@@ -43,6 +43,18 @@ export class UserService {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
 
+  getTopPosts(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/users/top-posts`);
+  }
+
+  getTopLinkDocs(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/users/top-linkdocs`);
+  }
+
+  getTopComments(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + `/users/top-comments`);
+  }
+
   updatePassword(username: string, user: User): Observable<User> {
     console.log(API_URL + `/users/${username}/new-password-username`);
     return this.http.put<User>(API_URL + `/users/${username}/new-password-username`, user);

@@ -47,7 +47,7 @@ export class DesComponent implements OnInit {
     this.listCurrentUserLikePost = [{post: {category: {name: ''}}}];
     this.activateRoute.paramMap.subscribe((paraMap: ParamMap) => {
       this.des = paraMap.get('des');
-      this.caption = 'Tài liệu học trong trường kì ' + (+this.des % 2 == 0 ? 2 : 1) + ' năm ' + (Math.ceil(+this.des / 2)
+      this.caption = 'Tài liệu học trong trường kì ' + (+this.des % 2 == 0 ? 2 : 1) + ' năm ' + (Math.ceil(+this.des / 2))
       this.linkDocService.getAllByDes(this.des).subscribe(res => {
         this.linkDocs = res
       })
