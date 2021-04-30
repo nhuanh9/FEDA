@@ -12,6 +12,13 @@
   left: 20%;
 }
 
+carousel-item {
+  height: 666px;
+}
+
+carousel-caption {
+  height: 100%;
+}
 .carousel-caption h1, h2, h3 {
   font-size: 200% !important;
   //text-transform: uppercase;
@@ -166,16 +173,16 @@
 
 .imgnew {
   width: 16%;
-  height: 150px;
+  height: 100%;
   margin-left: 42%;
-  background: url('https://github.com/nhuanh9/imgFEDA/blob/master/Screen%20Shot%202021-04-28%20at%2000.05.36.png?raw=true');
-  background-size: cover
+  background: url('https://github.com/nhuanh9/imgFEDA/blob/master/Screen%20Shot%202021-04-28%20at%2000.05.36.png?raw=true') no-repeat;
+  background-size: 100% ;
 }
 
 .imgnew img {
-  margin-top: 42px;
-  width: 83px;
-  height: 83px;
+  margin-top: 26%;
+  width: 50%;
+  height: 30%;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -206,4 +213,7 @@ body {
 .abc {
   border:5px solid black;
   border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cstyle%3Epath%7Banimation:stroke 5s infinite linear%3B%7D%40keyframes stroke%7Bto%7Bstroke-dashoffset:776%3B%7D%7D%3C/style%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232d3561' /%3E%3Cstop offset='25%25' stop-color='%23c05c7e' /%3E%3Cstop offset='50%25' stop-color='%23f3826f' /%3E%3Cstop offset='100%25' stop-color='%23ffb961' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3' stroke-dasharray='388'/%3E %3C/svg%3E") 1;
+}
+.carousel-caption h3 {
+  margin-top: -7%;
 }
