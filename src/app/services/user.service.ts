@@ -67,6 +67,9 @@ export class UserService {
   getUserPosts(id?: any): Observable<any> {
     return this.http.get<any>(API_URL + '/users/' + id + '/posts');
   }
+  getUserLinkdocs(id?: any): Observable<any> {
+    return this.http.get<any>(API_URL + '/users/' + id + '/linkdocs');
+  }
 
   updatePost(id?: any, post?: any): Observable<any> {
     return this.http.put(API_URL + '/users/' + id + '/posts', post);

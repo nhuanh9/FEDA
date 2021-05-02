@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
 import {PostService} from "../../../../services/post.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {LinkDocService} from "../../../../services/link-doc.service";
 // import * as $ from 'jquery';
 declare var $: any;
 
@@ -37,6 +38,7 @@ export class UserPostsComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private postService: PostService,
               private modalService: NgbModal,
+              private linkDocService: LinkDocService
   ) {
   }
 
@@ -50,11 +52,13 @@ export class UserPostsComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.userService.getUserPosts(this.user.id).subscribe((resJson) => {
       this.listPost = resJson;
-      console.log(resJson)
       this.listPost.reverse();
 
     }, error => {
     });
+    this.userService.getUserLinkdocs(this.user.id).subscribe(res => {
+      console.log(res)
+    })
   }
 
   showListUsersLikePost(content, id) {
