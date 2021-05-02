@@ -18,7 +18,7 @@
                 <!--        <h4 class="small">-->
                 <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
                 -
-                <a style="color: #719fb0">{{post.post.user.username}}</a>
+                <a style="color: #719fb0" href="users/{{post.post.user.id}}">{{post.post.user.username}}</a>
 
                 <a class="float-right" href="/users/link-docs/{{post.post.category.id}}"
                    style="color: #f08a5d;">{{post.post.category.name}}</a>

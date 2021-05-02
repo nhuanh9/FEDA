@@ -29,6 +29,7 @@ import { CategoriesComponent } from './components/blocks/categories/categories.c
 import { TopPostsComponent } from './components/blocks/top-posts/top-posts.component';
 import { DesComponent } from './components/pages/link-doc/des/des.component';
 import { TopsComponent } from './components/blocks/tops/tops.component';
+import { UserInfoComponent } from './components/pages/user/user-info/user-info.component';
 
 @NgModule({
   declarations: [
