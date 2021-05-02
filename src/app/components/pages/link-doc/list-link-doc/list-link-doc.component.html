@@ -38,7 +38,7 @@
       <tr *ngFor="let linkDoc of linkDocs">
         <td scope="row"><a href="{{linkDoc.link}}"  href=""><p class="linkdoc">{{linkDoc.link}}</p></a></td>
         <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
-        <td scope="row"><a href="">{{linkDoc.user.username}}</a></td>
+        <td scope="row"><a href="users/user-info/{{linkDoc.user.id}}" >{{linkDoc.user.username}}</a></td>
         <th scope="row">{{linkDoc.likes}}</th>
       </tr>
       </tbody>
@@ -67,7 +67,7 @@
             <p class="card-text">
               <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
               -
-              <a style="color: #719fb0">{{post.post.user.username}}</a>
+              <a style="color: #719fb0" href="users/user-info/{{post.post.user.id}}">{{post.post.user.username}}</a>
 
               <a class="float-right" href="/users/link-docs/{{post.post.category.id}}"
                  style="color: #f08a5d;">{{post.post.category.name}}</a>

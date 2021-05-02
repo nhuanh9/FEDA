@@ -21,6 +21,10 @@ export class PostService {
     return this.http.get<Post[]>(API_URL + '/top-4');
   }
 
+  getAllByLikes(): Observable<Post[]> {
+    return this.http.get<Post[]>(API_URL + '/order-by-likes');
+  }
+
   getAll(): Observable<Post[]> {
     return this.http.get<Post[]>(API_URL);
   }
