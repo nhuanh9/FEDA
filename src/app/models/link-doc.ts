@@ -1,5 +1,5 @@
 export interface LinkDoc {
-  id?: number;
+  id?: string;
   createAt?: string;
   status?: string;
   link?: string;

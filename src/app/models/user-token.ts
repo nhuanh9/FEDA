@@ -2,9 +2,9 @@ import {Role} from './role';
 
 
 export interface UserToken {
-  id: number;
-  username: string;
-  password: string;
+  id?: string;
+  username?: string;
+  password?: string;
   confirmPassword?: string;
   accessToken?: string;
   firstName?: string;
@@ -13,5 +13,5 @@ export interface UserToken {
   email?: string;
   phoneNumber?: string;
   enabled?: boolean;
-  roles: Role[];
+  roles?: Role[];
 }

@@ -74,8 +74,14 @@ export class UserService {
   updatePost(id?: any, post?: any): Observable<any> {
     return this.http.put(API_URL + '/users/' + id + '/posts', post);
   }
+  updateLinkDoc(id?: any, linkdoc?: any): Observable<any> {
+    return this.http.put(API_URL + '/users/' + id + '/linkdocs', linkdoc);
+  }
 
   deletePost(idUser?: any, idPost?: any): Observable<any> {
     return this.http.get(API_URL + '/users/' + idUser + '/posts/' + idPost);
+  }
+  deleteLinkDoc(idUser?: any, idPost?: any): Observable<any> {
+    return this.http.get(API_URL + '/users/' + idUser + '/linkdocs/' + idPost);
   }
 }

@@ -164,7 +164,7 @@ export class UserPostsComponent implements OnInit {
 
 
   savePost() {
-    // this.loading1 = true;
+    this.loading1 = true;
     let post: Post = this.setNewPost();
     this.userService.updatePost(this.user.id, post).subscribe(() => {
       this.getAllPost();
