@@ -138,7 +138,7 @@ export class UserInfoComponent implements OnInit {
 
   deletePost(id) {
     this.userService.deletePost(this.user.id, id).subscribe(() => {
-      this.getCurrentUser();
+      this.getUser();
     }, error => {
     })
     this.modalService.dismissAll();
