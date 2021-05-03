@@ -23,7 +23,7 @@ export class LinkDocService {
     return this.http.get<LinkDoc[]>(API_URL+`/categories/${id}`);
   }
 
-  create(post: Post): Observable<any> {
+  create(post: LinkDoc): Observable<any> {
     return this.http.post<any>(API_URL, post);
   }
 

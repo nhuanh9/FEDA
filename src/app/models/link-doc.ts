@@ -7,4 +7,5 @@ export interface LinkDoc {
   user?: any;
   likes?: string;
   description?: string;
+  des?: string;
 }

@@ -24,6 +24,8 @@ export class AddLinkDocComponent implements OnInit {
     link: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     category: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
+    des: new FormControl('', [Validators.required]),
+    optional: new FormControl('', [Validators.required]),
   });
 
   constructor(private userService: UserService,
@@ -63,7 +65,8 @@ export class AddLinkDocComponent implements OnInit {
   }
 
   createPost() {
-    let linkDoc: LinkDoc = this.setNewPost();
+    let linkDoc: LinkDoc = this.setLinkDoc();
+    console.log(linkDoc);
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
       this.userService.getUserProfile(x.id).subscribe(value => {
@@ -79,14 +82,22 @@ export class AddLinkDocComponent implements OnInit {
     });
   }
 
-  private setNewPost() {
+  private setLinkDoc() {
     let linkDoc: LinkDoc = {
       link: this.createLinkDocForm.get('link').value,
       description: this.createLinkDocForm.get('description').value,
       category: this.setCategoryForFormData(),
-
+      des: this.createLinkDocForm.get('des').value + ' ' + this.createLinkDocForm.get('optional').value
     }
     console.log(linkDoc)
     return linkDoc;
+  }
+
+  openSelect(event) {
+    if (event.target.value === 'Trong trường') {
+      document.getElementById('truong').style.display = '';
+    } else {
+      document.getElementById('truong').style.display = 'none';
+    }
   }
 }
