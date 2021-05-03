@@ -23,6 +23,7 @@ export class AddLinkDocComponent implements OnInit {
   createLinkDocForm: FormGroup = new FormGroup({
     link: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     category: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
   });
 
   constructor(private userService: UserService,
@@ -81,7 +82,9 @@ export class AddLinkDocComponent implements OnInit {
   private setNewPost() {
     let linkDoc: LinkDoc = {
       link: this.createLinkDocForm.get('link').value,
-      category: this.setCategoryForFormData()
+      description: this.createLinkDocForm.get('description').value,
+      category: this.setCategoryForFormData(),
+
     }
     console.log(linkDoc)
     return linkDoc;

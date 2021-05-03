@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="../../../../../assets/vendor/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../../../../../assets/css/sb-admin-2.min.css">
+<h1 style="
+        text-align: center;
+        color: black;
+        font-size: 60px;
+        text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc,
+                     0 3px 0 #ccc, 0 4px 0 #ccc,
+                     0 5px 0 #ccc, 0 6px 0 #ccc,
+                     0 7px 0 #ccc, 0 8px 0 #ccc,
+                     0 9px 0 #ccc, 0 10px 0 #ccc,
+                     0 11px 0 #ccc, 0 12px 0 #ccc,
+                     0 20px 30px rgba(0, 0, 0, 0.5); ">
+  Đường dẫn tài liệu
+</h1>
+<div class="card shadow m-3">
+  <!-- Card Header - Dropdown -->
+
+  <div class="row">
+    <div class="col-12 pl-5 pt-2 mb-3" *ngIf="linkDocs.length == 0" style="font-style: italic">
+      Hiện chưa có link tài liệu nào liên quan, bạn hãy cùng đóng góp thêm nhé <3
+    </div>
+  </div>
+  <!-- Card Body -->
+
+  <div class="card-body" *ngIf="linkDocs.length >0">
+    <table class="table table-hover" style="color: black !important;">
+      <thead>
+      <tr>
+        <th scope="col">Đường dẫn</th>
+        <th scope="col">Thể loại</th>
+        <th scope="col">Ngày đăng</th>
+        <th scope="col">Mô tả</th>
+        <th scope="col">Tác giả</th>
+        <th scope="col">Lượt thích</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let linkDoc of linkDocs">
+        <td scope="row"><a href="{{linkDoc.link}}"  href=""><p class="linkdoc">{{linkDoc.link}}</p></a></td>
+        <th scope="row">{{linkDoc.category.name}}</th>
+        <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
+        <th scope="row">{{linkDoc.description}}</th>
+        <td scope="row"><a href="users/user-info/{{linkDoc.user.id}}" >{{linkDoc.user.username}}</a></td>
+        <th scope="row">{{linkDoc.likes}}</th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">

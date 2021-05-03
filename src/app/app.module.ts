@@ -31,6 +31,7 @@ import { DesComponent } from './components/pages/link-doc/des/des.component';
 import { TopsComponent } from './components/blocks/tops/tops.component';
 import { UserInfoComponent } from './components/pages/user/user-info/user-info.component';
 import { ListPostLikesComponent } from './components/pages/post/list-post-likes/list-post-likes.component';
+import { AllLinkDocComponent } from './components/pages/link-doc/all-link-doc/all-link-doc.component';
 
 @NgModule({
   declarations: [
