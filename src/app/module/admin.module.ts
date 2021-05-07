@@ -9,16 +9,21 @@ import {HomeComponent} from "../components/home/home.component";
 import {PostsComponent} from "../components/admin/posts/posts.component";
 import {JwPaginationModule} from "jw-angular-pagination";
 import {LayoutModule} from "./layout.module";
+import {LinkdocsComponent} from "../components/admin/linkdocs/linkdocs.component";
 const routes: Routes = [
   {
     path: 'posts',
     component: PostsComponent
+  },{
+    path: 'linkdocs',
+    component: LinkdocsComponent
   },
 ]
 
 @NgModule({
   declarations: [
-    PostsComponent,],
+    PostsComponent,
+    LinkdocsComponent,],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

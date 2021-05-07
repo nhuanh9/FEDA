@@ -34,6 +34,7 @@ import { ListPostLikesComponent } from './components/pages/post/list-post-likes/
 import { AllLinkDocComponent } from './components/pages/link-doc/all-link-doc/all-link-doc.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { PostsComponent } from './components/admin/posts/posts.component';
+import { LinkdocsComponent } from './components/admin/linkdocs/linkdocs.component';
 
 @NgModule({
   declarations: [
