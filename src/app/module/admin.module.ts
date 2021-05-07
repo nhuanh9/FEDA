@@ -11,6 +11,7 @@ import {JwPaginationModule} from "jw-angular-pagination";
 import {LayoutModule} from "./layout.module";
 import {LinkdocsComponent} from "../components/admin/linkdocs/linkdocs.component";
 import {UsersComponent} from "../components/admin/users/users.component";
+import {OrdersComponent} from "../components/admin/orders/orders.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
   }, {
     path: 'users',
     component: UsersComponent
+  },{
+    path: 'order-seminars',
+    component: OrdersComponent
   },
 ]
 
@@ -30,6 +34,7 @@ const routes: Routes = [
     PostsComponent,
     LinkdocsComponent,
     UsersComponent,
+    OrdersComponent,
   ],
   imports: [
     CommonModule,
