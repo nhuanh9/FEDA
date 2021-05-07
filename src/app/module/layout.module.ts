@@ -123,6 +123,7 @@ const routes: Routes = [
     SidebarComponent,
     FooterComponent,
     TopsComponent,
+    JwPaginationComponent,
   ],
   imports: [
     CommonModule,
@@ -132,6 +133,7 @@ const routes: Routes = [
     NgbModule,
     Ng2SearchPipeModule,
     FormsModule,
+
   ]
 })
 export class LayoutModule {

@@ -50,7 +50,7 @@ export class DetailPostComponent implements OnInit {
 
   ngOnInit() {
     this.post = {
-      id: 0,
+      id: '0',
       createAt: '',
       user: {},
       category: {}
@@ -86,7 +86,6 @@ export class DetailPostComponent implements OnInit {
         })
         this.imageService.getAllByPostId(this.post.id).subscribe(result => {
           this.imgs = result.length==0 ? [{linkImg: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/LogoUTC.jpg'}] : result;
-
           console.log(this.imgs);
         })
       })

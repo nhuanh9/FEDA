@@ -24,7 +24,7 @@ export class ImageService {
     return this.http.post<any>(API_URL, image);
   }
 
-  getAllByPostId(id: number): Observable<Image[]> {
+  getAllByPostId(id: any): Observable<Image[]> {
     return this.http.get<Image[]>(API_URL + `/${id}`);
   }
 }

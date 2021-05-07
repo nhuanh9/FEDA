@@ -32,6 +32,8 @@ import { TopsComponent } from './components/blocks/tops/tops.component';
 import { UserInfoComponent } from './components/pages/user/user-info/user-info.component';
 import { ListPostLikesComponent } from './components/pages/post/list-post-likes/list-post-likes.component';
 import { AllLinkDocComponent } from './components/pages/link-doc/all-link-doc/all-link-doc.component';
+import { AdminComponent } from './components/admin/admin/admin.component';
+import { PostsComponent } from './components/admin/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { AllLinkDocComponent } from './components/pages/link-doc/all-link-doc/al
     LoginComponent,
     RegisterComponent,
     LayoutComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

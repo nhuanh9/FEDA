@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+<div class="row ml-2 mr-2 mt-5">
+  <div class="card shadow mb-4 p-3" style="width: 100%;">
+    <h2 style="text-align: center">Danh sách bài viết</h2>
+    <table class="table table-striped">
+
+      <thead>
+      <tr style="font-weight: bold; color: black">
+        <th scope="col">Id</th>
+        <th scope="col">Nội dung</th>
+        <th scope="col">Thể loại</th>
+        <th scope="col">Phạm vi</th>
+        <th scope="col">Ngày tạo</th>
+        <th scope="col">Tác giả</th>
+        <th scope="col">Lượt thich</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let post of pageOfItems">
+        <th scope="row">{{post.id}}</th>
+        <td>{{post.content}}</td>
+        <td>{{post.category.name}}</td>
+        <td>{{post.description}}</td>
+        <td>{{post.createAt}}</td>
+        <td>{{post.user.username}}</td>
+        <td>{{post.likes}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-12 align-content-center">
+    <jw-pagination [items]="items" [pageSize]="10" (changePage)="onChangePage($event)"></jw-pagination>
+  </div>
+</div>
