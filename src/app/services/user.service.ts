@@ -46,6 +46,9 @@ export class UserService {
   getTopPosts(): Observable<User[]> {
     return this.http.get<User[]>(API_URL + `/users/top-posts`);
   }
+  getAll(): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + ``);
+  }
 
   getTopLinkDocs(): Observable<User[]> {
     return this.http.get<User[]>(API_URL + `/users/top-linkdocs`);

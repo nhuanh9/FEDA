@@ -35,6 +35,7 @@ import { AllLinkDocComponent } from './components/pages/link-doc/all-link-doc/al
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { PostsComponent } from './components/admin/posts/posts.component';
 import { LinkdocsComponent } from './components/admin/linkdocs/linkdocs.component';
+import { UsersComponent } from './components/admin/users/users.component';
 
 @NgModule({
   declarations: [

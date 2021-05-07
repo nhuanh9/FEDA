@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxLoadingModule} from "ngx-loading";
@@ -10,20 +10,27 @@ import {PostsComponent} from "../components/admin/posts/posts.component";
 import {JwPaginationModule} from "jw-angular-pagination";
 import {LayoutModule} from "./layout.module";
 import {LinkdocsComponent} from "../components/admin/linkdocs/linkdocs.component";
+import {UsersComponent} from "../components/admin/users/users.component";
+
 const routes: Routes = [
   {
     path: 'posts',
     component: PostsComponent
-  },{
+  }, {
     path: 'linkdocs',
     component: LinkdocsComponent
+  }, {
+    path: 'users',
+    component: UsersComponent
   },
 ]
 
 @NgModule({
   declarations: [
     PostsComponent,
-    LinkdocsComponent,],
+    LinkdocsComponent,
+    UsersComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -35,4 +42,5 @@ const routes: Routes = [
     LayoutModule,
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+}

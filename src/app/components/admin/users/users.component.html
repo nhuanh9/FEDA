@@ -5,31 +5,31 @@
       crossorigin="anonymous">
 <div class="row ml-2 mr-2 mt-5">
   <div class="card shadow mb-4 p-3" style="width: 100%;">
-    <h2 style="text-align: center">Danh sách đường dẫn</h2>
+    <h2 style="text-align: center">Danh sách người dùng</h2>
     <table class="table table-striped">
 
       <thead>
       <tr style="font-weight: bold; color: black">
         <th scope="col">Id</th>
-        <th scope="col">Đường dẫn</th>
-        <th scope="col">Thể loại</th>
-        <th scope="col">Mô tả</th>
-        <th scope="col">Phạm vi</th>
-        <th scope="col">Ngày tạo</th>
-        <th scope="col">Tác giả</th>
-        <th scope="col">Lượt thich</th>
+        <th scope="col">Tài khoản</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Số điện thoại</th>
+        <th scope="col">Email</th>
+        <th scope="col">Số Comment</th>
+        <th scope="col">Số bài viết</th>
+        <th scope="col">Số đường dẫn</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let post of pageOfItems">
-        <th scope="row">{{post.id}}</th>
-        <td><a href="{{post.link}}"  href=""><p class="linkdoc">{{post.link}}</p></a></td>
-        <td>{{post.category.name}}</td>
-        <td>{{post.description}}</td>
-        <td>{{post.des}}</td>
-        <td>{{post.createAt}}</td>
-        <td>{{post.user.username}}</td>
-        <td>{{post.likes}}</td>
+      <tr *ngFor="let user of pageOfItems">
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.username}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.phoneNumber}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.comments}}</td>
+        <td>{{user.posts}}</td>
+        <td>{{user.linkdocs}}</td>
       </tr>
       </tbody>
     </table>
