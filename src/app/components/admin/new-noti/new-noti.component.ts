@@ -1,28 +1,28 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Category} from "../../../models/category";
+import {UserToken} from "../../../models/user-token";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../../../services/user.service";
+import {UserService} from "../../../services/user.service";
 import {Router} from "@angular/router";
-import {User} from "../../../../models/user";
-import {CategoryService} from "../../../../services/category.service";
-import {Post} from "../../../../models/post";
-import {PostService} from "../../../../services/post.service";
-import {AuthenticationService} from "../../../../services/authentication.service";
-import {UserToken} from "../../../../models/user-token";
+import {CategoryService} from "../../../services/category.service";
+import {PostService} from "../../../services/post.service";
+import {ImageService} from "../../../services/image.service";
+import {AuthenticationService} from "../../../services/authentication.service";
 import {AngularFireStorage} from "@angular/fire/storage";
-import {delay, finalize} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {ImageService} from "../../../../services/image.service";
-import {Category} from "../../../../models/category";
-import {NgxLoadingComponent, ngxLoadingAnimationTypes} from "ngx-loading";
 import {DomSanitizer} from "@angular/platform-browser";
-import {Image} from "../../../../models/image";
+import {Post} from "../../../models/post";
+import {finalize} from "rxjs/operators";
+
+import {NgxLoadingComponent, ngxLoadingAnimationTypes} from "ngx-loading";
 
 @Component({
-  selector: 'app-new-post',
-  templateUrl: './new-post.component.html',
-  styleUrls: ['./new-post.component.scss']
+  selector: 'app-new-noti',
+  templateUrl: './new-noti.component.html',
+  styleUrls: ['./new-noti.component.scss']
 })
-export class NewPostComponent implements OnInit {
+export class NewNotiComponent implements OnInit {
+
+
   @ViewChild('ngxLoading', {static: false}) ngxLoadingComponent: NgxLoadingComponent;
   @ViewChild('customLoadingTemplate', {static: false}) customLoadingTemplate: TemplateRef<any>;
   public ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
@@ -37,9 +37,6 @@ export class NewPostComponent implements OnInit {
   selectedImages: any[] = [];
   createPostForm: FormGroup = new FormGroup({
     content: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    category: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
-    optional: new FormControl('', [Validators.required]),
   });
 
   constructor(private userService: UserService,
@@ -81,10 +78,9 @@ export class NewPostComponent implements OnInit {
   setNewPost() {
     let post: Post = {
       content: this.createPostForm.get('content').value,
-      category: this.setCategoryForFormData(),
-      description: this.createPostForm.get('description').value + ' ' + this.createPostForm.get('optional').value
     }
-    post.status = '1';
+    post.status = '2';
+    post.category = {id:'16'};
     console.log(post)
     return post;
   }
@@ -107,7 +103,7 @@ export class NewPostComponent implements OnInit {
               this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
                 finalize(() => {
                   fileRef.getDownloadURL().subscribe(url => {
-                    const image: Image = {
+                    const image = {
                       linkImg: url,
                       postId: data.id
                     };
@@ -125,7 +121,7 @@ export class NewPostComponent implements OnInit {
             this.loading2 = true;
           }, 3500);
           setTimeout(() => {
-            this.router.navigate(['/users/posts/', data.id]);
+            this.router.navigate(['/admin/posts']);
           }, 4500)
         });
       })
@@ -165,13 +161,5 @@ export class NewPostComponent implements OnInit {
       }
     }
 
-  }
-
-  openSelect(event) {
-    if (event.target.value === 'Trong trường') {
-      document.getElementById('truong').style.display = '';
-    } else {
-      document.getElementById('truong').style.display = 'none';
-    }
   }
 }

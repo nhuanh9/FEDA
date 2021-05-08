@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.returnUrl = '/users/home';
-    this.adminUrl = '/admin'
+    this.adminUrl = '/admin/posts'
   }
 
   login() {
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
 
         },
         error => {
-          alert("Tài khoản của bạn đã bị khoá hoặc sai mật khẩu!");
+          alert("Tài khoản của bạn sai mật khẩu!");
           this.loading = false;
         });
   }

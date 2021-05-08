@@ -8,22 +8,23 @@
     </div>
     <div class="row">
       <div class="col-6" *ngFor="let post of pageOfItems">
-        <div class="card-body">
-          <div class="card" style="" *ngIf="post.post.status != 0">
+
+        <div class="card-body" >
+          <div class="card" style="" >
             <div class="card-body">
               <a href="/users/posts/{{post.post.id}}"><h5
-                class="m-0 font-weight-bold card-title">{{post.post.content}}</h5>
+                class="m-0 font-weight-bold card-title"><span style="color: #000000" *ngIf="post.post.status == 2"  >Thông báo: </span>{{post.post.content}} </h5>
               </a>
-              <p class="card-text">
+              <div class="card-text">
                 <!--        <h4 class="small">-->
                 <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
-                -
-                <a style="color: #719fb0" href="users/user-info/{{post.post.user.id}}">{{post.post.user.username}}</a>
+                <a style="color: #719fb0" *ngIf="post.post.status != 2"  href="users/user-info/{{post.post.user.id}}"> - {{post.post.user.username}}</a>
 
-                <a class="float-right" href="/users/link-docs/{{post.post.category.id}}"
+
+                <a class="float-right" *ngIf="post.post.status != 2"  href="/users/link-docs/{{post.post.category.id}}"
                    style="color: #f08a5d;">{{post.post.category.name}}</a>
                 <!--        </h4>-->
-              </p>
+              </div>
               <div>
 
                 <div class="mb-2 float-left">

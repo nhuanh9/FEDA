@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   count = 0;
   currentUser: any;
   categories: Category[];
-
+  adminPosts: Post[] = [{}];
   constructor(private postService: PostService,
               private router: Router,
               private categoryService: CategoryService,
@@ -29,11 +29,13 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     this.postService.getTop4().subscribe(data => {
-      console.log(data)
       this.posts = data;
     })
+    this.postService.getAllAdminPost().subscribe(data => {
+      console.log(data)
+      this.adminPosts = data;
+    })
     this.categoryService.getAll().subscribe(data => {
-      console.log(data);
       this.categories = data;
     })
   }

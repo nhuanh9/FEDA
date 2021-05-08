@@ -12,10 +12,15 @@ import {LayoutModule} from "./layout.module";
 import {LinkdocsComponent} from "../components/admin/linkdocs/linkdocs.component";
 import {UsersComponent} from "../components/admin/users/users.component";
 import {OrdersComponent} from "../components/admin/orders/orders.component";
+import {NewPostComponent} from "../components/admin/new-post/new-post.component";
+import {NewNotiComponent} from "../components/admin/new-noti/new-noti.component";
 
 const routes: Routes = [
   {
     path: 'posts',
+    component: PostsComponent
+  },{
+    path: '',
     component: PostsComponent
   }, {
     path: 'linkdocs',
@@ -26,6 +31,9 @@ const routes: Routes = [
   },{
     path: 'order-seminars',
     component: OrdersComponent
+  },{
+    path: 'new-noti',
+    component: NewNotiComponent
   },
 ]
 
@@ -35,6 +43,8 @@ const routes: Routes = [
     LinkdocsComponent,
     UsersComponent,
     OrdersComponent,
+    NewPostComponent,
+    NewNotiComponent,
   ],
   imports: [
     CommonModule,

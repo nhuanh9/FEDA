@@ -1,28 +1,27 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Category} from "../../../models/category";
+import {UserToken} from "../../../models/user-token";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../../../services/user.service";
+import {UserService} from "../../../services/user.service";
 import {Router} from "@angular/router";
-import {User} from "../../../../models/user";
-import {CategoryService} from "../../../../services/category.service";
-import {Post} from "../../../../models/post";
-import {PostService} from "../../../../services/post.service";
-import {AuthenticationService} from "../../../../services/authentication.service";
-import {UserToken} from "../../../../models/user-token";
+import {CategoryService} from "../../../services/category.service";
+import {PostService} from "../../../services/post.service";
+import {ImageService} from "../../../services/image.service";
+import {AuthenticationService} from "../../../services/authentication.service";
 import {AngularFireStorage} from "@angular/fire/storage";
-import {delay, finalize} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {ImageService} from "../../../../services/image.service";
-import {Category} from "../../../../models/category";
-import {NgxLoadingComponent, ngxLoadingAnimationTypes} from "ngx-loading";
 import {DomSanitizer} from "@angular/platform-browser";
-import {Image} from "../../../../models/image";
+import {Post} from "../../../models/post";
+import {finalize} from "rxjs/operators";
+import {Image} from "../../../models/image";
 
+import {NgxLoadingComponent, ngxLoadingAnimationTypes} from "ngx-loading";
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
   styleUrls: ['./new-post.component.scss']
 })
 export class NewPostComponent implements OnInit {
+
   @ViewChild('ngxLoading', {static: false}) ngxLoadingComponent: NgxLoadingComponent;
   @ViewChild('customLoadingTemplate', {static: false}) customLoadingTemplate: TemplateRef<any>;
   public ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
@@ -37,9 +36,6 @@ export class NewPostComponent implements OnInit {
   selectedImages: any[] = [];
   createPostForm: FormGroup = new FormGroup({
     content: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    category: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
-    optional: new FormControl('', [Validators.required]),
   });
 
   constructor(private userService: UserService,
@@ -81,10 +77,7 @@ export class NewPostComponent implements OnInit {
   setNewPost() {
     let post: Post = {
       content: this.createPostForm.get('content').value,
-      category: this.setCategoryForFormData(),
-      description: this.createPostForm.get('description').value + ' ' + this.createPostForm.get('optional').value
     }
-    post.status = '1';
     console.log(post)
     return post;
   }
@@ -93,43 +86,43 @@ export class NewPostComponent implements OnInit {
   savePost() {
     this.loading1 = true;
     let post: Post = this.setNewPost();
-    this.authenticationService.currentUser.subscribe(x => {
-      this.currentUser = x;
-      this.userService.getUserProfile(x.id).subscribe(value => {
-        post.user = value;
-        return this.postService.create(post).subscribe(data => {
-          if (this.selectedImages.length !== 0) {
-            for (let i = 0; i < this.selectedImages.length; i++) {
-              let selectedImage = this.selectedImages[i];
-              var n = Date.now();
-              const filePath = `RoomsImages/${n}`;
-              const fileRef = this.storage.ref(filePath);
-              this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
-                finalize(() => {
-                  fileRef.getDownloadURL().subscribe(url => {
-                    const image: Image = {
-                      linkImg: url,
-                      postId: data.id
-                    };
-                    console.log(url);
-                    this.imageService.create(image).subscribe(() => {
-                      console.log('SUCCESSFULLY CREATE')
-                    });
-                  });
-                })
-              ).subscribe();
-            }
-          }
-          setTimeout(() => {
-            this.loading1 = false;
-            this.loading2 = true;
-          }, 3500);
-          setTimeout(() => {
-            this.router.navigate(['/users/posts/', data.id]);
-          }, 4500)
-        });
-      })
-    });
+    // this.authenticationService.currentUser.subscribe(x => {
+    //   this.currentUser = x;
+    //   this.userService.getUserProfile(x.id).subscribe(value => {
+    //     post.user = value;
+    //     return this.postService.create(post).subscribe(data => {
+    //       if (this.selectedImages.length !== 0) {
+    //         for (let i = 0; i < this.selectedImages.length; i++) {
+    //           let selectedImage = this.selectedImages[i];
+    //           var n = Date.now();
+    //           const filePath = `RoomsImages/${n}`;
+    //           const fileRef = this.storage.ref(filePath);
+    //           this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+    //             finalize(() => {
+    //               fileRef.getDownloadURL().subscribe(url => {
+    //                 const image: Image = {
+    //                   linkImg: url,
+    //                   postId: data.id
+    //                 };
+    //                 console.log(url);
+    //                 this.imageService.create(image).subscribe(() => {
+    //                   console.log('SUCCESSFULLY CREATE')
+    //                 });
+    //               });
+    //             })
+    //           ).subscribe();
+    //         }
+    //       }
+    //       setTimeout(() => {
+    //         this.loading1 = false;
+    //         this.loading2 = true;
+    //       }, 3500);
+    //       setTimeout(() => {
+    //         this.router.navigate(['/users/posts/', data.id]);
+    //       }, 4500)
+    //     });
+    //   })
+    // });
   }
 
   showPreview(event: any) {

@@ -28,6 +28,9 @@ export class PostService {
   getAll(): Observable<Post[]> {
     return this.http.get<Post[]>(API_URL);
   }
+  getAllAdminPost(): Observable<Post[]> {
+    return this.http.get<Post[]>(API_URL+'/admin');
+  }
 
   create(post: Post): Observable<any> {
     return this.http.post<any>(API_URL, post);

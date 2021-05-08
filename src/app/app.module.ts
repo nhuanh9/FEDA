@@ -33,10 +33,6 @@ import { UserInfoComponent } from './components/pages/user/user-info/user-info.c
 import { ListPostLikesComponent } from './components/pages/post/list-post-likes/list-post-likes.component';
 import { AllLinkDocComponent } from './components/pages/link-doc/all-link-doc/all-link-doc.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
-import { PostsComponent } from './components/admin/posts/posts.component';
-import { LinkdocsComponent } from './components/admin/linkdocs/linkdocs.component';
-import { UsersComponent } from './components/admin/users/users.component';
-import { OrdersComponent } from './components/admin/orders/orders.component';
 
 @NgModule({
   declarations: [

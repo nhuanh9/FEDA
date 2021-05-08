@@ -12,6 +12,7 @@ import {UserService} from "../../../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CurrentUserLikePost} from "../../../../models/CurrentUserLikePost";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+
 @Component({
   selector: 'app-list-post',
   templateUrl: './list-post.component.html',
@@ -28,6 +29,7 @@ export class ListPostComponent implements OnInit {
   items = [];
   pageOfItems: Array<any>;
   term: string;
+
   constructor(private http: HttpClient,
               private postLikeService: PostLikeService,
               private userService: UserService,
@@ -43,10 +45,12 @@ export class ListPostComponent implements OnInit {
     this.getAllPost();
     this.listLikePost = [{user: {name: 'a'}}, {user: {name: 'a'}}];
     this.items = [{post: {content: 'a', user: {username: ''}, category: {id: ''}, listComment: []}}];
+    setInterval(() => {
+      this.getAllPost();
+    }, 1000);
   }
 
   onChangePage(pageOfItems: Array<any>) {
-    console.log(pageOfItems);
     this.pageOfItems = pageOfItems;
   }
 
