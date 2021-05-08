@@ -47,7 +47,7 @@ export class ListPostComponent implements OnInit {
     this.items = [{post: {content: 'a', user: {username: ''}, category: {id: ''}, listComment: []}}];
     setInterval(() => {
       this.getAllPost();
-    }, 1000);
+    }, 4000);
   }
 
   onChangePage(pageOfItems: Array<any>) {

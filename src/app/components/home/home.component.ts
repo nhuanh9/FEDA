@@ -28,16 +28,19 @@ export class HomeComponent implements OnInit {
       alert("Bạn phải đăng nhập trước!");
       this.router.navigate(['/login']);
     }
-    this.postService.getTop4().subscribe(data => {
-      this.posts = data;
-    })
-    this.postService.getAllAdminPost().subscribe(data => {
-      console.log(data)
-      this.adminPosts = data;
-    })
-    this.categoryService.getAll().subscribe(data => {
-      this.categories = data;
-    })
+    setInterval(()=> {
+      this.postService.getTop4().subscribe(data => {
+        this.posts = data;
+      })
+      this.postService.getAllAdminPost().subscribe(data => {
+        console.log(data)
+        this.adminPosts = data;
+      })
+      this.categoryService.getAll().subscribe(data => {
+        this.categories = data;
+      })
+    },2000);
+
   }
 
 }
