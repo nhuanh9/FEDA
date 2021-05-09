@@ -29,4 +29,13 @@ export class PostsComponent implements OnInit {
     console.log(pageOfItems);
     this.pageOfItems = pageOfItems;
   }
+
+  deletePost(id) {
+    if (confirm("Bạn có chắc chắn muốn xoá bài viết này?")) {
+      this.postService.delete(id).subscribe(()=> {
+        alert("Xoá thành công!");
+        this.getAllPost();
+      })
+    }
+  }
 }

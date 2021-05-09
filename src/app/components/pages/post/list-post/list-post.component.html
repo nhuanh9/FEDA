@@ -2,26 +2,32 @@
 <link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">
 
 <div class="row ml-2 mr-2">
-  <div class="card shadow mb-4" style="width: 100%; background: url('https://media.giphy.com/media/YnlDGfCxyOIYTDp86I/giphy.gif')">
+  <div class="card shadow mb-4"
+       style="width: 100%; background: url('https://media.giphy.com/media/YnlDGfCxyOIYTDp86I/giphy.gif')">
     <div class="row">
       <div class="col-12 pl-5 pt-3 "><h2 style="color: white">Bài viết mới</h2></div>
     </div>
     <div class="row">
       <div class="col-6" *ngFor="let post of pageOfItems">
 
-        <div class="card-body" >
-          <div class="card" style="" >
+        <div class="card-body">
+          <div class="card" style="">
             <div class="card-body">
-              <a href="/users/posts/{{post.post.id}}"><h5
-                class="m-0 font-weight-bold card-title"><span style="color: #000000" *ngIf="post.post.status == 2"  >Thông báo: </span>{{post.post.content}} </h5>
+
+              <h5 style="color: #000000" *ngIf="post.post.status == 2">Admin
+                thông báo: </h5>
+              <a href="/users/posts/{{post.post.id}}">
+                <h5
+                class="m-0 font-weight-bold card-title">{{post.post.content}} </h5>
               </a>
               <div class="card-text">
                 <!--        <h4 class="small">-->
                 <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
-                <a style="color: #719fb0" *ngIf="post.post.status != 2"  href="users/user-info/{{post.post.user.id}}"> - {{post.post.user.username}}</a>
+                <a style="color: #719fb0" *ngIf="post.post.status != 2" href="users/user-info/{{post.post.user.id}}">
+                  - {{post.post.user.username}}</a>
 
 
-                <a class="float-right" *ngIf="post.post.status != 2"  href="/users/link-docs/{{post.post.category.id}}"
+                <a class="float-right" *ngIf="post.post.status != 2" href="/users/link-docs/{{post.post.category.id}}"
                    style="color: #f08a5d;">{{post.post.category.name}}</a>
                 <!--        </h4>-->
               </div>

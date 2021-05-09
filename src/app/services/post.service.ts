@@ -55,4 +55,8 @@ export class PostService {
   getAllLikeById(id): Observable<LikePost[]> {
     return this.http.get<LikePost[]>(API_URL + '/' + id + '/post-likes');
   }
+
+  delete(id): Observable<any> {
+    return this.http.delete(API_URL + '/' + id);
+  }
 }
