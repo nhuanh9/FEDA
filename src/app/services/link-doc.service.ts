@@ -30,4 +30,8 @@ export class LinkDocService {
   getAllByDes(des: string): Observable<LinkDoc[]> {
     return this.http.get<LinkDoc[]>(API_URL + `/des/${des}`);
   }
+
+  delete(id): Observable<any> {
+    return this.http.delete(API_URL + '/' + id);
+  }
 }

@@ -30,4 +30,13 @@ export class LinkdocsComponent implements OnInit {
     console.log(pageOfItems);
     this.pageOfItems = pageOfItems;
   }
+
+  deletePost(id) {
+    if (confirm("Bạn có chắc chắn muốn xoá đường dẫn này?")) {
+      this.linkDocService.delete(id).subscribe(()=> {
+        alert("Xoá thành công!");
+        this.getAllPost();
+      })
+    }
+  }
 }

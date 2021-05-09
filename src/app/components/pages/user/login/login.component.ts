@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.returnUrl = '/users/home';
-    this.adminUrl = '/admin/posts'
+    this.adminUrl = '/admin/order-seminars'
   }
 
   login() {

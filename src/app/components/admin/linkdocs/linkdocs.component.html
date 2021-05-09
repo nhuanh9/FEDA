@@ -30,6 +30,7 @@
         <td>{{post.createAt}}</td>
         <td>{{post.user.username}}</td>
         <td>{{post.likes}}</td>
+        <td><i class="fa fa-trash" (click)="deletePost(post.id)"></i></td>
       </tr>
       </tbody>
     </table>
