@@ -38,7 +38,6 @@ export class TopbarComponent implements OnInit {
       this.currentUser = x;
       this.userService.getUserProfile(x.id).subscribe(value => {
         this.user = value;
-        console.log(this.user);
       });
     });
     this.postService.getAll().subscribe(res => {

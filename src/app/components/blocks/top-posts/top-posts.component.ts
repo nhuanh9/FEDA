@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Post} from "../../../models/post";
 import {CurrentUserLikePost} from "../../../models/CurrentUserLikePost";
 import {User} from "../../../models/user";
@@ -27,6 +27,7 @@ export class TopPostsComponent implements OnInit {
   listLikePost: LikePost[] = [{}, {}];
   allLike: LikePost[];
   term: string;
+
   constructor(private http: HttpClient,
               private postLikeService: PostLikeService,
               private userService: UserService,
@@ -41,6 +42,9 @@ export class TopPostsComponent implements OnInit {
   ngOnInit() {
     this.getAllPost();
     this.listLikePost = [{user: {name: 'a'}}, {user: {name: 'a'}}];
+    setInterval(() => {
+      this.getAllPost();
+    }, 20000);
   }
 
 
@@ -77,7 +81,6 @@ export class TopPostsComponent implements OnInit {
       this.postLikeService.like(like).subscribe(() => {
         this.getAllPost();
       }, error => {
-        console.log(error);
       })
     });
 

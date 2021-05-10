@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
         this.posts = data;
       })
       this.postService.getAllAdminPost().subscribe(data => {
-        console.log(data)
         this.adminPosts = data;
       })
       this.categoryService.getAll().subscribe(data => {

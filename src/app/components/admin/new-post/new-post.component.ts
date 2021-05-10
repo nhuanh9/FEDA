@@ -58,7 +58,6 @@ export class NewPostComponent implements OnInit {
   getAllCategory() {
     this.categoryService.getAll().subscribe(value => {
       this.categories = value;
-      console.log(value);
     })
   }
 
@@ -78,7 +77,6 @@ export class NewPostComponent implements OnInit {
     let post: Post = {
       content: this.createPostForm.get('content').value,
     }
-    console.log(post)
     return post;
   }
 

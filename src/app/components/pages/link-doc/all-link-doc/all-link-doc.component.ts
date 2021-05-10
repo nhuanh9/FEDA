@@ -15,6 +15,11 @@ export class AllLinkDocComponent implements OnInit {
     this.linkDocService.getAll().subscribe(res=> {
       this.linkDocs = res;
     })
+    setInterval(() => {
+      this.linkDocService.getAll().subscribe(res=> {
+        this.linkDocs = res;
+      })
+    }, 2000);
   }
 
 }

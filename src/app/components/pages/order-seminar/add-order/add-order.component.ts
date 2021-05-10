@@ -85,8 +85,6 @@ export class AddOrderComponent implements OnInit {
           alert("Thêm mới đường dẫn tài liệu thành công!");
           this.returnHome();
         }, error => {
-          console.log("Tạo linkDoc lỗi!");
-          console.log(error);
         })
       })
     });

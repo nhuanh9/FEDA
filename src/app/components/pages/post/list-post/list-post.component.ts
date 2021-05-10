@@ -47,7 +47,7 @@ export class ListPostComponent implements OnInit {
     this.items = [{post: {content: 'a', user: {username: ''}, category: {id: ''}, listComment: []}}];
     setInterval(() => {
       this.getAllPost();
-    }, 4000);
+    }, 2000);
   }
 
   onChangePage(pageOfItems: Array<any>) {
@@ -89,7 +89,6 @@ export class ListPostComponent implements OnInit {
       this.postLikeService.like(like).subscribe(() => {
         this.getAllPost();
       }, error => {
-        console.log(error);
       })
     });
 
@@ -104,7 +103,6 @@ export class ListPostComponent implements OnInit {
       this.postLikeService.unlike(like).subscribe(() => {
         this.getAllPost();
       }, error => {
-        console.log(error);
       })
     });
 

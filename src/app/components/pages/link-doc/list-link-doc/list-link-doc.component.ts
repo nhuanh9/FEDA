@@ -52,10 +52,8 @@ export class ListLinkDocComponent implements OnInit {
         this.category = res;
       })
       this.linkDocService.getAllByCategoryId(id).subscribe(data => {
-        console.log(data);
         this.linkDocs = data;
       }, error => {
-        console.log(error);
       })
       this.getAllPost(id);
 

@@ -44,10 +44,12 @@ export class ListPostLikesComponent implements OnInit {
     this.getAllPost();
     this.listLikePost = [{user: {name: 'a'}}, {user: {name: 'a'}}];
     this.items = [{post: {content: 'a', user: {username: ''}, category: {id: ''}, listComment: []}}];
+    setInterval(() => {
+      this.getAllPost();
+    },20000)
   }
 
   onChangePage(pageOfItems: Array<any>) {
-    console.log(pageOfItems);
     this.pageOfItems = pageOfItems;
   }
 

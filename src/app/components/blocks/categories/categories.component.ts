@@ -30,11 +30,9 @@ export class CategoriesComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     this.postService.getTop4().subscribe(data => {
-      console.log(data)
       this.posts = data;
     })
     this.categoryService.getAll().subscribe(data => {
-      console.log(data);
       this.categories = data;
     })
   }

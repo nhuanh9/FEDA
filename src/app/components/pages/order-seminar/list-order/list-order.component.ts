@@ -19,10 +19,7 @@ export class ListOrderComponent implements OnInit {
   getAllOrders() {
     this.orderSeminarService.getAll().subscribe(res => {
       this.orders = res;
-      console.log(res);
     }, error => {
-      console.log("Lỗi: ");
-      console.log(error);
     })
   }
 }

@@ -14,7 +14,13 @@ export class TopsComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.getTop()
+    setInterval(() => {
+      this.getTop();
+    }, 2000);
+  }
 
+  getTop() {
     this.userService.getTopPosts().subscribe(res => {
       this.topPosts = res[0];
     })

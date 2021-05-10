@@ -27,7 +27,6 @@ export class OrdersComponent implements OnInit {
 
 
   onChangePage(pageOfItems: Array<any>) {
-    console.log(pageOfItems);
     this.pageOfItems = pageOfItems;
   }
 }

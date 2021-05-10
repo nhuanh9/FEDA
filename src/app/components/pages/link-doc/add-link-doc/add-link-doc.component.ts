@@ -45,7 +45,6 @@ export class AddLinkDocComponent implements OnInit {
   getAllCategory() {
     this.categoryService.getAll().subscribe(value => {
       this.categories = value;
-      console.log(value);
     })
   }
 
@@ -75,8 +74,6 @@ export class AddLinkDocComponent implements OnInit {
           alert("Thêm mới đường dẫn tài liệu thành công!");
           this.returnHome();
         }, error => {
-          console.log("Tạo linkDoc lỗi!");
-          console.log(error);
         })
       })
     });
@@ -89,7 +86,6 @@ export class AddLinkDocComponent implements OnInit {
       category: this.setCategoryForFormData(),
       des: this.createLinkDocForm.get('des').value + ' ' + this.createLinkDocForm.get('optional').value
     }
-    console.log(linkDoc)
     return linkDoc;
   }
 

@@ -168,7 +168,6 @@ export class UserInfoComponent implements OnInit {
 
   savePost() {
     let post: Post = this.setNewPost();
-    console.log(post)
     this.userService.updatePost(this.user.id, post).subscribe(() => {
       this.getUser();
     }, error => {
@@ -206,7 +205,6 @@ export class UserInfoComponent implements OnInit {
 
   saveLinkDoc() {
     let linkDoc: LinkDoc = this.setNewLinkDoc();
-    console.log(linkDoc);
     this.userService.updateLinkDoc(this.user.id, linkDoc).subscribe(() => {
       this.getUser();
     }, error => {

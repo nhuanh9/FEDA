@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
+  apiUrl: 'https://datnf.herokuapp.com',
   firebaseConfig: {
     apiKey: "AIzaSyCDqll4w0MHuvuQ9pKOftNaiUS32_E1Vak",
     databaseURL: "https://datn-2312-default-rtdb.firebaseio.com/",

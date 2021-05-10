@@ -89,18 +89,15 @@ export class UserPostsComponent implements OnInit {
     this.userService.getUserPosts(this.user.id).subscribe((resJson) => {
       this.listPost = resJson;
       this.listPost.reverse();
-
     }, error => {
     });
     this.userService.getUserLinkdocs(this.user.id).subscribe(res => {
-      console.log(res)
     })
   }
 
   getAllCategory() {
     this.categoryService.getAll().subscribe(value => {
       this.categories = value;
-      console.log(value);
     })
   }
 
@@ -158,7 +155,6 @@ export class UserPostsComponent implements OnInit {
       category: this.setCategoryForFormData(),
       description: this.createPostForm.get('description').value + ' ' + this.createPostForm.get('optional').value
     }
-    console.log(post)
     return post;
   }
 
@@ -170,43 +166,6 @@ export class UserPostsComponent implements OnInit {
       this.getAllPost();
     }, error => {
     })
-    // this.authenticationService.currentUser.subscribe(x => {
-    //   this.currentUser = x;
-    //   this.userService.getUserProfile(x.id).subscribe(value => {
-    //     post.user = value;
-    //     return this.postService.create(post).subscribe(data => {
-    //       // if (this.selectedImages.length !== 0) {
-    //       //   for (let i = 0; i < this.selectedImages.length; i++) {
-    //       //     let selectedImage = this.selectedImages[i];
-    //       //     var n = Date.now();
-    //       //     const filePath = `RoomsImages/${n}`;
-    //       //     const fileRef = this.storage.ref(filePath);
-    //       //     this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
-    //       //       finalize(() => {
-    //       //         fileRef.getDownloadURL().subscribe(url => {
-    //       //           const image: Image = {
-    //       //             linkImg: url,
-    //       //             postId: data.id
-    //       //           };
-    //       //           console.log(url);
-    //       //           this.imageService.create(image).subscribe(() => {
-    //       //             console.log('SUCCESSFULLY CREATE')
-    //       //           });
-    //       //         });
-    //       //       })
-    //       //     ).subscribe();
-    //       //   }
-    //       // }
-    //       // setTimeout(() => {
-    //       //   this.loading1 = false;
-    //       //   this.loading2 = true;
-    //       // }, 3500);
-    //       // setTimeout(() => {
-    //       //   this.router.navigate(['/users/posts/', data.id]);
-    //       // }, 4500)
-    //     });
-    //   })
-    // });
     this.modalService.dismissAll();
   }
 

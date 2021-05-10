@@ -29,11 +29,10 @@ export class RegisterComponent implements OnInit {
   register() {
     const user = this.setNewUser();
     this.userService.register(user).subscribe(() => {
-      console.log('Đăng ký thành công');
+      alert('Đăng ký thành công');
       this.registerForm.reset();
       this.router.navigate(['/login']);
     }, err => {
-      console.log(err);
     });
     console.log(user);
   }

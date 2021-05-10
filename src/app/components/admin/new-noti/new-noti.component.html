@@ -18,8 +18,8 @@
             </div>
             <form class="user" [formGroup]="createPostForm" (ngSubmit)="savePost()">
               <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                       placeholder="Nội dung bài viết" formControlName="content">
+                <textarea type="text" class="form-control form-control-user" id="exampleInputEmail"
+                          placeholder="Nội dung bài viết" formControlName="content"></textarea>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">

@@ -65,7 +65,6 @@ export class DetailPostComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.activateRoute.paramMap.subscribe((paraMap: ParamMap) => {
       const id = paraMap.get('id');
-      // console.log(id);
       this.postService.get(id).subscribe(result => {
         this.post = result;
         this.commentLikeService.getAll().subscribe(res => {
@@ -120,7 +119,6 @@ export class DetailPostComponent implements OnInit {
     this.commentLikeService.like(like).subscribe(() => {
       this.getAllComment();
     }, error => {
-      console.log(error);
     })
 
   }
@@ -135,7 +133,6 @@ export class DetailPostComponent implements OnInit {
     this.commentLikeService.unlike(like).subscribe(() => {
       this.getAllComment();
     }, error => {
-      console.log(error);
     })
 
   }

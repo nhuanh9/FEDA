@@ -59,7 +59,6 @@ export class NewNotiComponent implements OnInit {
   getAllCategory() {
     this.categoryService.getAll().subscribe(value => {
       this.categories = value;
-      console.log(value);
     })
   }
 
@@ -81,7 +80,6 @@ export class NewNotiComponent implements OnInit {
     }
     post.status = '2';
     post.category = {id:'16'};
-    console.log(post)
     return post;
   }
 
