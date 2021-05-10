@@ -20,7 +20,7 @@ import {UpdateProfileComponent} from "../components/pages/user/update-profile/up
 import {UserPostsComponent} from "../components/pages/user/user-posts/user-posts.component";
 import {NgxLoadingModule} from "ngx-loading";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {JwPaginationComponent} from "jw-angular-pagination";
+import {JwPaginationComponent, JwPaginationModule} from "jw-angular-pagination";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {CategoriesComponent} from "../components/blocks/categories/categories.component";
 import {TopPostsComponent} from "../components/blocks/top-posts/top-posts.component";
@@ -108,7 +108,7 @@ const routes: Routes = [
     AddOrderComponent,
     UpdateProfileComponent,
     UserPostsComponent,
-    JwPaginationComponent,
+    // JwPaginationComponent,
     CategoriesComponent,
     TopPostsComponent,
     DesComponent,
@@ -123,7 +123,7 @@ const routes: Routes = [
     SidebarComponent,
     FooterComponent,
     TopsComponent,
-    JwPaginationComponent,
+    // JwPaginationComponent,
   ],
   imports: [
     CommonModule,
@@ -133,7 +133,7 @@ const routes: Routes = [
     NgbModule,
     Ng2SearchPipeModule,
     FormsModule,
-
+    JwPaginationModule
   ]
 })
 export class LayoutModule {

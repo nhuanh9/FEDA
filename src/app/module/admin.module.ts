@@ -55,6 +55,7 @@ const routes: Routes = [
     Ng2SearchPipeModule,
     FormsModule,
     LayoutModule,
+    JwPaginationModule
   ]
 })
 export class AdminModule {
