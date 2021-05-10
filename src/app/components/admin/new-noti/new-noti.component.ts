@@ -79,7 +79,7 @@ export class NewNotiComponent implements OnInit {
       content: this.createPostForm.get('content').value,
     }
     post.status = '2';
-    post.category = {id:'16'};
+    post.category = {id:'27'};
     return post;
   }
 
