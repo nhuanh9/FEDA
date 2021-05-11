@@ -59,8 +59,10 @@
                 </div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                       placeholder="Nội dung bài viết" formControlName="content">
+<!--                <input type="text" class="form-control form-control-user" id="exampleInputEmail"-->
+<!--                       placeholder="Nội dung bài viết" formControlName="content">-->
+
+                <angular-editor [placeholder]="'Enter text here...'" formControlName="content"></angular-editor>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">

@@ -34,6 +34,7 @@ import { ListPostLikesComponent } from './components/pages/post/list-post-likes/
 import { AllLinkDocComponent } from './components/pages/link-doc/all-link-doc/all-link-doc.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 import {NgbdModalContent} from "./modal/modal.component";
+import {AngularEditorModule} from "@kolkov/angular-editor";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import {NgbdModalContent} from "./modal/modal.component";
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     NgxLoadingModule.forRoot({}),
     Ng2SearchPipeModule,
-
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

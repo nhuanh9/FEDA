@@ -18,7 +18,7 @@
                 thông báo: </h5>
               <a href="/users/posts/{{post.post.id}}">
                 <h5
-                class="m-0 font-weight-bold card-title">{{post.post.content}} </h5>
+                class="m-0 font-weight-bold card-title" [innerHTML]="post.post.content"></h5>
               </a>
               <div class="card-text">
                 <!--        <h4 class="small">-->

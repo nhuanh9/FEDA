@@ -91,6 +91,7 @@ export class NewPostComponent implements OnInit {
   savePost() {
     this.loading1 = true;
     let post: Post = this.setNewPost();
+    console.log(post)
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
       this.userService.getUserProfile(x.id).subscribe(value => {

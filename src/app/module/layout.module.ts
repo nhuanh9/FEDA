@@ -29,6 +29,7 @@ import {TopsComponent} from "../components/blocks/tops/tops.component";
 import {UserInfoComponent} from "../components/pages/user/user-info/user-info.component";
 import {ListPostLikesComponent} from "../components/pages/post/list-post-likes/list-post-likes.component";
 import {AllLinkDocComponent} from "../components/pages/link-doc/all-link-doc/all-link-doc.component";
+import {AngularEditorModule} from "@kolkov/angular-editor";
 
 const routes: Routes = [
   {
@@ -125,16 +126,17 @@ const routes: Routes = [
     TopsComponent,
     // JwPaginationComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    ReactiveFormsModule,
-    NgxLoadingModule,
-    NgbModule,
-    Ng2SearchPipeModule,
-    FormsModule,
-    JwPaginationModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        ReactiveFormsModule,
+        NgxLoadingModule,
+        NgbModule,
+        Ng2SearchPipeModule,
+        FormsModule,
+        JwPaginationModule,
+        AngularEditorModule
+    ]
 })
 export class LayoutModule {
 }
