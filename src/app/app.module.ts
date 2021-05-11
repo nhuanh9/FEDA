@@ -53,7 +53,8 @@ import { AdminComponent } from './components/admin/admin/admin.component';
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     NgxLoadingModule.forRoot({}),
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

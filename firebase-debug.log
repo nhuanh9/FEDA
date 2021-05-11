@@ -1,0 +1,56 @@
+[debug] [2021-05-11T15:01:31.719Z] ----------------------------------------------------------------------
+[debug] [2021-05-11T15:01:31.721Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2021-05-11T15:01:31.721Z] CLI Version:   9.10.2
+[debug] [2021-05-11T15:01:31.721Z] Platform:      darwin
+[debug] [2021-05-11T15:01:31.721Z] Node Version:  v12.14.0
+[debug] [2021-05-11T15:01:31.722Z] Time:          Tue May 11 2021 22:01:31 GMT+0700 (Indochina Time)
+[debug] [2021-05-11T15:01:31.722Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-05-11T15:01:31.730Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-05-11T15:01:31.730Z] > authorizing via signed-in user (chopperlouis@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/daonhuanh/Desktop/myProject/FEDA
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using datn-2312. 
+[debug] [2021-05-11T15:02:16.792Z] > refreshing access token with scopes: []
+[debug] [2021-05-11T15:02:16.792Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-05-11T15:02:17.055Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Tue, 11 May 2021 15:02:17 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-05-11T15:02:17.117Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/datn-2312 [none]
+[debug] [2021-05-11T15:02:17.770Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/datn-2312 200
+[debug] [2021-05-11T15:02:17.770Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/datn-2312 {"projectId":"datn-2312","projectNumber":"650187882112","displayName":"DATN","name":"projects/datn-2312","resources":{"hostingSite":"datn-2312","realtimeDatabaseInstance":"datn-2312-default-rtdb","storageBucket":"datn-2312.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2021-05-11T15:02:26.150Z] TypeError: Cannot read property 'setRawMode' of null
+    at ReadStream.setRawMode (tty.js:71:28)
+    at Interface._setRawMode (readline.js:277:16)
+    at Interface.close (readline.js:400:10)
+    at ReadStream.ontermend (readline.js:187:10)
+    at ReadStream.emit (events.js:215:7)
+    at ReadStream.EventEmitter.emit (domain.js:475:20)
+    at endReadableNT (_stream_readable.js:1184:12)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
