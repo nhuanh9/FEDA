@@ -12,6 +12,7 @@ import {LikePost} from "../../../../models/like-post";
 import {PostLikeService} from "../../../../services/post-like.service";
 import {CategoryService} from "../../../../services/category.service";
 import {Category} from "../../../../models/category";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-list-link-doc',
@@ -37,7 +38,8 @@ export class ListLinkDocComponent implements OnInit {
               private postService: PostService,
               private orderSeminarService: OrderSeminarService,
               private postLikeService: PostLikeService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private modalService: NgbModal,) {
   }
 
   ngOnInit() {
@@ -115,5 +117,11 @@ export class ListLinkDocComponent implements OnInit {
       })
     });
 
+  }
+  showListUsersLikePost(content, id) {
+    this.postService.getAllLikeById(id).subscribe(value => {
+      this.listLikePost = value;
+    })
+    this.modalService.open(content, {centered: true});
   }
 }

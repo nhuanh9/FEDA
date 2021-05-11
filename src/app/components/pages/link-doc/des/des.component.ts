@@ -12,6 +12,7 @@ import {PostService} from "../../../../services/post.service";
 import {OrderSeminarService} from "../../../../services/order-seminar.service";
 import {PostLikeService} from "../../../../services/post-like.service";
 import {CategoryService} from "../../../../services/category.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-des',
@@ -38,7 +39,8 @@ export class DesComponent implements OnInit {
               private postService: PostService,
               private orderSeminarService: OrderSeminarService,
               private postLikeService: PostLikeService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private modalService: NgbModal,) {
   }
 
   ngOnInit() {
@@ -111,4 +113,12 @@ export class DesComponent implements OnInit {
     });
 
   }
+
+  showListUsersLikePost(content, id) {
+    this.postService.getAllLikeById(id).subscribe(value => {
+      this.listLikePost = value;
+    })
+    this.modalService.open(content, {centered: true});
+  }
+
 }

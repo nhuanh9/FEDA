@@ -76,7 +76,7 @@ export class UserInfoComponent implements OnInit {
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
               private postService: PostService,
-              private modalService: NgbModal,
+              public modalService: NgbModal,
               private linkDocService: LinkDocService,
               private imageService: ImageService,
               private authenticationService: AuthenticationService,

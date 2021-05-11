@@ -33,6 +33,7 @@ import { UserInfoComponent } from './components/pages/user/user-info/user-info.c
 import { ListPostLikesComponent } from './components/pages/post/list-post-likes/list-post-likes.component';
 import { AllLinkDocComponent } from './components/pages/link-doc/all-link-doc/all-link-doc.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
+import {NgbdModalContent} from "./modal/modal.component";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { AdminComponent } from './components/admin/admin/admin.component';
     LoginComponent,
     RegisterComponent,
     LayoutComponent,
-    AdminComponent,
+    AdminComponent,NgbdModalContent
   ],
   imports: [
     BrowserModule,
