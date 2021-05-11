@@ -189,7 +189,7 @@ carousel-caption {
 
 .top h3 {
   color: #000000;
-  margin-top: 30px;
+  margin-top: -70px !important;
   font-family: 'Zen Dots', cursive;
 }
 
@@ -216,4 +216,8 @@ body {
 }
 .carousel-caption h3 {
   margin-top: -7%;
+}
+
+.mid {
+  margin-left: 15%;
 }
