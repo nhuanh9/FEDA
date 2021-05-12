@@ -30,6 +30,7 @@ import {UserInfoComponent} from "../components/pages/user/user-info/user-info.co
 import {ListPostLikesComponent} from "../components/pages/post/list-post-likes/list-post-likes.component";
 import {AllLinkDocComponent} from "../components/pages/link-doc/all-link-doc/all-link-doc.component";
 import {AngularEditorModule} from "@kolkov/angular-editor";
+import {EditorModule} from "@tinymce/tinymce-angular";
 
 const routes: Routes = [
   {
@@ -135,7 +136,8 @@ const routes: Routes = [
         Ng2SearchPipeModule,
         FormsModule,
         JwPaginationModule,
-        AngularEditorModule
+        AngularEditorModule,
+        EditorModule
     ]
 })
 export class LayoutModule {

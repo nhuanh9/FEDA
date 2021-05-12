@@ -36,6 +36,7 @@ import { AdminComponent } from './components/admin/admin/admin.component';
 import {NgbdModalContent} from "./modal/modal.component";
 import {AngularEditorModule} from "@kolkov/angular-editor";
 import {NgxEditorModule} from "ngx-editor";
+import {EditorModule} from "@tinymce/tinymce-angular";
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {NgxEditorModule} from "ngx-editor";
     NgxLoadingModule.forRoot({}),
     Ng2SearchPipeModule,
     AngularEditorModule,
-    NgxEditorModule
+    NgxEditorModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
