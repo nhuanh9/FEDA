@@ -35,6 +35,7 @@ import { AllLinkDocComponent } from './components/pages/link-doc/all-link-doc/al
 import { AdminComponent } from './components/admin/admin/admin.component';
 import {NgbdModalContent} from "./modal/modal.component";
 import {AngularEditorModule} from "@kolkov/angular-editor";
+import {NgxEditorModule} from "ngx-editor";
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {AngularEditorModule} from "@kolkov/angular-editor";
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     NgxLoadingModule.forRoot({}),
     Ng2SearchPipeModule,
-    AngularEditorModule
+    AngularEditorModule,
+    NgxEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

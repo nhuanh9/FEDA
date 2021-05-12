@@ -35,6 +35,7 @@ export class NewNotiComponent implements OnInit {
   currentUser: UserToken;
   fb;
   selectedImages: any[] = [];
+  html: '';
   createPostForm: FormGroup = new FormGroup({
     content: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
   });

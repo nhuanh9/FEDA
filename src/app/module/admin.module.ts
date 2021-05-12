@@ -14,6 +14,7 @@ import {UsersComponent} from "../components/admin/users/users.component";
 import {OrdersComponent} from "../components/admin/orders/orders.component";
 import {NewPostComponent} from "../components/admin/new-post/new-post.component";
 import {NewNotiComponent} from "../components/admin/new-noti/new-noti.component";
+import {NgxEditorModule} from "ngx-editor";
 
 const routes: Routes = [
   {
@@ -46,17 +47,18 @@ const routes: Routes = [
     NewPostComponent,
     NewNotiComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    ReactiveFormsModule,
-    NgxLoadingModule,
-    NgbModule,
-    Ng2SearchPipeModule,
-    FormsModule,
-    LayoutModule,
-    JwPaginationModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        ReactiveFormsModule,
+        NgxLoadingModule,
+        NgbModule,
+        Ng2SearchPipeModule,
+        FormsModule,
+        LayoutModule,
+        JwPaginationModule,
+        NgxEditorModule
+    ]
 })
 export class AdminModule {
 }
