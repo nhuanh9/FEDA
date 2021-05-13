@@ -1,23 +1,21 @@
 <!--<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">-->
 <!--<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">-->
 <div class="row">
-  <div class="col-9">
+  <div class="col-12">
 
     <!-- Illustrations -->
     <div class="card shadow mb-4 mr-2">
       <div class="row">
-        <div class="col-7" >
-          <div class="text-center">
-            <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 90%"
-                 src="{{img.linkImg}}"
-                 alt="">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-12">
+
+              <h4 class="pl-3 pt-3">{{post.content}}</h4>
+            </div>
           </div>
-        </div>
-        <div class="col-5 p-2"
-             style=" border-left: 1px solid #d5aeae">
           <div class="row" >
-            <div class="col-7">
-              <a class="" style="color: #719fb0">{{post.user.username}}</a>
+            <div class="col-7 ">
+              <a class="pl-3" style="color: #719fb0">{{post.user.username}}</a>
               <i> - <span class="small" style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</span></i>
             </div>
             <div class="col-4">
@@ -25,11 +23,22 @@
                  style="color: #f08a5d;">{{post.category.name}}</a>
             </div>
           </div>
-          <div class="row">
-            <h4 class="pl-3">{{post.content}}</h4>
-          </div>
 
-          <hr width="97%">
+
+          <hr>
+        </div>
+        <div class="col-7" >
+          <div class="text-center">
+<!--            <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 90%"-->
+<!--                 src="{{img.linkImg}}"-->
+<!--                 alt="">-->
+
+            <div [innerHTML]="post.detail"></div>
+          </div>
+        </div>
+        <div class="col-5 p-2"
+             style=" border-left: 1px solid #d5aeae">
+
           <div class="row">
             <p class="col-12">Danh sách bình luận</p>
           </div>
@@ -60,10 +69,14 @@
       </div>
     </div>
     <div class="row">
-      <app-top-posts></app-top-posts>
+      <div class="col-6">
+        <app-top-posts></app-top-posts>
+      </div>
+
+      <div class="col-6">
+        <app-categories></app-categories>
+      </div>
     </div>
   </div>
-  <div class="col-3">
-    <app-categories></app-categories>
-  </div>
+
 </div>

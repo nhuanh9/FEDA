@@ -39,17 +39,13 @@ export class NewPostComponent implements OnInit {
     content: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     category: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
+    detail: new FormControl('', [Validators.required]),
     optional: new FormControl('', [Validators.required]),
   });
 
   title = 'tinymcedemo';
   data: any;
   tinymceinit: any;
-
-
-  getdata() {
-    console.log(this.data)
-  }
 
   constructor(private userService: UserService,
               private router: Router,
@@ -135,6 +131,7 @@ export class NewPostComponent implements OnInit {
   setNewPost() {
     let post: Post = {
       content: this.createPostForm.get('content').value,
+      detail: this.createPostForm.get('detail').value,
       category: this.setCategoryForFormData(),
       description: this.createPostForm.get('description').value + ' ' + this.createPostForm.get('optional').value
     }
@@ -150,43 +147,43 @@ export class NewPostComponent implements OnInit {
   savePost() {
     this.loading1 = true;
     let post: Post = this.setNewPost();
-    // this.authenticationService.currentUser.subscribe(x => {
-    //   this.currentUser = x;
-    //   this.userService.getUserProfile(x.id).subscribe(value => {
-    //     post.user = value;
-    //     return this.postService.create(post).subscribe(data => {
-    //       if (this.selectedImages.length !== 0) {
-    //         for (let i = 0; i < this.selectedImages.length; i++) {
-    //           let selectedImage = this.selectedImages[i];
-    //           var n = Date.now();
-    //           const filePath = `RoomsImages/${n}`;
-    //           const fileRef = this.storage.ref(filePath);
-    //           this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
-    //             finalize(() => {
-    //               fileRef.getDownloadURL().subscribe(url => {
-    //                 const image: Image = {
-    //                   linkImg: url,
-    //                   postId: data.id
-    //                 };
-    //                 console.log(url);
-    //                 this.imageService.create(image).subscribe(() => {
-    //                   console.log('SUCCESSFULLY CREATE')
-    //                 });
-    //               });
-    //             })
-    //           ).subscribe();
-    //         }
-    //       }
-    //       setTimeout(() => {
-    //         this.loading1 = false;
-    //         this.loading2 = true;
-    //       }, 3500);
-    //       setTimeout(() => {
-    //         this.router.navigate(['/users/posts/', data.id]);
-    //       }, 4500)
-    //     });
-    //   })
-    // });
+    this.authenticationService.currentUser.subscribe(x => {
+      this.currentUser = x;
+      this.userService.getUserProfile(x.id).subscribe(value => {
+        post.user = value;
+        return this.postService.create(post).subscribe(data => {
+          if (this.selectedImages.length !== 0) {
+            for (let i = 0; i < this.selectedImages.length; i++) {
+              let selectedImage = this.selectedImages[i];
+              var n = Date.now();
+              const filePath = `RoomsImages/${n}`;
+              const fileRef = this.storage.ref(filePath);
+              this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+                finalize(() => {
+                  fileRef.getDownloadURL().subscribe(url => {
+                    const image: Image = {
+                      linkImg: url,
+                      postId: data.id
+                    };
+                    console.log(url);
+                    this.imageService.create(image).subscribe(() => {
+                      console.log('SUCCESSFULLY CREATE')
+                    });
+                  });
+                })
+              ).subscribe();
+            }
+          }
+          setTimeout(() => {
+            this.loading1 = false;
+            this.loading2 = true;
+          }, 3500);
+          setTimeout(() => {
+            this.router.navigate(['/users/posts/', data.id]);
+          }, 4500)
+        });
+      })
+    });
   }
 
   showPreview(event: any) {

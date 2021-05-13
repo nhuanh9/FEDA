@@ -4,7 +4,7 @@
     <h4 style="text-align: center">Thêm mới bài viết thành công.</h4>
   </ngb-alert>
 </p>
-<div class="container">
+<div class="container-fluid">
 
   <div class="card o-hidden border-0 shadow-lg my-5">
     <div class="card-body p-0">
@@ -59,13 +59,13 @@
                 </div>
               </div>
               <div class="form-group">
-<!--                <input type="text" class="form-control form-control-user" id="exampleInputEmail"-->
-<!--                       placeholder="Nội dung bài viết" formControlName="content">-->
-
+                <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                       placeholder="Tiêu đề" formControlName="content">
+              </div>
+              <div class="form-group">
                 <editor
                   apiKey="k9pc292uhtpgv34lb0sfldd12z1tp9sksyzskpoqejysd38a"
-                  formControlName="content"
-                  (ngModelChange)="getdata()"
+                  formControlName="detail"
                   [init]="tinymceinit"
                 ></editor>
               </div>

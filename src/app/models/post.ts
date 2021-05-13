@@ -3,6 +3,7 @@ export interface Post {
   createAt?: string;
   status?: string;
   content?: string;
+  detail?: string;
   category?: any;
   user?: any;
   likes?: string;
