@@ -1,5 +1,4 @@
-<!--<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">-->
-<!--<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">-->
+
 
 <div class="row ml-2 mr-2">
   <div class="card shadow mb-4" style="background: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?size=626&ext=jpg')">
@@ -11,7 +10,7 @@
         <div class="card-body">
           <div class="card" style="" *ngIf="post.post.status != 0">
             <div class="card-body">
-              <a href="/users/posts/{{post.post.id}}"><h5
+              <a [routerLink]="['/users/posts', post.post.id]"><h5
                 class="m-0 font-weight-bold card-title">{{post.post.content}}</h5>
               </a>
               <p class="card-text">
@@ -20,7 +19,7 @@
                 -
                 <a style="color: #719fb0">{{post.post.user.username}}</a>
 
-                <a class="float-right" href="/users/link-docs/{{post.post.category.id}}"
+                <a class="float-right" [routerLink]="['/users/link-docs', post.post.category.id]"
                    style="color: #f08a5d;">{{post.post.category.name}}</a>
                 <!--        </h4>-->
               </p>
@@ -68,7 +67,7 @@
         </div>
       </div>
       <div class="col-12 ml-5 mb-3">
-        <a href="users/order-by-likes">Xem thêm...</a>
+        <a [routerLink]="['/users/order-by-likes']" >Xem thêm...</a>
       </div>
     </div>
 

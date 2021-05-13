@@ -60,7 +60,7 @@
               </div>
               <div class="form-group">
                 <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                       placeholder="Tiêu đề" formControlName="content">
+                       placeholder="Tóm tắt" formControlName="content">
               </div>
               <div class="form-group">
                 <editor
@@ -69,37 +69,37 @@
                   [init]="tinymceinit"
                 ></editor>
               </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Upload</span>
-                </div>
-                <div class="custom-file">
-                  <input type="file" id="file"
-                         #userPhoto
-                         multiple
-                         (change)="showPreview($event)"
-                         name="image"
-                         autocomplete="off" class="custom-file-input" id="inputGroupFile01">
-                  <label class="custom-file-label" for="inputGroupFile01">Choose</label>
-                </div>
+<!--              <div class="input-group mb-3">-->
+<!--                <div class="input-group-prepend">-->
+<!--                  <span class="input-group-text">Upload</span>-->
+<!--                </div>-->
+<!--                <div class="custom-file">-->
+<!--                  <input type="file" id="file"-->
+<!--                         #userPhoto-->
+<!--                         multiple-->
+<!--                         (change)="showPreview($event)"-->
+<!--                         name="image"-->
+<!--                         autocomplete="off" class="custom-file-input" id="inputGroupFile01">-->
+<!--                  <label class="custom-file-label" for="inputGroupFile01">Choose</label>-->
+<!--                </div>-->
 
-              </div>
-              <div class="text-center">
-                <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;"
-                     src="{{img}}"
-                     alt="">
-                <div class="row">
-                  <div *ngIf="loading" class="col-12 mt-5 mb-5">
-                    <div class="loading">
-                      <ngx-loading [show]="loading"
-                                   [config]="{animationType: ngxLoadingAnimationTypes.chasingDots, primaryColour: 'gray',secondaryColour:'black', backdropBorderRadius: '3px',backdropBackgroundColour: 'rgba(0,0,0,0)' }"
-                                   [template]="loadingTemplate"></ngx-loading>
+<!--              </div>-->
+<!--              <div class="text-center">-->
+<!--                <img *ngFor="let img of imgs" class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;"-->
+<!--                     src="{{img}}"-->
+<!--                     alt="">-->
+<!--                <div class="row">-->
+<!--                  <div *ngIf="loading" class="col-12 mt-5 mb-5">-->
+<!--                    <div class="loading">-->
+<!--                      <ngx-loading [show]="loading"-->
+<!--                                   [config]="{animationType: ngxLoadingAnimationTypes.chasingDots, primaryColour: 'gray',secondaryColour:'black', backdropBorderRadius: '3px',backdropBackgroundColour: 'rgba(0,0,0,0)' }"-->
+<!--                                   [template]="loadingTemplate"></ngx-loading>-->
 
-                    </div>
-                  </div>
-                </div>
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
 
-              </div>
+<!--              </div>-->
               <input type="submit" class="btn btn-primary btn-user btn-block" value="Tạo">
             </form>
           </div>

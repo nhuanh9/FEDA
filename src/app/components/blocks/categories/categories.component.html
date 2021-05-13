@@ -6,10 +6,10 @@
   <!-- Card Body -->
   <div class="card-body">
 
-    <h5 class="mb-2 font-weight-bold">Tài liệu CNTT</h5>
+    <h5 class="mb-2 font-weight-bold">Danh mục</h5>
     <div class="row">
       <div class="col-4 mb-2" *ngFor="let category of categories">
-        <a href="/users/link-docs/{{category.id}}" class="text-primary"><img
+        <a [routerLink]="['/users/link-docs', category.id]" class="text-primary"><img
           src="https://media.giphy.com/media/WV9R2niZMMbcE5a9um/giphy.gif" alt="" style="width: 15%">{{category.name}}
         </a>
       </div>

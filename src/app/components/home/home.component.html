@@ -23,7 +23,7 @@
               <h3><i>"{{adminPosts[0].content}}"</i></h3>
             </div>
             <div class="col-12">
-              <a href="/users/posts/{{adminPosts[0].id}}">
+              <a [routerLink]="['/users/posts', adminPosts[0].id]">
                 Xem chi tiết
               </a>
             </div>
@@ -39,7 +39,7 @@
         <h5 class="mb-2 font-weight-bold">Tài liệu CNTT</h5>
         <div class="row">
           <div class="col-6 mb-2" *ngFor="let category of categories">
-            <a href="/users/link-docs/{{category.id}}" class="text-primary"><img
+            <a [routerLink]="['/users/link-docs', category.id]" class="text-primary"><img
               src="https://media.giphy.com/media/WV9R2niZMMbcE5a9um/giphy.gif" alt=""
               style="width: 15%">{{category.name}}
             </a>

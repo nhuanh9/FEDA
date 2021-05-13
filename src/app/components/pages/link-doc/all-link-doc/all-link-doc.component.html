@@ -37,11 +37,11 @@
       </thead>
       <tbody>
       <tr *ngFor="let linkDoc of linkDocs">
-        <td scope="row"><a href="{{linkDoc.link}}"  href=""><p class="linkdoc">{{linkDoc.link}}</p></a></td>
-        <th scope="row"><a  href="/users/link-docs/{{linkDoc.category.id}}">{{linkDoc.category.name}}</a></th>
+        <td scope="row"><a href="{{linkDoc.link}}" href=""><p class="linkdoc">{{linkDoc.link}}</p></a></td>
+        <th scope="row"><a  [routerLink]="['/users/link-docs', linkDoc.category.id]">{{linkDoc.category.name}}</a></th>
         <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
         <th scope="row">{{linkDoc.description}}</th>
-        <td scope="row"><a href="users/user-info/{{linkDoc.user.id}}" >{{linkDoc.user.username}}</a></td>
+        <td scope="row"><a [routerLink]="['/users/user-info', linkDoc.user.id]">{{linkDoc.user.username}}</a></td>
         <th scope="row">{{linkDoc.likes}}</th>
       </tr>
       </tbody>
