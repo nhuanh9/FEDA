@@ -50,6 +50,7 @@ export class NewPostComponent implements OnInit {
   getdata() {
     console.log(this.data)
   }
+
   constructor(private userService: UserService,
               private router: Router,
               private categoryService: CategoryService,
@@ -61,16 +62,16 @@ export class NewPostComponent implements OnInit {
   ) {
 
     this.tinymceinit = {
-      height : 500,
-      plugins : [
+      height: 500,
+      plugins: [
         "advlist autolink lists link image charmap print preview hr anchor pagebreak",
         "searchreplace wordcount visualblocks visualchars code fullscreen",
         "insertdatetime media nonbreaking save table contextmenu directionality",
         "emoticons template paste textcolor colorpicker textpattern"
       ],
-      toolbar : 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
-      image_advtab : true,
-      file_picker_callback : function(cb, value, meta) {
+      toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+      image_advtab: true,
+      file_picker_callback: function (cb, value, meta) {
         var input = document.createElement('input');
         input.setAttribute('type', 'file');
         input.setAttribute('accept', 'image/*');
@@ -81,7 +82,7 @@ export class NewPostComponent implements OnInit {
         // just in case, and visually hide it. And do not forget do remove it
         // once you do not need it anymore.
 
-        input.onchange = function() {
+        input.onchange = function () {
           var file = input.files[0];
 
           var reader = new FileReader();
@@ -91,14 +92,14 @@ export class NewPostComponent implements OnInit {
             // necessary, as we are looking to handle it internally.
             var id = 'blobid' + (new Date()).getTime();
             // @ts-ignore
-            var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
             // @ts-ignore
             var base64 = reader.result.split(',')[1];
             var blobInfo = blobCache.create(id, file, base64);
             blobCache.add(blobInfo);
 
             // call the callback and populate the Title field with the file name
-            cb(blobInfo.blobUri(), { title: file.name });
+            cb(blobInfo.blobUri(), {title: file.name});
           };
           reader.readAsDataURL(file);
         };
@@ -138,6 +139,10 @@ export class NewPostComponent implements OnInit {
       description: this.createPostForm.get('description').value + ' ' + this.createPostForm.get('optional').value
     }
     post.status = '1';
+    if (post.category == undefined) {
+      post.category = this.categories[this.categories.length - 1];
+    }
+    console.log(post)
     return post;
   }
 
@@ -145,44 +150,43 @@ export class NewPostComponent implements OnInit {
   savePost() {
     this.loading1 = true;
     let post: Post = this.setNewPost();
-    console.log(post)
-    this.authenticationService.currentUser.subscribe(x => {
-      this.currentUser = x;
-      this.userService.getUserProfile(x.id).subscribe(value => {
-        post.user = value;
-        return this.postService.create(post).subscribe(data => {
-          if (this.selectedImages.length !== 0) {
-            for (let i = 0; i < this.selectedImages.length; i++) {
-              let selectedImage = this.selectedImages[i];
-              var n = Date.now();
-              const filePath = `RoomsImages/${n}`;
-              const fileRef = this.storage.ref(filePath);
-              this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
-                finalize(() => {
-                  fileRef.getDownloadURL().subscribe(url => {
-                    const image: Image = {
-                      linkImg: url,
-                      postId: data.id
-                    };
-                    console.log(url);
-                    this.imageService.create(image).subscribe(() => {
-                      console.log('SUCCESSFULLY CREATE')
-                    });
-                  });
-                })
-              ).subscribe();
-            }
-          }
-          setTimeout(() => {
-            this.loading1 = false;
-            this.loading2 = true;
-          }, 3500);
-          setTimeout(() => {
-            this.router.navigate(['/users/posts/', data.id]);
-          }, 4500)
-        });
-      })
-    });
+    // this.authenticationService.currentUser.subscribe(x => {
+    //   this.currentUser = x;
+    //   this.userService.getUserProfile(x.id).subscribe(value => {
+    //     post.user = value;
+    //     return this.postService.create(post).subscribe(data => {
+    //       if (this.selectedImages.length !== 0) {
+    //         for (let i = 0; i < this.selectedImages.length; i++) {
+    //           let selectedImage = this.selectedImages[i];
+    //           var n = Date.now();
+    //           const filePath = `RoomsImages/${n}`;
+    //           const fileRef = this.storage.ref(filePath);
+    //           this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
+    //             finalize(() => {
+    //               fileRef.getDownloadURL().subscribe(url => {
+    //                 const image: Image = {
+    //                   linkImg: url,
+    //                   postId: data.id
+    //                 };
+    //                 console.log(url);
+    //                 this.imageService.create(image).subscribe(() => {
+    //                   console.log('SUCCESSFULLY CREATE')
+    //                 });
+    //               });
+    //             })
+    //           ).subscribe();
+    //         }
+    //       }
+    //       setTimeout(() => {
+    //         this.loading1 = false;
+    //         this.loading2 = true;
+    //       }, 3500);
+    //       setTimeout(() => {
+    //         this.router.navigate(['/users/posts/', data.id]);
+    //       }, 4500)
+    //     });
+    //   })
+    // });
   }
 
   showPreview(event: any) {

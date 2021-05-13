@@ -62,7 +62,12 @@
 <!--                <input type="text" class="form-control form-control-user" id="exampleInputEmail"-->
 <!--                       placeholder="Nội dung bài viết" formControlName="content">-->
 
-                <angular-editor [placeholder]="'Nhập vào nội dung'" formControlName="content" ></angular-editor>
+                <editor
+                  apiKey="k9pc292uhtpgv34lb0sfldd12z1tp9sksyzskpoqejysd38a"
+                  formControlName="content"
+                  (ngModelChange)="getdata()"
+                  [init]="tinymceinit"
+                ></editor>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -113,13 +118,7 @@
     </div>
   </div>
 </div>
-<h1>TinyMCE 5 Angular Demo</h1>
-<editor
-  apiKey="k9pc292uhtpgv34lb0sfldd12z1tp9sksyzskpoqejysd38a"
-  [(ngModel)]="data"
-  (ngModelChange)="getdata()"
-  [init]="tinymceinit"
-></editor>
+
 
 
 
