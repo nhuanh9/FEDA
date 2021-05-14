@@ -23,11 +23,12 @@
       <tbody>
       <tr *ngFor="let post of pageOfItems">
         <th scope="row">{{post.id}}</th>
-        <td>{{post.content}}</td>
-        <td>{{post.category.name}}</td>
+        <td>
+          <a [routerLink]="['/users/posts', post.post.id]" >{{post.content}}</a></td>
+        <td><a [routerLink]="['/users/link-docs', post.category.id]">x{{post.category.name}}</a></td>
         <td>{{post.description}}</td>
         <td>{{post.createAt}}</td>
-        <td>{{post.user.username}}</td>
+        <td><a [routerLink]="['/users/user-info', post.user.id]">{{post.user.username}}</a></td>
         <td>{{post.likes}}</td>
         <td><i class="fa fa-trash" (click)="deletePost(post.id)"> </i></td>
       </tr>

@@ -1,5 +1,3 @@
-<!--<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">-->
-<!--<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">-->
 <link rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -56,10 +54,10 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let linkDoc of linkDocs">
-                  <td scope="row"><a href="{{linkDoc.link}}" href="">
+                  <td scope="row"><a href="{{linkDoc.link}}">
                     <p class="linkdoc">{{linkDoc.link}}</p>
                   </a></td>
-                  <td scope="row"><a href="/users/link-docs/{{linkDoc.category.id}}">
+                  <td scope="row"><a [routerLink]="['/users/link-docs', linkDoc.category.id]">
                     <p class="linkdoc">{{linkDoc.category.name}}</p>
                   </a></td>
                   <td scope="row"><a href="">
@@ -69,9 +67,10 @@
                     <p class="linkdoc">{{linkDoc.description}}</p>
                   </a></td>
                   <td>
-                    <img  *ngIf="linkDoc.user.id == currentUser.id" src="https://icons.iconarchive.com/icons/iconsmind/outline/16/Pen-3-icon.png" alt=""
-                          class="m-1"
-                          style="cursor: pointer" (click)="showUpdatePost(content1)">
+                    <img *ngIf="linkDoc.user.id == currentUser.id"
+                         src="https://icons.iconarchive.com/icons/iconsmind/outline/16/Pen-3-icon.png" alt=""
+                         class="m-1"
+                         style="cursor: pointer" (click)="showUpdatePost(content1)">
                     <ng-template #content1 let-modal id="test2">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -139,7 +138,8 @@
                             <button type="submit" class="btn btn-default">Sửa
                             </button>
 
-                            <button type="button" class="btn btn-default" (click)="deleteLinkDoc(linkDoc.id)">Xoá</button>
+                            <button type="button" class="btn btn-default" (click)="deleteLinkDoc(linkDoc.id)">Xoá
+                            </button>
                           </form>
                         </div>
                         <div class="modal-footer">
@@ -177,15 +177,17 @@
                 <!--    <div class="card shadow mb-4" *ngIf="post.status !=0;">-->
                 <div class="card shadow mb-4">
                   <div class="card-header py-3" style="color: black !important;">
-                    <a href="/users/posts/{{post.id}}"><span class="m-0 font-weight-bold">{{post.content}}</span></a>
+                    <a [routerLink]="['/users/posts', post.id]"><span
+                      class="m-0 font-weight-bold">{{post.content}}</span></a>
 
-                    <img  *ngIf="post.user.id == currentUser.id" src="https://icons.iconarchive.com/icons/iconsmind/outline/16/Pen-3-icon.png" alt=""
+                    <img *ngIf="post.user.id == currentUser.id"
+                         src="https://icons.iconarchive.com/icons/iconsmind/outline/16/Pen-3-icon.png" alt=""
                          class="m-1"
                          style="cursor: pointer" (click)="showUpdatePost(content1)">
                     <h4 class="small">
                       <i style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
 
-                      <a class="float-right" href="/users/link-docs/{{post.category.id}}"
+                      <a class="float-right" [routerLink]="['/users/link-doc', post.category.id]"
                          style="color: #f08a5d;">{{post.category.name}}</a>
 
                     </h4>

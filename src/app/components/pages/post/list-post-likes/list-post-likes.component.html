@@ -19,9 +19,9 @@
                 <!--        <h4 class="small">-->
                 <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
                 -
-                <a style="color: #719fb0" href="users/user-info/{{post.post.user.id}}">{{post.post.user.username}}</a>
+                <a style="color: #719fb0" [routerLink]="['/users/user-info', post.post.user.id]">{{post.post.user.username}}</a>
 
-                <a class="float-right" *ngIf="post.post.status != 2" href="/users/link-docs/{{post.post.category.id}}"
+                <a class="float-right" *ngIf="post.post.status != 2" [routerLink]="['/users/link-docs', post.post.category.id]"
                    style="color: #f08a5d;">{{post.post.category.name}}</a>
                 <!--        </h4>-->
               </p>

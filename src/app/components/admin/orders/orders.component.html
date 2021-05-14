@@ -26,7 +26,7 @@
         <td>{{post.category.name}}</td>
         <td>{{post.time}}</td>
         <td>{{post.createAt}}</td>
-        <td>{{post.user.username}}</td>
+        <td><a [routerLink]="['/users/user-info', post.user.id]">{{post.user.username}}</a></td>
         <td>{{post.note}}</td>
       </tr>
       </tbody>

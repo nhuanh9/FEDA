@@ -1,5 +1,4 @@
-<!--<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">-->
-<!--<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">-->
+
 
 <div class="row ml-2 mr-2">
   <div class="card shadow mb-4"
@@ -16,18 +15,18 @@
 
               <h5 style="color: #000000" *ngIf="post.post.status == 2">Admin
                 thông báo: </h5>
-              <a href="/users/posts/{{post.post.id}}">
+              <a [routerLink]="['/users/posts', post.post.id]" >
                 <div
                 class="m-0" [innerHTML]="post.post.content"></div>
               </a>
               <div class="card-text">
                 <!--        <h4 class="small">-->
                 <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
-                <a style="color: #719fb0" *ngIf="post.post.status != 2" href="users/user-info/{{post.post.user.id}}">
+                <a style="color: #719fb0" *ngIf="post.post.status != 2" [routerLink]="['/users/user-info', post.post.user.id]" >
                   - {{post.post.user.username}}</a>
 
 
-                <a class="float-right" *ngIf="post.post.status != 2" href="/users/link-docs/{{post.post.category.id}}"
+                <a class="float-right" *ngIf="post.post.status != 2" [routerLink]="['/users/link-docs', post.post.category.id]"
                    style="color: #f08a5d;">{{post.post.category.name}}</a>
                 <!--        </h4>-->
               </div>
