@@ -23,7 +23,7 @@
       <tbody>
       <tr *ngFor="let user of pageOfItems">
         <th scope="row">{{user.id}}</th>
-        <td>{{user.username}}</td>
+        <td><a [routerLink]="['/users/user-info', user.id]" target="_blank">{{user.username}}</a></td>
         <td>{{user.name}}</td>
         <td>{{user.phoneNumber}}</td>
         <td>{{user.email}}</td>

@@ -63,7 +63,9 @@ export class NewPostComponent implements OnInit {
         "advlist autolink lists link image charmap print preview hr anchor pagebreak",
         "searchreplace wordcount visualblocks visualchars code fullscreen",
         "insertdatetime media nonbreaking save table contextmenu directionality",
-        "emoticons template paste textcolor colorpicker textpattern"
+        "emoticons template paste textcolor colorpicker textpattern",
+        "bbcode code"
+
       ],
       toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
       image_advtab: true,
