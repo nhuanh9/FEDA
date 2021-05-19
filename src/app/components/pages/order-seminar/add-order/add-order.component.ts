@@ -41,10 +41,10 @@ export class AddOrderComponent implements OnInit {
 
   prepareForm() {
     this.createForm = new FormGroup({
-      createAt: new FormControl(''),
-      time: new FormControl(''),
-      content: new FormControl(''),
-      note: new FormControl(''),
+      createAt: new FormControl('', [Validators.required]),
+      time: new FormControl('', [Validators.required]),
+      content: new FormControl('', [Validators.required]),
+      note: new FormControl('',[Validators.required]),
       category: new FormControl('', [Validators.required]),
     })
   }

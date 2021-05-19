@@ -1,4 +1,3 @@
-
 <div class="container">
 
   <div class="card o-hidden border-0 shadow-lg my-5">
@@ -8,7 +7,7 @@
         <div class="col-lg-12">
           <div class="p-5">
             <div class="text-center">
-              <h1 class="h4 text-gray-900 mb-4">Thêm đường dẫn tài liệu</h1>
+              <h1 class="h4 text-gray-900 mb-4">Thêm Yêu cầu hỗ trợ trực tuyến</h1>
             </div>
             <form class="user" [formGroup]="createForm" (ngSubmit)="createOrder()">
               <div class="form-group row">
@@ -21,15 +20,27 @@
                     <option *ngFor="let category of categories"
                             [value]="category.id">{{category.name}}</option>
                   </select>
+                  <div class="alert alert-danger mt-1" role="alert"
+                       *ngIf="createForm.get('category').invalid && createForm.get('category').touched">
+                    Bạn chưa chọn danh mục! <br>*Hãy chọn danh mục chính xác để thuận tiện trong quá trình tìm kiếm!
+                  </div>
                 </div>
+
               </div>
               <div class="form-group">
                 <input type="text" class="form-control form-control-user" id="exampleInputEmail1"
                        placeholder="Nội dung mong muốn" formControlName="content">
               </div>
+              <div class="alert alert-danger mt-1" role="alert"
+                   *ngIf="createForm.get('content').invalid && createForm.get('content').touched">
+                Bạn chưa nhập vào nội dung mong muốn được hỗ trợ thêm!
+              </div>
               <div class="form-group">
-                <input type="date" class="form-control form-control-user" id="exampleInputEmail3"
-                       placeholder="Nội dung bài viết" formControlName="time">
+                <input type="date" class="form-control form-control-user" formControlName="time">
+              </div>
+              <div class="alert alert-danger mt-1" role="alert"
+                   *ngIf="createForm.get('time').invalid && createForm.get('time').touched">
+                Bạn chưa chọn thời gian mong muốn được hỗ trợ thêm!
               </div>
               <div class="form-group">
                 <input type="text" class="form-control form-control-user" id="exampleInputEmail2"

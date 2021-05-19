@@ -21,6 +21,10 @@
                     <option *ngFor="let category of categories"
                             [value]="category.id">{{category.name}}</option>
                   </select>
+                  <div class="alert alert-danger mt-1" role="alert"
+                                              *ngIf="createLinkDocForm.get('category').invalid && createLinkDocForm.get('category').touched">
+                  Bạn chưa chọn danh mục! <br>*Hãy chọn danh mục chính xác để thuận tiện trong quá trình tìm kiếm!
+                </div>
                 </div>
               </div>
               <div class="form-group row">
@@ -60,6 +64,10 @@
               <div class="form-group">
                 <input type="text" class="form-control form-control-user"
                        placeholder="Mô tả" formControlName="description">
+              </div>
+              <div class="alert alert-danger mt-1" role="alert"
+                   *ngIf="createLinkDocForm.get('description').invalid && createLinkDocForm.get('description').touched">
+                Bạn chưa nhập mô tả! <br>*Hãy nhập mô tả để người đọc có thể sử dụng dễ dàng hơn nhé!
               </div>
               <input type="submit" class="btn btn-primary btn-user btn-block" value="Thêm đường dẫn">
             </form>

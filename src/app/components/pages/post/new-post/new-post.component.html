@@ -26,6 +26,10 @@
                     <option *ngFor="let category of categories"
                             [value]="category.id">{{category.name}}</option>
                   </select>
+                  <div class="alert alert-danger mt-1" role="alert"
+                       *ngIf="createPostForm.get('category').invalid && createPostForm.get('category').touched">
+                    Bạn chưa chọn danh mục! Hãy chọn danh mục chính xác để thuận tiện trong quá trình tìm kiếm!
+                  </div>
                 </div>
               </div>
               <div class="form-group row">
@@ -61,6 +65,10 @@
               <div class="form-group">
                 <input type="text" class="form-control form-control-user" id="exampleInputEmail"
                        placeholder="Tóm tắt" formControlName="content">
+                <div class="alert alert-danger mt-1" role="alert"
+                     *ngIf="createPostForm.get('content').invalid && createPostForm.get('content').touched">
+                  Bạn chưa nhập tiêu đề! *VD: Bạn có thể nêu tóm tắt vấn đề bạn gặp phải, tên lỗi, tên framework.. để tiện cho quá trình tìm kiếm.
+                </div>
               </div>
               <div class="form-group">
                 <editor

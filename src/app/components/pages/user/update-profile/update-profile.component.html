@@ -8,7 +8,12 @@
     <div class="card-body">
       <!-- Login-->
 
-      <div class="row mb-3 text-center"><img class="col-12" src="{{user.imageUrls}}" alt=""></div>
+      <div class="row mb-3">
+        <div class="col-12 align-items-center">
+
+          <img  src="{{user.imageUrls}}" style="width: 50%" alt="">
+        </div>
+      </div>
       <form [formGroup]="updateForm" (ngSubmit)="update()">
 
         <div class="input-group mb-3">
