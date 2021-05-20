@@ -17,17 +17,18 @@
                 thông báo: </h5>
               <a [routerLink]="['/users/posts', post.post.id]" >
                 <div
-                class="m-0" [innerHTML]="post.post.content"></div>
+                class="m-0" [innerHTML]="post.post.content" style="font-size: 20px"></div>
               </a>
               <div class="card-text">
                 <!--        <h4 class="small">-->
-                <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
-                <a style="color: #719fb0" *ngIf="post.post.status != 2" [routerLink]="['/users/user-info', post.post.user.id]" >
-                  - {{post.post.user.username}}</a>
+                <i style="color: #a7a2a2; font-size: 10px">{{post.post.createAt | date : 'dd/MM/yyyy'}} - </i>
+                <a style="; color: #719fb0; font-size: 10px" *ngIf="post.post.status != 2" [routerLink]="['/users/user-info', post.post.user.id]" >
+                  {{post.post.user.username}}</a>
 
 
-                <a class="float-right" *ngIf="post.post.status != 2" [routerLink]="['/users/link-docs', post.post.category.id]"
-                   style="color: #f08a5d;">{{post.post.category.name}}</a>
+                <a class="float-right" *ngIf="post.post.status != 2"
+                   [routerLink]="['/users/link-docs', post.post.category.id]"
+                   style="color: #f08a5d; font-size: 10px">{{post.post.category.name}}</a>
                 <!--        </h4>-->
               </div>
               <div>

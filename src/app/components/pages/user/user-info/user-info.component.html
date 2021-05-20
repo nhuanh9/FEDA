@@ -31,9 +31,9 @@
 
             </div>
           </div>
-          <div class="card-body pt-0 pt-md-4">
+          <div class="card-bodypt-md-4">
             <div class="row">
-              <div class="col-12 pl-5 p-2 mb-3" *ngIf="linkDocs.length == 0" style="font-style: italic">
+              <div class="col-12 mb-3" *ngIf="linkDocs.length == 0" style="font-style: italic">
                 Chưa có tài liệu nào.
               </div>
             </div>
@@ -50,26 +50,26 @@
                   <td scope="col"><b>Thể loại</b></td>
                   <td scope="col"><b>Phạm vi</b></td>
                   <td scope="col"><b>Mô tả</b></td>
+                  <td scope="col"></td>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let linkDoc of linkDocs">
-                  <td scope="row"><a href="{{linkDoc.link}}">
+                  <td ><a href="{{linkDoc.link}}">
                     <p class="linkdoc">{{linkDoc.link}}</p>
                   </a></td>
-                  <td scope="row"><a [routerLink]="['/users/link-docs', linkDoc.category.id]">
+                  <td ><a [routerLink]="['/users/link-docs', linkDoc.category.id]">
                     <p class="linkdoc">{{linkDoc.category.name}}</p>
                   </a></td>
-                  <td scope="row"><a href="">
+                  <td ><a href="">
                     <p class="linkdoc">{{linkDoc.des}}</p>
                   </a></td>
-                  <td scope="row"><a href="">
+                  <td ><a href="">
                     <p class="linkdoc">{{linkDoc.description}}</p>
                   </a></td>
                   <td>
                     <img *ngIf="linkDoc.user.id == currentUser.id"
                          src="https://icons.iconarchive.com/icons/iconsmind/outline/16/Pen-3-icon.png" alt=""
-                         class="m-1"
                          style="cursor: pointer" (click)="showUpdatePost(content1)">
                     <ng-template #content1 let-modal id="test2">
                       <div class="modal-content">
@@ -280,7 +280,7 @@
                                   <div class="col-sm-4 mb-3 mb-sm-0 pt-2">
                                     <span>Phạm vi</span>
                                   </div>
-                                  <div class="col-sm-8 mb-3 mb-sm-0" (change)="openSelect($event)" id="des">
+                                  <div class="col-sm-8 mb-3 mb-sm-0" (change)="openSelect($event)" id="de1s">
                                     <select class="custom-select custom-select-sm"
                                             formControlName="description">
                                       <option value="Trong trường">Trong trường</option>
