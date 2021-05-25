@@ -24,6 +24,7 @@ export class AddLinkDocComponent implements OnInit {
     link: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     category: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
+    file: new FormControl('', [Validators.required]),
     des: new FormControl('', [Validators.required]),
     optional: new FormControl('', [Validators.required]),
   });
@@ -66,23 +67,24 @@ export class AddLinkDocComponent implements OnInit {
   createPost() {
     let linkDoc: LinkDoc = this.setLinkDoc();
     console.log(linkDoc);
-    this.authenticationService.currentUser.subscribe(x => {
-      this.currentUser = x;
-      this.userService.getUserProfile(x.id).subscribe(value => {
-        linkDoc.user = value;
-        this.linkDocService.create(linkDoc).subscribe(() => {
-          alert("Thêm mới đường dẫn tài liệu thành công!");
-          this.returnHome();
-        }, error => {
-        })
-      })
-    });
+    // this.authenticationService.currentUser.subscribe(x => {
+    //   this.currentUser = x;
+    //   this.userService.getUserProfile(x.id).subscribe(value => {
+    //     linkDoc.user = value;
+    //     this.linkDocService.create(linkDoc).subscribe(() => {
+    //       alert("Thêm mới đường dẫn tài liệu thành công!");
+    //       this.returnHome();
+    //     }, error => {
+    //     })
+    //   })
+    // });
   }
 
   private setLinkDoc() {
     let linkDoc: LinkDoc = {
       link: this.createLinkDocForm.get('link').value,
       description: this.createLinkDocForm.get('description').value,
+      linkFile: this.createLinkDocForm.get('file').value,
       category: this.setCategoryForFormData(),
       des: this.createLinkDocForm.get('des').value + ' ' + this.createLinkDocForm.get('optional').value
     }
@@ -98,6 +100,23 @@ export class AddLinkDocComponent implements OnInit {
       document.getElementById('truong').style.display = '';
     } else {
       document.getElementById('truong').style.display = 'none';
+    }
+  }
+
+  choseInput(event) {
+    if (event.target.value === 'Word') {
+      document.getElementById('word').style.display = '';
+
+      document.getElementById('pdf').style.display = 'none';
+      document.getElementById('link').style.display = 'none';
+    } if (event.target.value === 'PDF') {
+      document.getElementById('pdf').style.display = '';
+      document.getElementById('word').style.display = 'none';
+      document.getElementById('link').style.display = 'none';
+    }if (event.target.value === 'Đường dẫn') {
+      document.getElementById('link').style.display = '';
+      document.getElementById('pdf').style.display = 'none';
+      document.getElementById('word').style.display = 'none';
     }
   }
 }

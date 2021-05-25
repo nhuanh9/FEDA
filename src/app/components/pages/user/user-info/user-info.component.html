@@ -5,12 +5,12 @@
 <div class="main-content">
   <!-- Header -->
   <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-       style="min-height: 400px; background-size: 100%; background-position: center top;"
+       style="min-height: 600px; background-size: 100%; background-position: center top;"
        [style.background-image]="'url(' + user.imageUrls + ')'">
     <!-- Mask -->
     <span class="mask bg-gradient-default opacity-8"></span>
     <!-- Header container -->
-    <div class="container-fluid  align-items-center">
+    <div class="container-fluid  align-items-center" style="margin-top: -150px;">
       <div class="row">
         <div class="col-lg-12 col-md-10">
           <h2 class="display-2 text-white">{{user.name}}<<i>{{user.username}}</i>> </h2>
@@ -22,7 +22,7 @@
     </div>
   </div>
   <!-- Page content -->
-  <div class="container-fluid mt--7">
+  <div class="container-fluid mt--7" style="margin-top: -300px !important;">
     <div class="row">
       <div class="col-xl-7 order-xl-2 mb-5 mb-xl-0">
         <div class="card card-profile shadow">
@@ -31,7 +31,7 @@
 
             </div>
           </div>
-          <div class="card-bodypt-md-4">
+          <div class="card-body pt-md-2">
             <div class="row">
               <div class="col-12 mb-3" *ngIf="linkDocs.length == 0" style="font-style: italic">
                 Chưa có tài liệu nào.
@@ -55,18 +55,18 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let linkDoc of linkDocs">
-                  <td ><a href="{{linkDoc.link}}">
+                  <td><a href="{{linkDoc.link}}">
                     <p class="linkdoc">{{linkDoc.link}}</p>
                   </a></td>
-                  <td ><a [routerLink]="['/users/link-docs', linkDoc.category.id]">
+                  <td><a [routerLink]="['/users/link-docs', linkDoc.category.id]">
                     <p class="linkdoc">{{linkDoc.category.name}}</p>
                   </a></td>
-                  <td ><a href="">
+                  <td>
                     <p class="linkdoc">{{linkDoc.des}}</p>
-                  </a></td>
-                  <td ><a href="">
+                  </td>
+                  <td>
                     <p class="linkdoc">{{linkDoc.description}}</p>
-                  </a></td>
+                  </td>
                   <td>
                     <img *ngIf="linkDoc.user.id == currentUser.id"
                          src="https://icons.iconarchive.com/icons/iconsmind/outline/16/Pen-3-icon.png" alt=""
@@ -164,13 +164,13 @@
 
             </div>
           </div>
-          <div class="card-body pt-0 pt-md-4">
+          <div class="card-body pt-0 pt-md-2">
             <div class="row">
               <div class="col-12 pl-5 p-2 mb-3" *ngIf="posts.length == 0" style="font-style: italic">
                 Chưa có bài đăng nào.
               </div>
             </div>
-            <h1 style="text-align: center; margin-top: 20px" *ngIf="posts.length > 0">Bài viết </h1>
+            <h1 style="text-align: center; margin-top: 10px" *ngIf="posts.length > 0">Bài viết </h1>
             <div class="row" *ngIf="posts.length > 0">
 
               <div class="col-6" *ngFor="let post of posts">
@@ -185,10 +185,10 @@
                          class="m-1"
                          style="cursor: pointer" (click)="showUpdatePost(content1)">
                     <h4 class="small">
-                      <i style="color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
+                      <i style="font-size:10px;color: #a7a2a2">{{post.createAt | date : 'dd/MM/yyyy'}}</i>
 
                       <a class="float-right" [routerLink]="['/users/link-doc', post.category.id]"
-                         style="color: #f08a5d;">{{post.category.name}}</a>
+                         style="font-size:10px;color: #f08a5d;">{{post.category.name}}</a>
 
                     </h4>
 

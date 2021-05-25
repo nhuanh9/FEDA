@@ -8,11 +8,11 @@
         <div class="col-lg-12">
           <div class="p-5">
             <div class="text-center">
-              <h1 class="h4 text-gray-900 mb-4">Thêm đường dẫn tài liệu</h1>
+              <h1 class="h4 text-gray-900 mb-4">Thêm tài liệu</h1>
             </div>
             <form class="user" [formGroup]="createLinkDocForm" (ngSubmit)="createPost()">
               <div class="form-group row">
-                <div class="col-sm-1 mb-3 mb-sm-0 pt-2">
+                <div class="col-sm-2 mb-3 mb-sm-0 pt-2">
                   <span>Thể loại </span>
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0">
@@ -28,7 +28,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <div class="col-sm-1 mb-3 mb-sm-0 pt-2">
+                <div class="col-sm-2 mb-3 mb-sm-0 pt-2">
                   <span>Phạm vi</span>
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0" (change)="openSelect($event)" id="des">
@@ -40,7 +40,7 @@
                 </div>
               </div>
               <div class="form-group row" id="truong" style="display: none">
-                <div class="col-sm-1 mb-3 mb-sm-0 pt-2">
+                <div class="col-sm-2 mb-3 mb-sm-0 pt-2">
                   <span>Kỳ học</span>
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0">
@@ -57,7 +57,36 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group row">
+                <div class="col-sm-2 mb-3 mb-sm-0 pt-2">
+                  <span>Loại tài liệu</span>
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0" (change)="choseInput($event)" >
+                  <select class="custom-select custom-select-sm"
+                          formControlName="des">
+                    <option value="Word">Word</option>
+                    <option value="PDF">PDF</option>
+                    <option value="Đường dẫn">Đường dẫn</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row" id="word" style="display: none">
+                <div class="col-sm-2 mb-3 mb-sm-0 pt-2">
+                  <span>Chọn file word</span>
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input class="form-control" type="file" formControlName="file">
+                </div>
+              </div>
+              <div class="form-group row" id="pdf" style="display: none">
+                <div class="col-sm-2 mb-3 mb-sm-0 pt-2">
+                  <span>Chọn file pdf</span>
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input class="form-control" type="file" formControlName="file">
+                </div>
+              </div>
+              <div class="form-group" id="link" style="display: none">
                 <input type="text" class="form-control form-control-user"
                        placeholder="Đường dẫn tài liệu" formControlName="link">
               </div>

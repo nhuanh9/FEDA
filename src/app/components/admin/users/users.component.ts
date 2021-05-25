@@ -22,6 +22,7 @@ export class UsersComponent implements OnInit {
   getAllPost() {
     this.userService.getAll().subscribe(res => {
       this.items = res;
+      console.log(res);
     })
   }
 
