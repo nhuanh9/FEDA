@@ -35,7 +35,12 @@
       </thead>
       <tbody>
       <tr *ngFor="let linkDoc of linkDocs">
-        <td scope="row"><a href="{{linkDoc.link}}"><p class="linkdoc">{{linkDoc.link}}</p></a></td>
+        <td scope="row" *ngIf="linkDoc.linkFile == '' || linkDoc.linkFile == null"><a href="{{linkDoc.link}}"><p
+          class="linkdoc">{{linkDoc.link}}</p>
+        </a></td>
+        <td scope="row" *ngIf="linkDoc.linkFile !='' && linkDoc.linkFile != null"><a href="{{linkDoc.linkFile}}">
+          <div class="linkdoc"><i class="fa fa-download"></i>   {{linkDoc.link}}</div>
+        </a></td>
         <td scope="row">{{linkDoc.description}}</td>
         <td scope="row">{{linkDoc.category.name}}</td>
         <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>

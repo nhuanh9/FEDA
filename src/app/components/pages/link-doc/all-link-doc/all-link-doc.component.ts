@@ -13,11 +13,11 @@ export class AllLinkDocComponent implements OnInit {
 
   ngOnInit() {
     this.linkDocService.getAll().subscribe(res=> {
-      this.linkDocs = res;
+      this.linkDocs = res.reverse();
     })
     setInterval(() => {
       this.linkDocService.getAll().subscribe(res=> {
-        this.linkDocs = res;
+        this.linkDocs = res.reverse();
       })
     }, 2000);
   }

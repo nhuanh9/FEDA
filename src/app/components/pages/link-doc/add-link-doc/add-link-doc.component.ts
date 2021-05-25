@@ -33,6 +33,7 @@ export class AddLinkDocComponent implements OnInit {
   });
   link: any = '';
   fb: any;
+  des: any = ''
 
   constructor(private userService: UserService,
               private router: Router,
@@ -56,7 +57,7 @@ export class AddLinkDocComponent implements OnInit {
   }
 
   returnHome() {
-    this.router.navigate(['/users/home']);
+    this.router.navigate(['/users/all-link-doc']);
   }
 
   setCategoryForFormData() {
@@ -97,6 +98,9 @@ export class AddLinkDocComponent implements OnInit {
       linkDoc.category = this.categories[this.categories.length - 1];
     }
     linkDoc.linkFile = this.link;
+    if (linkDoc.link == '') {
+      linkDoc.link = this.des;
+    }
     return linkDoc;
   }
 
@@ -120,8 +124,10 @@ export class AddLinkDocComponent implements OnInit {
   }
 
   savePDF(value) {
+    console.log(value)
     var n = Date.now();
     const file = value.target.files[0];
+    this.des = file.name;
     const filePath = `RoomsImages/${n}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(`RoomsImages/${n}`, file);

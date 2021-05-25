@@ -37,9 +37,12 @@
       </thead>
       <tbody>
       <tr *ngFor="let linkDoc of linkDocs">
-        <td scope="row" *ngIf="linkDoc.link != ''"><a href="{{linkDoc.link}}"><p class="linkdoc">{{linkDoc.link}}</p>
+        <td scope="row" *ngIf="linkDoc.linkFile == '' || linkDoc.linkFile == null"><a href="{{linkDoc.link}}"><p
+          class="linkdoc">{{linkDoc.link}}</p>
         </a></td>
-        <td scope="row" *ngIf="linkDoc.link ==''"><a href="{{linkDoc.linkFile}}"><div class="linkdoc"><i class="fa fa-download"></i>   {{linkDoc.linkFile}}</div></a></td>
+        <td scope="row" *ngIf="linkDoc.linkFile !='' && linkDoc.linkFile != null"><a href="{{linkDoc.linkFile}}">
+          <div class="linkdoc"><i class="fa fa-download"></i>   {{linkDoc.link}}</div>
+        </a></td>
         <th scope="row"><a  [routerLink]="['/users/link-docs', linkDoc.category.id]">{{linkDoc.category.name}}</a></th>
         <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
         <th scope="row">{{linkDoc.description}}</th>
