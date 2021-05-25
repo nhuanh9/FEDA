@@ -17,12 +17,12 @@
               </a>
               <p class="card-text">
                 <!--        <h4 class="small">-->
-                <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
+                <i style="color: #a7a2a2; font-size: 10px">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
                 -
-                <a style="color: #719fb0" [routerLink]="['/users/user-info', post.post.user.id]">{{post.post.user.username}}</a>
+                <a style="color: #719fb0; font-size: 10px" [routerLink]="['/users/user-info', post.post.user.id]">{{post.post.user.username}}</a>
 
                 <a class="float-right" *ngIf="post.post.status != 2" [routerLink]="['/users/link-docs', post.post.category.id]"
-                   style="color: #f08a5d;">{{post.post.category.name}}</a>
+                   style="color: #f08a5d; font-size: 10px">{{post.post.category.name}}</a>
                 <!--        </h4>-->
               </p>
               <div>

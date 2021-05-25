@@ -68,6 +68,9 @@ export class AddOrderComponent implements OnInit {
       category: this.setCategoryForFormData(),
       note: this.createForm.get('note').value
     }
+    if (order.category == undefined) {
+      order.category = this.categories[this.categories.length - 1];
+    }
     return order;
   }
 

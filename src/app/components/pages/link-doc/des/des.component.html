@@ -27,17 +27,19 @@
       <thead>
       <tr>
         <th scope="col">Đường dẫn</th>
+        <th scope="col">Mô tả</th>
+        <th scope="col">Danh mục</th>
         <th scope="col">Ngày đăng</th>
         <th scope="col">Tác giả</th>
-        <th scope="col">Lượt thích</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let linkDoc of linkDocs">
         <td scope="row"><a href="{{linkDoc.link}}"><p class="linkdoc">{{linkDoc.link}}</p></a></td>
+        <td scope="row">{{linkDoc.description}}</td>
+        <td scope="row">{{linkDoc.category.name}}</td>
         <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
         <td scope="row"><a [routerLink]="['/users/user-info', linkDoc.user.id]">{{linkDoc.user.username}}</a></td>
-        <th scope="row">{{linkDoc.likes}}</th>
       </tr>
       </tbody>
     </table>

@@ -8,7 +8,7 @@ import {Post} from "../../../models/post";
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
-  posts: Post[] = []
+  posts: Post[] = [{id: ''}]
   items = [];
   pageOfItems: Array<any>;
   constructor(private postService: PostService) { }
@@ -16,6 +16,7 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.getAllPost();
     this.items = [{post: {content: 'a', user: {username: ''}, category: {id: ''}, listComment: []}}];
+    this.pageOfItems = [{post: {content: 'a', user: {username: ''}, category: {id: ''}, listComment: []}}];
   }
 
   getAllPost() {

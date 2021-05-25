@@ -33,6 +33,7 @@ export class RegisterComponent implements OnInit {
       this.registerForm.reset();
       this.router.navigate(['/login']);
     }, err => {
+      alert("Tài khoản đã được đăng ký!");
     });
     console.log(user);
   }

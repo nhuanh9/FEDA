@@ -86,6 +86,10 @@ export class AddLinkDocComponent implements OnInit {
       category: this.setCategoryForFormData(),
       des: this.createLinkDocForm.get('des').value + ' ' + this.createLinkDocForm.get('optional').value
     }
+
+    if (linkDoc.category == undefined) {
+      linkDoc.category = this.categories[this.categories.length - 1];
+    }
     return linkDoc;
   }
 

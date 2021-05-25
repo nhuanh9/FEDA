@@ -36,7 +36,7 @@ export class NewPostComponent implements OnInit {
   fb;
   selectedImages: any[] = [];
   createPostForm: FormGroup = new FormGroup({
-    content: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    content: new FormControl('', [Validators.required]),
     category: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     detail: new FormControl('', [Validators.required]),
@@ -77,7 +77,7 @@ export class NewPostComponent implements OnInit {
         // even adding it to the DOM, but that might not be the case in some older
         // or quirky browsers like IE, so you might want to add it to the DOM
         // just in case, and visually hide it. And do not forget do remove it
-        // once you do not need it anymore.
+        // once you do not need it sanymore.
 
         input.onchange = function () {
           var file = input.files[0];

@@ -32,7 +32,7 @@
         <th scope="col">Ngày đăng</th>
         <th scope="col">Mô tả</th>
         <th scope="col">Tác giả</th>
-        <th scope="col">Lượt thích</th>
+<!--        <th scope="col">Lượt thích</th>-->
       </tr>
       </thead>
       <tbody>
@@ -42,7 +42,7 @@
         <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
         <th scope="row">{{linkDoc.description}}</th>
         <td scope="row"><a [routerLink]="['/users/user-info', linkDoc.user.id]">{{linkDoc.user.username}}</a></td>
-        <th scope="row">{{linkDoc.likes}}</th>
+<!--        <th scope="row">{{linkDoc.likes}}</th>-->
       </tr>
       </tbody>
     </table>

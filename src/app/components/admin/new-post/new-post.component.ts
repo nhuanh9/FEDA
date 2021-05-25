@@ -15,6 +15,7 @@ import {finalize} from "rxjs/operators";
 import {Image} from "../../../models/image";
 
 import {NgxLoadingComponent, ngxLoadingAnimationTypes} from "ngx-loading";
+
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
