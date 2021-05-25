@@ -1,4 +1,3 @@
-
 <h1 style="
         text-align: center;
         color: black;
@@ -27,7 +26,7 @@
     <table class="table table-hover" style="color: black !important;">
       <thead>
       <tr>
-        <th scope="col">Đường dẫn</th>
+        <th scope="col">Tài liệu</th>
         <th scope="col">Ngày đăng</th>
         <th scope="col">Tác giả</th>
         <th scope="col">Lượt thích</th>
@@ -35,7 +34,9 @@
       </thead>
       <tbody>
       <tr *ngFor="let linkDoc of linkDocs">
-        <td scope="row"><a href="{{linkDoc.link}}"><p class="linkdoc">{{linkDoc.link}}</p></a></td>
+        <td scope="row" *ngIf="linkDoc.link != ''"><a href="{{linkDoc.link}}"><p class="linkdoc">{{linkDoc.link}}</p>
+        </a></td>
+        <td scope="row" *ngIf="linkDoc.linkFile !=''"><a href="{{linkDoc.linkFile}}"><p class="linkdoc">{{linkDoc.linkFile}}</p></a></td>
         <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
         <td scope="row"><a [routerLink]="['/users/user-info', linkDoc.user.id]">{{linkDoc.user.username}}</a></td>
         <th scope="row">{{linkDoc.likes}}</th>
@@ -58,13 +59,14 @@
       <div class="card-body">
         <div class="card" style="" *ngIf="post.post.status != 0">
           <div class="card-body">
-            <a  [routerLink]="['/users/posts', post.post.id]"><h5
+            <a [routerLink]="['/users/posts', post.post.id]"><h5
               class="m-0 font-weight-bold card-title">{{post.post.content}}</h5>
             </a>
             <p class="card-text">
               <i style="color: #a7a2a2">{{post.post.createAt | date : 'dd/MM/yyyy'}}</i>
               -
-              <a style="color: #719fb0" [routerLink]="['/users/user-info', post.post.user.id]" >{{post.post.user.username}}</a>
+              <a style="color: #719fb0"
+                 [routerLink]="['/users/user-info', post.post.user.id]">{{post.post.user.username}}</a>
 
               <a class="float-right" [routerLink]="['/users/link-docs', post.post.category.id]"
                  style="color: #f08a5d;">{{post.post.category.name}}</a>

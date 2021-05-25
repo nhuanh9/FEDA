@@ -27,7 +27,7 @@
     <table class="table table-hover" style="color: black !important;">
       <thead>
       <tr>
-        <th scope="col">Đường dẫn</th>
+        <th scope="col">Tài liệu</th>
         <th scope="col">Thể loại</th>
         <th scope="col">Ngày đăng</th>
         <th scope="col">Mô tả</th>
@@ -37,7 +37,9 @@
       </thead>
       <tbody>
       <tr *ngFor="let linkDoc of linkDocs">
-        <td scope="row"><a href="{{linkDoc.link}}" href=""><p class="linkdoc">{{linkDoc.link}}</p></a></td>
+        <td scope="row" *ngIf="linkDoc.link != ''"><a href="{{linkDoc.link}}"><p class="linkdoc">{{linkDoc.link}}</p>
+        </a></td>
+        <td scope="row" *ngIf="linkDoc.link ==''"><a href="{{linkDoc.linkFile}}"><p class="linkdoc">{{linkDoc.linkFile}}</p></a></td>
         <th scope="row"><a  [routerLink]="['/users/link-docs', linkDoc.category.id]">{{linkDoc.category.name}}</a></th>
         <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
         <th scope="row">{{linkDoc.description}}</th>

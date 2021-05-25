@@ -62,28 +62,18 @@
                   <span>Loại tài liệu</span>
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0" (change)="choseInput($event)" >
-                  <select class="custom-select custom-select-sm"
-                          formControlName="des">
-                    <option value="Word">Word</option>
-                    <option value="PDF">PDF</option>
+                  <select class="custom-select custom-select-sm">
+                    <option value="pdf">PDF/WORD</option>
                     <option value="Đường dẫn">Đường dẫn</option>
                   </select>
                 </div>
               </div>
-              <div class="form-group row" id="word" style="display: none">
-                <div class="col-sm-2 mb-3 mb-sm-0 pt-2">
-                  <span>Chọn file word</span>
-                </div>
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input class="form-control" type="file" formControlName="file">
-                </div>
-              </div>
               <div class="form-group row" id="pdf" style="display: none">
                 <div class="col-sm-2 mb-3 mb-sm-0 pt-2">
-                  <span>Chọn file pdf</span>
+                  <span>Chọn file</span>
                 </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input class="form-control" type="file" formControlName="file">
+                  <input class="form-control" type="file" (change)="savePDF($event)">
                 </div>
               </div>
               <div class="form-group" id="link" style="display: none">
