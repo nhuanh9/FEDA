@@ -40,17 +40,17 @@ export class RegisterComponent implements OnInit {
           user.status = '2';
         }
       }
-      console.log(user.status);
+      this.userService.register(user).subscribe(() => {
+        alert('Đăng ký thành công');
+        this.registerForm.reset();
+        this.router.navigate(['/login']);
+      }, err => {
+        alert("Tài khoản đã được đăng ký!");
+      });
+      console.log(user);
     })
 
-    // this.userService.register(user).subscribe(() => {
-    //   alert('Đăng ký thành công');
-    //   this.registerForm.reset();
-    //   this.router.navigate(['/login']);
-    // }, err => {
-    //   alert("Tài khoản đã được đăng ký!");
-    // });
-    // console.log(user);
+
   }
 
   private setNewUser() {
