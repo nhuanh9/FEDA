@@ -13,6 +13,8 @@ import {PostLikeService} from "../../../../services/post-like.service";
 import {CategoryService} from "../../../../services/category.service";
 import {Category} from "../../../../models/category";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AuthenticationService} from "../../../../services/authentication.service";
+import {UserService} from "../../../../services/user.service";
 
 @Component({
   selector: 'app-list-link-doc',
@@ -20,6 +22,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./list-link-doc.component.scss']
 })
 export class ListLinkDocComponent implements OnInit {
+  currentUser: User = {status: '1'};
   linkDocs: LinkDoc[];
   posts: Post[];
   listPost: Post[];
@@ -39,7 +42,9 @@ export class ListLinkDocComponent implements OnInit {
               private orderSeminarService: OrderSeminarService,
               private postLikeService: PostLikeService,
               private categoryService: CategoryService,
-              private modalService: NgbModal,) {
+              private modalService: NgbModal,
+              private authenticationService: AuthenticationService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -60,6 +65,7 @@ export class ListLinkDocComponent implements OnInit {
       this.getAllPost(id);
 
     });
+    this.getCurrentUser()
   }
 
 
@@ -123,5 +129,31 @@ export class ListLinkDocComponent implements OnInit {
       this.listLikePost = value;
     })
     this.modalService.open(content, {centered: true});
+  }
+  getCurrentUser() {
+    this.authenticationService.currentUser.subscribe(x => {
+      this.userService.getUserProfile(x.id).subscribe(value => {
+        this.currentUser = value;
+        console.log(this.currentUser)
+      })
+    })
+  }
+  isITUTC(status, linkDoc) {
+    if (status == '2' && linkDoc.des.split(' ')[0] === 'Trong') {
+      return true;
+    }
+    return false;
+  }
+  isTrongTruong(linkDoc) {
+    if (linkDoc.des.split(' ')[0] === 'Trong') {
+      return true;
+    }
+    return false;
+  }
+  isLink(linkDoc) {
+    if (linkDoc.linkFile == '' || linkDoc.linkFile == null) {
+      return true;
+    }
+    return false
   }
 }
