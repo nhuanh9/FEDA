@@ -47,16 +47,20 @@ export class AllLinkDocComponent implements OnInit {
     })
   }
 
-  isITUTC(status) {
-    if (status == '2') {
+  isITUTC(status, linkDoc) {
+    if (status == '2' && linkDoc.des.split(' ')[0] === 'Trong') {
       return true;
     }
     return false;
-    // return true
   }
-
+  isTrongTruong(linkDoc) {
+    if (linkDoc.des.split(' ')[0] === 'Trong') {
+      return true;
+    }
+    return false;
+  }
   isLink(linkDoc) {
-    if ( linkDoc.linkFile =='' || linkDoc.linkFile ==null){
+    if (linkDoc.linkFile == '' || linkDoc.linkFile == null) {
       return true;
     }
     return false

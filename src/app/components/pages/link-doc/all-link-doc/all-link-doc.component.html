@@ -31,6 +31,7 @@
         <th scope="col">Thể loại</th>
         <th scope="col">Ngày đăng</th>
         <th scope="col">Mô tả</th>
+        <th scope="col">Phạm vi</th>
         <th scope="col">Tác giả</th>
         <!--        <th scope="col">Lượt thích</th>-->
       </tr>
@@ -40,17 +41,19 @@
         <td scope="row" *ngIf="isLink(linkDoc)"><a href="{{linkDoc.link}}"><p
           class="linkdoc">{{linkDoc.link}}</p>
         </a></td>
-        <td scope="row" *ngIf="!isITUTC(currentUser.status) && !isLink(linkDoc)"><p
-          class="linkdoc">{{linkDoc.link}}</p></td>
-        <!--        <td scope="row" *ngIf="linkDoc.linkFile !='' && linkDoc.linkFile != null"><a href="{{linkDoc.linkFile}}">-->
-        <!--          <div class="linkdoc"><i class="fa fa-download"></i>   {{linkDoc.link}}</div>-->
-        <!--        </a></td>-->
-        <td scope="row" *ngIf="isITUTC(currentUser.status) && !isLink(linkDoc)"><a href="{{linkDoc.linkFile}}">
+        <td scope="row" *ngIf="!isLink(linkDoc) && isTrongTruong(linkDoc) && !isITUTC(currentUser.status,linkDoc)"><p
+          class="linkdoc">(ItUtcer có thể tải){{linkDoc.link}}</p>
+        </td>
+        <td scope="row" *ngIf="isITUTC(currentUser.status, linkDoc) && !isLink(linkDoc)"><a href="{{linkDoc.linkFile}}">
+          <div class="linkdoc"><i class="fa fa-download"></i>   {{linkDoc.link}}</div>
+        </a></td>
+        <td scope="row" *ngIf="!isITUTC(currentUser.status, linkDoc) && !isLink(linkDoc) && !isTrongTruong(linkDoc)"><a href="{{linkDoc.linkFile}}">
           <div class="linkdoc"><i class="fa fa-download"></i>   {{linkDoc.link}}</div>
         </a></td>
         <th scope="row"><a [routerLink]="['/users/link-docs', linkDoc.category.id]">{{linkDoc.category.name}}</a></th>
         <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
-        <th scope="row">{{linkDoc.description}}</th>
+        <th scope="row" width="600">{{linkDoc.description}}</th>
+        <th scope="row">{{linkDoc.des}}</th>
         <td scope="row"><a [routerLink]="['/users/user-info', linkDoc.user.id]">{{linkDoc.user.username}}</a></td>
         <!--        <th scope="row">{{linkDoc.likes}}</th>-->
       </tr>
