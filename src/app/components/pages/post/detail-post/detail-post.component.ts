@@ -67,6 +67,7 @@ export class DetailPostComponent implements OnInit {
       const id = paraMap.get('id');
       this.postService.get(id).subscribe(result => {
         this.post = result;
+        console.log(this.post)
         this.commentLikeService.getAll().subscribe(res => {
           this.allLike = res;
           for (let i = 0; i < this.post.listComment.length; i++) {

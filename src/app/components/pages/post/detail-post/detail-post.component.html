@@ -34,7 +34,7 @@
           <div *ngFor="let cmt of listCurrentUserLikeComment"
                style="border-radius: 2px;border: 1px solid skyblue; background: #82ffdc" class="row m-3 p-3">
             <div class="col-6">
-              <a class="mr-1" [routerLink]="['/users/user-info', cmt.user.id]">{{cmt.user.username}}</a>
+              <a class="mr-1" [routerLink]="['/users/user-info', cmt.comment.user.id]">{{cmt.comment.user.username}}</a>
 
               <i class="ml-1 small" style="color: #a7a2a2">{{cmt.comment.createAt | date : 'dd/MM/yyyy'}}</i>
             </div>
