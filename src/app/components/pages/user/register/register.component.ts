@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../../services/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../../../models/user";
+import {ItutcService} from "../../../../services/itutc.service";
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import {User} from "../../../../models/user";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+  itutcs: any[];
   registerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
@@ -20,10 +21,15 @@ export class RegisterComponent implements OnInit {
   });
 
   constructor(private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private itutcService: ItutcService) {
   }
 
   ngOnInit() {
+    this.itutcService.getAll().subscribe(res=>{
+      this.itutcs = res;
+      console.log(res)
+    })
   }
 
   register() {

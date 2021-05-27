@@ -12,7 +12,8 @@ export interface User {
   enabled?: boolean;
   roles?: [Role];
   imageUrls?: string;
-  posts?:string;
-  linkdocs?:string;
-  comments?:string;
+  posts?: string;
+  linkdocs?: string;
+  comments?: string;
+  status?: string;
 }
