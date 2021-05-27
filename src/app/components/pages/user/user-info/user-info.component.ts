@@ -29,7 +29,7 @@ import {finalize} from "rxjs/operators";
   styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent implements OnInit {
-  currentUser: UserToken = {id: ''};
+  currentUser: any = {id: ''};
   user: User = {};
   updateForm: FormGroup;
   arrayPicture: any;
@@ -117,7 +117,12 @@ export class UserInfoComponent implements OnInit {
 
 
   getCurrentUser() {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.authenticationService.currentUser.subscribe(x => {
+      this.userService.getUserProfile(x.id).subscribe(value => {
+        this.currentUser = value;
+        console.log(this.currentUser)
+      })
+    })
   }
 
   getAllCategory() {
@@ -219,5 +224,26 @@ export class UserInfoComponent implements OnInit {
     })
     this.modalService.dismissAll();
   }
+
+
+  isITUTC(status, linkDoc) {
+    if (status == '2' && linkDoc.des.split(' ')[0] === 'Trong') {
+      return true;
+    }
+    return false;
+  }
+  isTrongTruong(linkDoc) {
+    if (linkDoc.des.split(' ')[0] === 'Trong') {
+      return true;
+    }
+    return false;
+  }
+  isLink(linkDoc) {
+    if (linkDoc.linkFile == '' || linkDoc.linkFile == null) {
+      return true;
+    }
+    return false;
+  }
+
 
 }

@@ -55,8 +55,17 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let linkDoc of linkDocs">
-                  <td><a href="{{linkDoc.link}}">
-                    <p class="linkdoc">{{linkDoc.link}}</p>
+                  <td scope="row" *ngIf="isLink(linkDoc)"><a href="{{linkDoc.link}}"><p
+                    class="linkdoc">{{linkDoc.link}}</p>
+                  </a></td>
+                  <td scope="row" *ngIf="!isLink(linkDoc) && isTrongTruong(linkDoc) && !isITUTC(currentUser.status,linkDoc)"><p
+                    class="linkdoc">(ItUtcer có thể tải){{linkDoc.link}}</p>
+                  </td>
+                  <td scope="row" *ngIf="isITUTC(currentUser.status, linkDoc) && !isLink(linkDoc)"><a href="{{linkDoc.linkFile}}">
+                    <div class="linkdoc"><i class="fa fa-download"></i>   {{linkDoc.link}}</div>
+                  </a></td>
+                  <td scope="row" *ngIf="!isITUTC(currentUser.status, linkDoc) && !isLink(linkDoc) && !isTrongTruong(linkDoc)"><a href="{{linkDoc.linkFile}}">
+                    <div class="linkdoc"><i class="fa fa-download"></i>   {{linkDoc.link}}</div>
                   </a></td>
                   <td><a [routerLink]="['/users/link-docs', linkDoc.category.id]">
                     <p class="linkdoc">{{linkDoc.category.name}}</p>
