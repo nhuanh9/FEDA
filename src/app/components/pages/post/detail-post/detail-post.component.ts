@@ -67,7 +67,6 @@ export class DetailPostComponent implements OnInit {
       const id = paraMap.get('id');
       this.postService.get(id).subscribe(result => {
         this.post = result;
-        console.log(this.post)
         this.commentLikeService.getAll().subscribe(res => {
           this.allLike = res;
           for (let i = 0; i < this.post.listComment.length; i++) {
@@ -86,7 +85,6 @@ export class DetailPostComponent implements OnInit {
         })
         this.imageService.getAllByPostId(this.post.id).subscribe(result => {
           this.imgs = result.length==0 ? [{linkImg: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/LogoUTC.jpg'}] : result;
-          console.log(this.imgs);
         })
       })
     });
