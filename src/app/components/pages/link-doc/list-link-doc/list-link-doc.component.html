@@ -28,6 +28,7 @@
       <tr>
         <th scope="col">Tài liệu</th>
         <th scope="col">Mô tả</th>
+        <th scope="col">Phạm vi</th>
         <th scope="col">Ngày đăng</th>
         <th scope="col">Tác giả</th>
       </tr>
@@ -48,6 +49,7 @@
         </a></td>
 
         <th scope="row">{{linkDoc.description}}</th>
+        <th scope="row">{{linkDoc.des}}</th>
         <td scope="row"><i> {{linkDoc.createAt| date: "dd/MM/yyyy"}}</i></td>
         <td scope="row"><a [routerLink]="['/users/user-info', linkDoc.user.id]">{{linkDoc.user.username}}</a></td>
       </tr>

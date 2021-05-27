@@ -13,6 +13,8 @@ import {OrderSeminarService} from "../../../../services/order-seminar.service";
 import {PostLikeService} from "../../../../services/post-like.service";
 import {CategoryService} from "../../../../services/category.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AuthenticationService} from "../../../../services/authentication.service";
+import {UserService} from "../../../../services/user.service";
 
 @Component({
   selector: 'app-des',
@@ -33,19 +35,21 @@ export class DesComponent implements OnInit {
   category: Category;
   des: string;
   caption: string = '';
-
+  currentUser: User = {status: '1'};
   constructor(private linkDocService: LinkDocService,
               private activateRoute: ActivatedRoute,
               private postService: PostService,
               private orderSeminarService: OrderSeminarService,
               private postLikeService: PostLikeService,
               private categoryService: CategoryService,
-              private modalService: NgbModal,) {
+              private modalService: NgbModal,
+              private authenticationService: AuthenticationService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
     this.des = '';
-    this.linkDocs = [{description: '', user: {}}]
+    this.linkDocs = [{description: '', user: {}, category: {name: ''}}]
     this.listCurrentUserLikePost = [{post: {category: {name: ''}}}];
     this.activateRoute.paramMap.subscribe((paraMap: ParamMap) => {
       this.des = paraMap.get('des');
@@ -56,6 +60,7 @@ export class DesComponent implements OnInit {
       this.getAllPost(this.des);
 
     });
+    this.getCurrentUser()
   }
 
   getAllPost(des) {
@@ -121,4 +126,31 @@ export class DesComponent implements OnInit {
     this.modalService.open(content, {centered: true});
   }
 
+  getCurrentUser() {
+    this.authenticationService.currentUser.subscribe(x => {
+      this.userService.getUserProfile(x.id).subscribe(value => {
+        this.currentUser = value;
+        console.log(this.currentUser)
+      })
+    })
+  }
+
+  isITUTC(status, linkDoc) {
+    if (status == '2' && linkDoc.des.split(' ')[0] === 'Trong') {
+      return true;
+    }
+    return false;
+  }
+  isTrongTruong(linkDoc) {
+    if (linkDoc.des.split(' ')[0] === 'Trong') {
+      return true;
+    }
+    return false;
+  }
+  isLink(linkDoc) {
+    if (linkDoc.linkFile == '' || linkDoc.linkFile == null) {
+      return true;
+    }
+    return false
+  }
 }
