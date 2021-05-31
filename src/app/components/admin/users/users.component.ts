@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Post} from "../../../models/post";
 import {PostService} from "../../../services/post.service";
 import {UserService} from "../../../services/user.service";
@@ -12,7 +12,9 @@ export class UsersComponent implements OnInit {
 
   items = [];
   pageOfItems: Array<any>;
-  constructor(private userService: UserService) { }
+
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
     this.getAllPost();
@@ -29,5 +31,13 @@ export class UsersComponent implements OnInit {
 
   onChangePage(pageOfItems: Array<any>) {
     this.pageOfItems = pageOfItems;
+  }
+
+  confirmDA(user) {
+    if (confirm("Bạn muốn cho <" + user.username + "> có thể tải tất cả tài liệu?") == true) {
+      user.status = "2";
+      this.userService.updateUserProfile(user.id, user).subscribe(()=> {
+      });
+    }
   }
 }

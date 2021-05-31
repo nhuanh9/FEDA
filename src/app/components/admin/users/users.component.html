@@ -15,9 +15,11 @@
         <th scope="col">Tên</th>
         <th scope="col">Số điện thoại</th>
         <th scope="col">Email</th>
-        <th scope="col">Số Comment</th>
-        <th scope="col">Số bài viết</th>
+        <th scope="col">Số Com</th>
+        <th scope="col">Số bình luận</th>
         <th scope="col">Số tài liệu</th>
+        <th></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -30,6 +32,12 @@
         <td>{{user.comments}}</td>
         <td>{{user.posts}}</td>
         <td>{{user.linkDocs}}</td>
+        <td >
+          <button *ngIf="user.status !='2'" class="btn btn-outline-success" (click)="confirmDA(user)">Up to DA</button>
+        </td>
+        <td>
+          <button class="btn btn-outline-secondary">Up to Admin</button>
+        </td>
       </tr>
       </tbody>
     </table>

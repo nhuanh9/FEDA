@@ -34,6 +34,11 @@ export class TopbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = {}
+    this.getAll();
+    setInterval(()=>this.getAll(), 5000);
+  }
+
+  getAll() {
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
       this.userService.getUserProfile(x.id).subscribe(value => {
@@ -44,5 +49,4 @@ export class TopbarComponent implements OnInit {
       this.posts = res;
     })
   }
-
 }
