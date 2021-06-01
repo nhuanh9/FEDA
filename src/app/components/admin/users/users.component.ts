@@ -18,7 +18,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.getAllPost();
-    this.items = [{}];
+    this.items = [{roles: [{}]}];
   }
 
   getAllPost() {
@@ -36,7 +36,15 @@ export class UsersComponent implements OnInit {
   confirmDA(user) {
     if (confirm("Bạn muốn cho <" + user.username + "> có thể tải tất cả tài liệu?") == true) {
       user.status = "2";
-      this.userService.updateUserProfile(user.id, user).subscribe(()=> {
+      this.userService.updateUserProfile(user.id, user).subscribe(() => {
+      });
+    }
+  }
+
+  confirmA(user) {
+    if (confirm("Bạn muốn cho <" + user.username + "> làm admin?") == true) {
+      user.roles.push({id:2, name: 'ROLE_ADMIN'});
+      this.userService.updateUserProfile(user.id, user).subscribe(() => {
       });
     }
   }

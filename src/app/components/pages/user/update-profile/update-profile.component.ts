@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {UserToken} from "../../../../models/user-token";
 import {User} from "../../../../models/user";
 import {Router} from "@angular/router";
@@ -9,14 +9,18 @@ import firebase from "firebase";
 import {finalize} from "rxjs/operators";
 import {Image} from "../../../../models/image";
 import {AngularFireStorage} from "@angular/fire/storage";
-
+import {NgxLoadingComponent, ngxLoadingAnimationTypes} from "ngx-loading";
 @Component({
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
   styleUrls: ['./update-profile.component.scss']
 })
 export class UpdateProfileComponent implements OnInit {
-
+  @ViewChild('ngxLoading', {static: false}) ngxLoadingComponent: NgxLoadingComponent;
+  @ViewChild('customLoadingTemplate', {static: false}) customLoadingTemplate: TemplateRef<any>;
+  public ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
+  public loading = false;
+  public loadingTemplate: TemplateRef<any>;
   currentUser: UserToken;
   user: User;
   updateForm: FormGroup;
@@ -88,6 +92,7 @@ export class UpdateProfileComponent implements OnInit {
 
 
   saveImg(value) {
+    this.loading = true;
     var n = Date.now();
     const file = value.target.files[0];
     const filePath = `RoomsImages/${n}`;
@@ -111,5 +116,6 @@ export class UpdateProfileComponent implements OnInit {
           console.log(url);
         }
       });
+    setInterval(() => this.loading = false, 5000);
   }
 }

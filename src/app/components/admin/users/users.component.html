@@ -36,7 +36,7 @@
           <button *ngIf="user.status !='2'" class="btn btn-outline-success" (click)="confirmDA(user)">Up to DA</button>
         </td>
         <td>
-          <button class="btn btn-outline-secondary">Up to Admin</button>
+          <button class="btn btn-outline-secondary" *ngIf="user.roles.length ==1" (click)="confirmA(user)">Up to Admin</button>
         </td>
       </tr>
       </tbody>
