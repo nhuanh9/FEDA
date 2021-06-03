@@ -37,6 +37,7 @@ import {NgbdModalContent} from "./modal/modal.component";
 import {AngularEditorModule} from "@kolkov/angular-editor";
 import {NgxEditorModule} from "ngx-editor";
 import {EditorModule} from "@tinymce/tinymce-angular";
+import {CometChatUI} from "../cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/components/CometChatUI/CometChat-Ui/cometchat-ui.module";
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import {EditorModule} from "@tinymce/tinymce-angular";
     Ng2SearchPipeModule,
     AngularEditorModule,
     NgxEditorModule,
-    EditorModule
+    EditorModule,
+    CometChatUI
   ],
   providers: [],
   bootstrap: [AppComponent]
