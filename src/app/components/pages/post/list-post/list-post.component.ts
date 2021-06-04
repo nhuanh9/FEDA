@@ -55,29 +55,35 @@ export class ListPostComponent implements OnInit {
   }
 
   getAllPost() {
-    this.listCurrentUserLikePost = [];
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
-    this.postService.getAll().subscribe((resJson) => {
-      this.listPost = resJson;
-      this.listPost.reverse();
-      this.postLikeService.getAll().subscribe(value => {
-        this.allLike = value;
-        for (let i = 0; i < this.listPost.length; i++) {
-          let currPost: CurrentUserLikePost = {
-            user: this.user,
-            post: this.listPost[i],
+    try {
+      this.listCurrentUserLikePost = [];
+      this.user = JSON.parse(localStorage.getItem('currentUser'));
+      this.postService.getAll().subscribe((resJson) => {
+        this.listPost = resJson;
+        this.listPost.reverse();
+        this.postLikeService.getAll().subscribe(value => {
+          this.allLike = value;
+          for (let i = 0; i < this.listPost.length; i++) {
+            let currPost: CurrentUserLikePost = {
+              user: this.user,
+              post: this.listPost[i],
+            }
+            this.user = this.user == null ? {} : this.user;
+            for (let j = 0; j < this.allLike.length; j++) {
+              if (this.allLike[j].user.id == this.user.id
+                && this.allLike[j].postEntity.id == this.listPost[i].id
+                && this.allLike[j].liked)
+                currPost.is_liked = true;
+            }
+            this.listCurrentUserLikePost.push(currPost);
           }
-          for (let j = 0; j < this.allLike.length; j++) {
-            if (this.allLike[j].user.id == this.user.id
-              && this.allLike[j].postEntity.id == this.listPost[i].id
-              && this.allLike[j].liked)
-              currPost.is_liked = true;
-          }
-          this.listCurrentUserLikePost.push(currPost);
-        }
-        this.items = this.listCurrentUserLikePost;
+          this.items = this.listCurrentUserLikePost;
+        });
       });
-    });
+    } catch (e) {
+
+    }
+
   }
 
   likePost(id) {

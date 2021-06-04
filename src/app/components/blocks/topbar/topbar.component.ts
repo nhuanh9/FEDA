@@ -13,8 +13,8 @@ import {Post} from "../../../models/post";
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
-  currentUser: UserToken;
-  user: User;
+  currentUser: UserToken = {};
+  user: User = {};
   term: string = '';
   posts: Post[] = [{}];
 
@@ -39,9 +39,10 @@ export class TopbarComponent implements OnInit {
   }
 
   getAll() {
+
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
-      this.userService.getUserProfile(x.id).subscribe(value => {
+      this.userService.getUserProfile(x== null?1:x.id).subscribe(value => {
         this.user = value;
       });
     });
