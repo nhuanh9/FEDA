@@ -9,7 +9,8 @@
       [lastMessage]="lastMessage"
       (onUserClick)="userClicked($event)"
       (actionGenerated)="actionHandler($event)"
-    ></cometchat-nav-bar>
+    >
+    </cometchat-nav-bar>
   </div>
   <div
     class="unifiedMainStyle"
@@ -33,20 +34,20 @@
     class="unifiedSecondaryStyle"
     *ngIf="threadMessageView || viewDetailScreen"
   >
-    <div
-      *ngIf="type === USER"
-      [ngClass]="{
-        detailScreenStyle: viewDetailScreen
-      }"
-    >
-      <cometchat-user-details
-        *ngIf="viewDetailScreen"
-        [item]="item"
-        [type]="type"
-        (actionGenerated)="actionHandler($event)"
-      >
-      </cometchat-user-details>
-    </div>
+    <!--    <div-->
+    <!--      *ngIf="type === USER"-->
+    <!--      [ngClass]="{-->
+    <!--        detailScreenStyle: viewDetailScreen-->
+    <!--      }"-->
+    <!--    >-->
+    <!--      <cometchat-user-details-->
+    <!--        *ngIf="viewDetailScreen"-->
+    <!--        [item]="item"-->
+    <!--        [type]="type"-->
+    <!--        (actionGenerated)="actionHandler($event)"-->
+    <!--      >-->
+    <!--      </cometchat-user-details>-->
+    <!--    </div>-->
     <div *ngIf="type === GROUP">
       <cometchat-group-details
         *ngIf="viewDetailScreen"
