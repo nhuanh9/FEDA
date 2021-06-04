@@ -38,6 +38,7 @@ import {AngularEditorModule} from "@kolkov/angular-editor";
 import {NgxEditorModule} from "ngx-editor";
 import {EditorModule} from "@tinymce/tinymce-angular";
 import {CometChatUI} from "../cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/components/CometChatUI/CometChat-Ui/cometchat-ui.module";
+import { CallVideoComponent } from './components/call-video/call-video.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import {CometChatUI} from "../cometchat-pro-angular-ui-kit/CometChatWorkspace/pr
     LoginComponent,
     RegisterComponent,
     LayoutComponent,
-    AdminComponent,NgbdModalContent
+    AdminComponent,NgbdModalContent, CallVideoComponent
   ],
   imports: [
     BrowserModule,

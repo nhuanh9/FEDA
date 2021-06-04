@@ -4,6 +4,8 @@ import {LoginComponent} from "./components/pages/user/login/login.component";
 import {RegisterComponent} from "./components/pages/user/register/register.component";
 import {LayoutComponent} from "./components/layout/layout.component";
 import {AdminComponent} from "./components/admin/admin/admin.component";
+import {ListLinkDocComponent} from "./components/pages/link-doc/list-link-doc/list-link-doc.component";
+import {CallVideoComponent} from "./components/call-video/call-video.component";
 
 
 const routes: Routes = [
@@ -28,7 +30,10 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     loadChildren: () => import('./module/admin.module').then(module => module.AdminModule)
-  }
+  }, {
+    path: 'call-video/:uid',
+    component: CallVideoComponent
+  },
 ];
 
 @NgModule({
