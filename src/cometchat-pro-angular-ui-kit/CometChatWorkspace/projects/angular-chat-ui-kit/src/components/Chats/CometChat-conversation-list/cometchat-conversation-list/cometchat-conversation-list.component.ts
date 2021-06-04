@@ -459,7 +459,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
               }
             })
             .catch((error) => {
-              this.decoratorMessage = COMETCHAT_CONSTANTS.ERROR;
+              this.decoratorMessage = COMETCHAT_CONSTANTS.LOADING_MESSSAGE;
               logger(
                 "[CometChatConversationList] getConversations fetchNext error",
                 error
