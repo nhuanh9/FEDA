@@ -9,7 +9,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 })
 export class CallVideoComponent implements OnInit {
   uid: any = '';
-
+  authKey = "f51cb914320b1239d05b6d32ea22727de7e9a558";
   constructor(
     private activateRoute: ActivatedRoute,) {
   }
@@ -44,7 +44,7 @@ export class CallVideoComponent implements OnInit {
   }
 
   loginCometChat() {
-    const authKey = "f51cb914320b1239d05b6d32ea22727de7e9a558";
+    const authKey = this.authKey;
     const uid = this.uid;
 
     CometChat.login(uid, authKey).then(
@@ -57,4 +57,18 @@ export class CallVideoComponent implements OnInit {
     );
   }
 
+
+  addUser() {
+    var user = new CometChat.User("nhuanh");
+
+    user.setName("nhuanh");
+    console.log(user)
+    CometChat.createUser(user, this.authKey).then(
+      user => {
+        console.log("user created", user);
+      },error => {
+        console.log("error", error);
+      }
+    )
+  }
 }
