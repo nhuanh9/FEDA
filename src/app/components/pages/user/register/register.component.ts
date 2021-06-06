@@ -35,21 +35,34 @@ export class RegisterComponent implements OnInit {
 
   register() {
     const user = this.setNewUser();
-    this.itutcService.getAll().subscribe(res=>{
+    this.itutcService.getAll().subscribe(res => {
       this.itutcs = res;
-      for (let i=0; i<this.itutcs.length; i++) {
-        if (this.itutcs[i].msv === user.status){
+      for (let i = 0; i < this.itutcs.length; i++) {
+        console.log(this.itutcs[i].msv == user)
+        if (this.itutcs[i].msv == user.status) {
           user.status = '2';
+          break
         }
       }
-      this.userService.register(user).subscribe(() => {
-        alert('Đăng ký thành công');
-        this.registerForm.reset();
-        this.router.navigate(['/login']);
-      }, err => {
-        alert("Tài khoản đã được đăng ký!");
-      });
-      console.log(user);
+      if (user.status == '2') {
+        this.userService.register(user).subscribe(() => {
+          alert('Đăng ký thành công');
+          this.registerForm.reset();
+          this.router.navigate(['/login']);
+        }, err => {
+          alert("Tài khoản đã được đăng ký!");
+        });
+      } else {
+        if (confirm('Mã sinh viên bạn nhập sai, bạn có muốn nhập lại không?') == false) {
+          this.userService.register(user).subscribe(() => {
+            alert('Đăng ký thành công');
+            this.registerForm.reset();
+            this.router.navigate(['/login']);
+          }, err => {
+            alert("Tài khoản đã được đăng ký!");
+          });
+        }
+      }
     })
     const userc = new CometChat.User(user.username);
     userc.setName(user.name);
@@ -57,7 +70,7 @@ export class RegisterComponent implements OnInit {
     CometChat.createUser(userc, this.authKey).then(
       user => {
         console.log("user created", user);
-      },error => {
+      }, error => {
         console.log("error", error);
       }
     )
@@ -86,6 +99,7 @@ export class RegisterComponent implements OnInit {
 
 
   }
+
   setCommetChat() {
     const appID = "343009d4d365f12";
     const region = "EU";

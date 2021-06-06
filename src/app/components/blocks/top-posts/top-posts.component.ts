@@ -60,6 +60,7 @@ export class TopPostsComponent implements OnInit {
             user: this.user,
             post: this.listPost[i],
           }
+          this.user = this.user == null ? {} : this.user;
           for (let j = 0; j < this.allLike.length; j++) {
             if (this.allLike[j].user.id == this.user.id
               && this.allLike[j].postEntity.id == this.listPost[i].id
