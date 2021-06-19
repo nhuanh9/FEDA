@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://datnf.herokuapp.com',
+  apiUrl: 'https://datn10499.herokuapp.com',
   firebaseConfig: {
     apiKey: "AIzaSyCDqll4w0MHuvuQ9pKOftNaiUS32_E1Vak",
     databaseURL: "https://datn-2312-default-rtdb.firebaseio.com/",
