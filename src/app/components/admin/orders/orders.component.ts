@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Post} from "../../../models/post";
 import {PostService} from "../../../services/post.service";
 import {OrderSeminarService} from "../../../services/order-seminar.service";
@@ -12,11 +12,27 @@ export class OrdersComponent implements OnInit {
 
   items = [];
   pageOfItems: Array<any>;
-  constructor(private orderSeminarService: OrderSeminarService) { }
+
+  constructor(private orderSeminarService: OrderSeminarService) {
+  }
 
   ngOnInit() {
     this.getAllPost();
-    this.items = [{post: {content: 'a', user: {username: ''}, category: {id: ''}, listComment: []}}];
+    this.items = [
+      {
+        post:
+          {
+            content: 'a',
+            user: {
+              username: ''
+            },
+            category:
+              {
+                id: ''
+              },
+            listComment: []
+          }
+      }];
   }
 
   getAllPost() {
