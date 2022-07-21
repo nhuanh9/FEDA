@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.returnUrl = '/users/home';
+    this.returnUrl = '/users';
     this.adminUrl = '/admin'
   }
 
@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('ACCESS_TOKEN', data.accessToken);
           localStorage.setItem('ROLE', data.roles[0].authority);
           localStorage.setItem('USERNAME', data.username);
+          localStorage.setItem('ID', data.id);
           if (data.roles[0].authority == "ROLE_ADMIN") {
             this.router.navigate([this.adminUrl])
           } else {

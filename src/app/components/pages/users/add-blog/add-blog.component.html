@@ -1,0 +1,20 @@
+<h2 class="text-center">Add new Blog</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+
+      <form [formGroup]="formBlog" (ngSubmit)="save()" class="form-group">
+        <label>Title</label>
+        <input type="text" formControlName="title" class="form-control">
+        <label>Content</label>
+        <textarea type="text" formControlName="content" class="form-control"></textarea>
+        <label>Status</label>
+        <select formControlName="status" class="form-control">
+          <option value="1">Public</option>
+          <option value="0">Private</option>
+        </select>
+        <button class="btn btn-outline-primary mt-3">Add</button>
+      </form>
+    </div>
+  </div>
+</div>
