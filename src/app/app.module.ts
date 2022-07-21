@@ -7,15 +7,12 @@ import {LoginComponent} from './components/pages/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RegisterComponent} from './components/pages/register/register.component';
-import {LayoutComponent} from './components/layout/layout.component';
-import {LayoutModule} from "./module/layout.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    LayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +20,6 @@ import {LayoutModule} from "./module/layout.module";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
